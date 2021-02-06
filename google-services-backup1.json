@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "873246730518",
+    "project_id": "buysell-a3133",
+    "storage_bucket": "buysell-a3133.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873246730518:android:1b3acf0d9cf05f837f8837",
+        "android_client_info": {
+          "package_name": "com.yashbuysell.psbuyandsell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873246730518-r00vf0jg38h0frd4ivmqud5uc7qtn2o5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbRxte4E7QLKQ8-QrZYjwnLQTTb2_hg-E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "873246730518-r00vf0jg38h0frd4ivmqud5uc7qtn2o5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
