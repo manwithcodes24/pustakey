@@ -194,92 +194,6 @@ public class MainActivity extends PSAppCompactActivity {
 
                                 int sellerCount = Integer.valueOf(psCountResource.data.sellerUnreadCount);
                                 int buyerCount = Integer.valueOf(psCountResource.data.buyerUnreadCount);
-                                Intent notificationIntent = new Intent(getApplicationContext(), ChatFragment.class);
-
-                                PendingIntent pi = PendingIntent.getActivity(getApplicationContext(), 0, notificationIntent, 0);
-                                // Message
-
-//                                Setting Notifications for buyers
-//                                if(buyerCount > 0) {
-//
-//
-//                                    // Resources r = getResources();
-//                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                                        CharSequence name = "Message";
-//                                        String description = "Buyer sent you a message";
-//                                        int importance = NotificationManager.IMPORTANCE_HIGH;
-//                                        NotificationChannel channel = new NotificationChannel(CHANNEL_ID1, name, importance);
-//                                        channel.setDescription(description);
-//                                        AudioAttributes audioAttrib = new AudioAttributes.Builder()
-//                                                .setUsage(AudioAttributes.USAGE_MEDIA)
-//                                                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-//                                                .build();
-//                                        channel.setSound(Settings.System.DEFAULT_NOTIFICATION_URI, audioAttrib);
-//                                        // Register the channel with the system; you can't change the importance
-//                                        // or other notification behaviors after this
-//                                        NotificationManager notificationManager = getApplicationContext().getSystemService(NotificationManager.class);
-//
-//                                        notificationManager.createNotificationChannel(channel);
-//                                    }
-//
-//
-//                                    NotificationCompat.Builder buyernotification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID1)
-//                                            .setSmallIcon(R.drawable.app_icon)
-//                                            .setContentTitle(getString(R.string.chatNotificationTitle))
-//                                            .setContentText(getString(R.string.chatNotificationBuyerDis))
-//                                            .setContentIntent(pi)
-//                                            .setAutoCancel(true);
-//                                    ;
-//
-//                                    buyernotification.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
-//
-//                                    NotificationManager notificationManager1 = (NotificationManager) getApplicationContext().getSystemService(Service.NOTIFICATION_SERVICE);
-//                                    notificationManager1.notify(1, buyernotification.build());
-//
-//                                }
-////                                --------------------------------------
-//
-//                                //                                Setting Notifications for buyers
-//
-//                                if(sellerCount > 0) {
-//
-//
-//                                    // Resources r = getResources();
-//                                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                                        CharSequence name = "Message";
-//                                        String description = "Buyer sent you a message";
-//                                        int importance = NotificationManager.IMPORTANCE_HIGH;
-//                                        NotificationChannel channel = new NotificationChannel(CHANNEL_ID2, name, importance);
-//                                        channel.setDescription(description);
-//                                        AudioAttributes audioAttrib = new AudioAttributes.Builder()
-//                                                .setUsage(AudioAttributes.USAGE_MEDIA)
-//                                                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-//                                                .build();
-//                                        channel.setSound(Settings.System.DEFAULT_NOTIFICATION_URI, audioAttrib);
-//                                        // Register the channel with the system; you can't change the importance
-//                                        // or other notification behaviors after this
-//                                        NotificationManager notificationManager = getApplicationContext().getSystemService(NotificationManager.class);
-//
-//                                        notificationManager.createNotificationChannel(channel);
-//                                    }
-//
-//
-//                                    NotificationCompat.Builder sellernotification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID2)
-//                                            .setSmallIcon(R.drawable.app_icon)
-//                                            .setContentTitle(getString(R.string.chatNotificationTitle))
-//                                            .setContentText(getString(R.string.chatNotificationSellerDis))
-//                                            .setContentIntent(pi)
-//                                            .setAutoCancel(true);
-//                                    ;
-//
-//                                    sellernotification.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
-//
-//                                    NotificationManager notificationManager2 = (NotificationManager) getApplicationContext().getSystemService(Service.NOTIFICATION_SERVICE);
-//                                    notificationManager2.notify(2, sellernotification.build());
-//
-//                                }
-
-//                                ---------------------------------------------------------
 
 
 
@@ -397,49 +311,7 @@ public class MainActivity extends PSAppCompactActivity {
             Log.d("receiver", "Got message: " + message);
             Intent notificationIntent = new Intent(getApplicationContext(), ChatActivity.class);
             PendingIntent pi = PendingIntent.getActivity(context, 0, notificationIntent, 0);
-            // Message
 
-//                                Setting Notifications for buyers
-
-
-
-            // Resources r = getResources();
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                CharSequence name = "Message";
-//                String description = "You have got new message";
-//                int importance = NotificationManager.IMPORTANCE_HIGH;
-//                NotificationChannel channel = new NotificationChannel(CHANNEL_ID1, name, importance);
-//                channel.setDescription(description);
-//                AudioAttributes audioAttrib = new AudioAttributes.Builder()
-//                        .setUsage(AudioAttributes.USAGE_MEDIA)
-//                        .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-//                        .build();
-//                channel.setSound(Settings.System.DEFAULT_RINGTONE_URI, audioAttrib);
-//                // Register the channel with the system; you can't change the importance
-//                // or other notification behaviors after this
-//                NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
-//
-//                notificationManager.createNotificationChannel(channel);
-//            }
-//
-//
-//            NotificationCompat.Builder buyernotification = new NotificationCompat.Builder(context, CHANNEL_ID1)
-//                    .setSmallIcon(R.drawable.app_icon)
-//                    .setContentTitle(context.getString(R.string.chatNotificationTitle))
-//                    .setContentText(context.getString(R.string.chatNotificationBuyerDis))
-//                    .setContentIntent(pi)
-//                    .setAutoCancel(true);
-//            ;
-//            Log.d("chat" , "Chat notification sent") ;
-//            buyernotification.setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION));
-//
-//            NotificationManager notificationManager1 = (NotificationManager) context.getSystemService(Service.NOTIFICATION_SERVICE);
-//            notificationManager1.notify(1, buyernotification.build());
-
-
-//                                --------------------------------------
-
-            //                                Setting Notifications for buyers
         }
     };
 
@@ -546,7 +418,7 @@ public class MainActivity extends PSAppCompactActivity {
                     showBottomNavigation();
                     binding.bottomNavigationView.setSelectedItemId(R.id.home_menu);
                     Utils.addToolbarScrollFlag(binding.toolbar);
-                    binding.addItemButton.setVisibility(View.VISIBLE);
+//                    binding.addItemButton.setVisibility(View.VISIBLE);
                     setToolbarText(binding.toolbar, Constants.EMPTY_STRING);
                     navigationController.navigateToHome(MainActivity.this, false, selectedLocationId, selectedLocationName,false);
 
@@ -669,7 +541,7 @@ public class MainActivity extends PSAppCompactActivity {
                 case R.id.home_menu:
                     //layout_scrollFlags
                     Utils.addToolbarScrollFlag(binding.toolbar);
-                    binding.addItemButton.setVisibility(View.VISIBLE);
+//                    binding.addItemButton.setVisibility(View.VISIBLE);
                     navigationController.navigateToHome(MainActivity.this, false, selectedLocationId, selectedLocationName,false);
                     setToolbarText(binding.toolbar, Constants.EMPTY_STRING);
 
@@ -693,7 +565,7 @@ public class MainActivity extends PSAppCompactActivity {
                 case R.id.search_menu:
                     Utils.addToolbarScrollFlag(binding.toolbar);
                     binding.addItemButton.setVisibility(View.GONE);
-                    navigationController.navigateToFilter(MainActivity.this);
+                    navigationController.navigateToItemSell(MainActivity.this);
                     setToolbarText(binding.toolbar, getString(R.string.menu__search));
 
                     break;
@@ -935,7 +807,7 @@ public class MainActivity extends PSAppCompactActivity {
 
     private void showBottomNavigation() {
         binding.bottomNavigationView.setVisibility(View.VISIBLE);
-        binding.addItemButton.setVisibility(View.VISIBLE);
+//        binding.addItemButton.setVisibility(View.VISIBLE);
 
         Utils.addToolbarScrollFlag(binding.toolbar);
 

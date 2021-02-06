@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -140,10 +141,14 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
-                {
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, this);
-                    myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        switch (requestCode) {
+            case MY_PERMISSIONS_REQUEST_LOCATION :{
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+                    {
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, this);
+                        myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
 
 
@@ -151,46 +156,52 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
 
 
-        while (gotMyLocation){
-            if (myLocation == null){
-                myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        while (gotMyLocation){
+                            if (myLocation == null){
+                                myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-            }
-            else {
-                gotMyLocation = false;
-            }
-        }
+                            }
+                            else {
+                                gotMyLocation = false;
+                            }
+                        }
 
 
-            if(myLocation != null) {
-                try {
-                    this.lat = String.valueOf(myLocation.getLatitude());
-                    this.lan  = String.valueOf(myLocation.getLongitude()) ;
-                    Log.d("locationCity" , lat) ;
-                    Log.d("locationCity" , lan) ;
+                        if(myLocation != null) {
+                            try {
+                                this.lat = String.valueOf(myLocation.getLatitude());
+                                this.lan  = String.valueOf(myLocation.getLongitude()) ;
+                                Log.d("locationCity" , lat) ;
+                                Log.d("locationCity" , lan) ;
 
 //                addresses = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                    Log.d("locationCity" , geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).toString()) ;
-                    this.city = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getLocality();
-                    this.postalcode = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getPostalCode();
-                    selected_location_id = "itm_loca" + postalcode ;
-                    selectedLat = lat ;
-                    selectedLng = lan ;
+                                Log.d("locationCity" , geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).toString()) ;
+                                this.city = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getLocality();
+                                this.postalcode = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getPostalCode();
+                                selected_location_id = "itm_loca" + postalcode ;
+                                selectedLat = lat ;
+                                selectedLng = lan ;
 
-                    selected_location_name = city ;
+                                selected_location_name = city ;
 
 
-                    Log.d("locationCity" , city) ;
-                    navigationController.navigateToMainActivity(getActivity(), "itm_loca" + postalcode,city, lat, lan);
+                                Log.d("locationCity" , city) ;
+                                navigationController.navigateToMainActivity(getActivity(), "itm_loca" + postalcode,city, lat, lan);
+                            }
+                            catch (Exception e){
+                                Log.d("locationError" , " Error in fetching location" + e.toString()) ;
+                            }
+                            locationFetched = true ;
+
+                        }
+
+                    }
                 }
-                catch (Exception e){
-                    Log.d("locationError" , " Error in fetching location" + e.toString()) ;
-                }
-                locationFetched = true ;
-
             }
 
-                }
+
+        }
+
         }
 
 
@@ -200,9 +211,8 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                 .setCancelable(false)
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
-                        startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS),1 );
 //                        getActivity().finishAndRemoveTask();
-                        ProcessPhoenix.triggerRebirth(getContext());
 
                     }
                 })
@@ -213,6 +223,19 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                 });
         final AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 1) {
+            switch (requestCode) {
+                case 1:
+                    initData();
+                    break;
+            }
+        }
+
     }
 
     @Override
@@ -239,7 +262,7 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
             while (gotMyLocation){
                 if (myLocation == null){
-                    myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                    myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
                 }
                 else {

@@ -654,7 +654,7 @@
 
 
     <!--Dashboard-->
-    <string name="dashboard_keyword">Keyword</string>
+    <string name="dashboard_keyword">Find books, novels and school books</string>
     <string name="dashboard_best_things">Best things to do in the city</string>
     <string name="dashboard_popular_cities">Popular cities around the world</string>
     <string name="dashboard_best_cities">Best cities to visit around the world</string>
@@ -696,7 +696,7 @@
     <!--City List-->
 
     <!--Location-->
-    <string name="location_title">Your Location</string>
+    <string name="location_title">Location</string>
     <string name="location_change_later">You can change selected city later!</string>
     <string name="location_select">Please select city.</string>
 
@@ -717,7 +717,7 @@
     <string name="chat__accept">Accept</string>
     <string name="chat__reject">Reject</string>
     <string name="chat__make_offer_title">Make Offer For This Item</string>
-    <string name="chat__offer">Make \nOffer</string>
+    <string name="chat__offer">Make Offer</string>
     <string name="chat__make_offer_sender">Make Offer</string>
     <string name="chat__make_offer_receiver">Offer Received</string>
     <string name="chat__accept_text">Offer Accepted</string>

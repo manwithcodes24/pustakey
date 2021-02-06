@@ -12,7 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/layout__primary_background"
+        android:background="@color/colorWhite"
         android:paddingBottom="@dimen/space_72"
         android:visibility="visible">
 
@@ -119,11 +119,12 @@
                     android:layout_marginBottom="4dp"
                     android:background="@color/md_white_1000"
                     android:contentDescription="@string/image_default__image"
-                    android:tint="@color/global__primary"
                     app:layout_constraintBottom_toBottomOf="@+id/searchBoxEditText"
                     app:layout_constraintEnd_toEndOf="@+id/searchBoxEditText"
                     app:layout_constraintTop_toTopOf="@+id/searchBoxEditText"
-                    app:srcCompat="@drawable/baseline_search_grey_24" />
+                    app:srcCompat="@drawable/searchicon"
+
+                    />
 
                 <ImageView
                     android:id="@+id/headerImageView"
@@ -278,6 +279,7 @@
                     app:layout_constraintTop_toTopOf="@+id/categoryTextView" />
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/textView14"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -293,6 +295,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/categoryTextView" />
 
                 <TextView
+                    android:visibility="gone"
                     android:id="@+id/textView10"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -426,7 +429,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/gradient_orange">
+                       >
 
                         <TextView
                             android:id="@+id/popularViewAllTextView"
@@ -464,6 +467,7 @@
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
+                            android:visibility="gone"
                             android:id="@+id/textview16"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -547,6 +551,7 @@
                         app:layout_constraintVertical_chainStyle="packed" />
 
                     <TextView
+                        android:visibility="invisible"
                         android:id="@+id/followerDescTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

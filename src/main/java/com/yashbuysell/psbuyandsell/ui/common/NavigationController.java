@@ -36,6 +36,7 @@ import com.yashbuysell.psbuyandsell.ui.gallery.GalleryActivity;
 import com.yashbuysell.psbuyandsell.ui.gallery.detail.GalleryDetailActivity;
 import com.yashbuysell.psbuyandsell.ui.item.detail.ItemActivity;
 import com.yashbuysell.psbuyandsell.ui.item.entry.ItemEntryActivity;
+import com.yashbuysell.psbuyandsell.ui.item.entry.ItemEntryFragment;
 import com.yashbuysell.psbuyandsell.ui.item.favourite.FavouriteListActivity;
 import com.yashbuysell.psbuyandsell.ui.item.favourite.FavouriteListFragment;
 import com.yashbuysell.psbuyandsell.ui.item.history.HistoryFragment;
@@ -473,17 +474,9 @@ public class NavigationController {
             }
         }
     }
-    public void navigateToItemEntryFragment(MainActivity mainActivity) {
-        if (checkFragmentChange(RegFragments.HOME_FILTER)) {
-            try {
-                DashBoardSearchFragment fragment = new DashBoardSearchFragment();
-                mainActivity.getSupportFragmentManager().beginTransaction()
-                        .replace(containerId, fragment)
-                        .commitAllowingStateLoss();
-            } catch (Exception e) {
-                Utils.psErrorLog("Error! Can't replace fragment.", e);
-            }
-        }
+    public void navigateToItemSell(MainActivity mainActivity) {
+        Intent intent = new Intent(mainActivity, ItemEntryActivity.class);
+        mainActivity.startActivity(intent);
     }
     public void navigateToCityList(MainActivity mainActivity) {
         if (checkFragmentChange(RegFragments.HOME_CITY_LIST)) {

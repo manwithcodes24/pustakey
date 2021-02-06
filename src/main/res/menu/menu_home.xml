@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-
+        android:iconTint="@color/colorWhite"
         android:id="@+id/home_menu"
         android:icon="@drawable/baseline_home_orange_24"
         android:title="@string/menu__home"
         />
 
     <item
-        android:color="@color/colorWhite"
+        android:iconTint="@color/colorWhite"
+
+
         android:id="@+id/interest_menu"
         android:icon="@drawable/ic_category"
         android:title="@string/menu__interest"

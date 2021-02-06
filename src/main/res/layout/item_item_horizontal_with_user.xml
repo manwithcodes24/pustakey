@@ -98,8 +98,8 @@
                         android:layout_height="match_parent">
 
                         <ImageView
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:contentDescription="@string/image_default__image"
                             android:scaleType="centerCrop"
                             app:imageUrl="@{item.defaultPhoto.imgPath}"
@@ -137,7 +137,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="13dp"
                     android:layout_marginEnd="8dp"
                     android:ellipsize="end"
                     android:maxLines="1"
@@ -146,26 +146,10 @@
                     android:textSize="@dimen/font_title_size"
                     app:font='@{"normal"}'
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cardView12"
-                    tools:text="jksdf dshf jsdjf ljd sj jfgj nkfdfgdfj fdkjjd kjdj " />
-
-                <TextView
-                    android:id="@+id/priceTextView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:maxLength="13"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:textColor="@color/global__primary"
-                    android:textSize="@dimen/font_body_size"
-                    app:font='@{"normal"}'
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/titleTextView"
-                    app:layout_constraintEnd_toStartOf="@id/conditionTextView"
-                    tools:text="$100" />
+                    tools:text="jksdf dshf jsdjf " />
 
                 <TextView
                     android:id="@+id/addressTextView"
@@ -186,6 +170,7 @@
                     tools:text="Singapore" />
 
                 <TextView
+                    android:visibility="invisible"
                     android:id="@+id/itemTypeNameTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -208,16 +193,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:textColor="@color/md_blue_300"
                     android:textSize="@dimen/font_body_s_size"
                     app:font='@{"normal"}'
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    app:layout_constraintBottom_toBottomOf="@+id/priceTextView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/priceTextView"
-                    app:layout_constraintTop_toTopOf="@+id/priceTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTextView"
                     tools:text="( New )  " />
 
                 <ImageView
@@ -233,12 +216,14 @@
                     app:srcCompat="@drawable/baseline_pin_black_24" />
 
                 <ImageView
+
                     android:id="@+id/imageView5"
                     android:layout_width="5dp"
                     android:layout_height="5dp"
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
+                    android:visibility="invisible"
                     android:contentDescription="@string/image_default__image"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -247,15 +232,15 @@
 
                 <ImageView
                     android:id="@+id/favoriteImageView"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginEnd="0dp"
+                    android:layout_width="18dp"
+                    android:layout_height="17dp"
+                    android:layout_marginEnd="4dp"
                     android:background="@drawable/baseline_favourite_grey_24"
                     android:contentDescription="@string/image_default__image"
                     app:layout_constraintBottom_toBottomOf="@+id/itemTypeNameTextView"
                     app:layout_constraintEnd_toStartOf="@+id/favCountTextView"
                     app:layout_constraintTop_toTopOf="@+id/itemTypeNameTextView"
-                    app:layout_constraintVertical_bias="1.0"
+                    app:layout_constraintVertical_bias="0.0"
                     app:like_drawable="@drawable/heart_on"
                     app:unlike_drawable="@drawable/heart_off" />
 
@@ -263,15 +248,36 @@
                     android:id="@+id/favCountTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
                     android:text="@{item.favouriteCount}"
                     android:textColor="@color/md_grey_500"
                     android:textSize="@dimen/font_body_s_size"
+                    android:visibility="invisible"
                     app:font='@{"normal"}'
                     app:layout_constraintBottom_toBottomOf="@+id/favoriteImageView"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/favoriteImageView"
+                    app:layout_constraintVertical_bias="1.0"
                     tools:text="10" />
+
+                <TextView
+                    android:id="@+id/priceTextView"
+                    android:layout_width="68dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="70dp"
+                    android:background="@drawable/pricetag"
+                    android:ellipsize="end"
+                    android:maxLength="13"
+                    android:maxLines="1"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="12dp"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="12dp"
+                    app:font='@{"normal"}'
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.975"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="$100" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

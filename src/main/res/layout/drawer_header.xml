@@ -6,7 +6,7 @@
         android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="192dp"
-        android:background="@color/global__primary"
+        android:background="@drawable/drawer_header"
         android:gravity="top"
         android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
