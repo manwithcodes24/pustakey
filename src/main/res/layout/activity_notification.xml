@@ -17,7 +17,7 @@
           style="@style/ToolBarStyle.Event"
           android:layout_width="match_parent"
           android:layout_height="?android:attr/actionBarSize"
-          android:background="@color/global__primary"
+          android:background="@drawable/appbar"
           app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     </com.google.android.material.appbar.AppBarLayout>

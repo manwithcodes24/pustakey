@@ -106,11 +106,13 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     private String seller_phone = Constants.EMPTY_STRING ;
     private String seller_email = Constants.EMPTY_STRING ;
     private String seller_name = Constants.EMPTY_STRING ;
+    private String nameinBank, ifsc, accnum = Constants.EMPTY_STRING ;
 //    do not change
     private String seller_details_title = "seller_details" ;
 //    ------------
     private Boolean isExpanded = true;
-    private Boolean isAddressDetails = false ;
+    private Boolean isAddressDetails = true ;
+    private Boolean isBankDetails = true ;
     private String firstImageId = Constants.EMPTY_STRING;
     private String secImageId = Constants.EMPTY_STRING;
     private String thirdImageId = Constants.EMPTY_STRING;
@@ -160,6 +162,9 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         this.typeId = "1" ;
         binding.get().typeTextView.setText(getString(R.string.required_type));
+
+        binding.get().priceTextView.setText("₹");
+        this.currencyId = "itm_curencyb1b50927c7f950b2f9f9220f2d5fc699";
 
 
 
@@ -218,6 +223,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             this.subCatId = "";
             itemViewModel.holder.sub_cat_id = this.subCatId;
             binding.get().subCategoryTextView.setText("");
+            itemViewModel.holder.currency_id = this.currencyId;
 
         } else if (requestCode == Constants.REQUEST_CODE__SEARCH_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_SUBCATEGORY) {
 
@@ -237,6 +243,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CURRENCY_TYPE) {
 
             this.currencyId = data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_ID);
+            Log.d("currencyCode" , data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_ID));
             binding.get().priceTextView.setText(data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_NAME));
             itemViewModel.holder.currency_id = this.currencyId;
         } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_OPTION_TYPE) {
@@ -256,6 +263,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             itemViewModel.lngValue = data.getStringExtra(Constants.LNG);
             binding.get().locationTextView.setText(data.getStringExtra(Constants.ITEM_LOCATION_TYPE_NAME));
             itemViewModel.holder.location_id = this.locationId;
+            Log.d("locationTest", "locaionid = " + ItemEntryFragment.this.locationId) ;
 
             itemViewModel.mapLat = itemViewModel.latValue;
             itemViewModel.mapLng = itemViewModel.lngValue;
@@ -555,40 +563,118 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         binding.get().bookDetailsLeadBtn.setOnClickListener(v ->{
             this.isExpanded = !this.isExpanded ;
 
+//            if (binding.get().bookDetailsContainer.getVisibility() == View.VISIBLE) {
+//                Log.d("addressDetailsContainer" , "Gone")  ;
+//
+//
+//                binding.get().bookDetailsContainer.setVisibility(View.GONE);
+//            } else {
+//                Log.d("bookDetailsContainer" , "visible")  ;
+//
+//                binding.get().bookDetailsContainer.setVisibility(View.VISIBLE);
+//                binding.get().addressDetailsContainer.setVisibility(View.GONE);
+////                binding.get().bankDetailsContainer.setVisibility(View.GONE);
+//            }
+
+
             if(isExpanded == true){
 
 
+                binding.get().addressDetailsContainer.setVisibility(View.GONE);
+                binding.get().bankDetailsContainer.setVisibility(View.GONE);
+
                 binding.get().bookDetailsContainer.setVisibility(View.VISIBLE);
-                binding.get().bookDetailsHook.setMaxHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
 
             }
             if(isExpanded == false) {
 
+                this.isAddressDetails  = !this.isAddressDetails ;
 
                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
-                binding.get().bookDetailsHook.setMaxHeight(binding.get().bookDetailsHook.getMinHeight());
 
             }
 
         });
         binding.get().addressDetailsBtn.setOnClickListener(v -> {
+
+
+//            if (binding.get().addressDetailsContainer.getVisibility() == View.VISIBLE) {
+//                 Log.d("addressDetailsContainer" , "Gone")  ;
+//
+//                binding.get().addressDetailsContainer.setVisibility(View.GONE);
+//            } else {
+//                Log.d("addressDetailsContainer" , "visible")  ;
+//
+//                binding.get().bookDetailsContainer.setVisibility(View.GONE);
+//                binding.get().addressDetailsContainer.setVisibility(View.VISIBLE);
+////                binding.get().bankDetailsContainer.setVisibility(View.GONE);
+//            }
+
             this.isAddressDetails  = !this.isAddressDetails ;
-            if(isAddressDetails == true ){
+
+
+            if(isAddressDetails == true){
                 Log.d("addressBoolean" , isAddressDetails.toString()) ;
 
 
-                binding.get().addressDetailsHooks.setVisibility(View.GONE);
+                binding.get().addressDetailsContainer.setVisibility(View.GONE);
+
+
 
             }
-            if(isAddressDetails == false) {
+            if(isAddressDetails == false ) {
                 Log.d("addressBoolean" , isAddressDetails.toString()) ;
 
+                binding.get().bookDetailsContainer.setVisibility(View.GONE);
+                binding.get().bankDetailsContainer.setVisibility(View.GONE);
 
-                binding.get().addressDetailsHooks.setVisibility(View.VISIBLE);
+
+                binding.get().addressDetailsContainer.setVisibility(View.VISIBLE);
 
 
             }
         });
+         binding.get().bankDetailsBtn.setOnClickListener(v -> {
+
+
+//             if (binding.get().bankDetailsContainer.getVisibility() == View.VISIBLE) {
+//
+//                 Log.d("addressDetailsContainer" , "Gone")  ;
+//
+//                 binding.get().bankDetailsContainer.setVisibility(View.GONE);
+//             } else {
+//                 Log.d("bankDetailsContainer" , "VISIBLE")  ;
+//
+//                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
+//                 binding.get().addressDetailsHooks.setVisibility(View.GONE);
+//                 binding.get().bankDetailsContainer.setVisibility(View.VISIBLE);
+//             }
+
+             this.isBankDetails  = !this.isBankDetails ;
+
+
+            if(isBankDetails == true){
+                Log.d("bankBoolean" , isBankDetails.toString()) ;
+
+
+                binding.get().bankDetailsContainer.setVisibility(View.GONE);
+
+
+
+            }
+            if(isBankDetails == false) {
+                Log.d("addressBoolean" , isAddressDetails.toString()) ;
+
+                binding.get().bookDetailsContainer.setVisibility(View.GONE);
+                binding.get().addressDetailsContainer.setVisibility(View.GONE);
+
+
+                binding.get().bankDetailsContainer.setVisibility(View.VISIBLE);
+
+
+            }
+        });
+
 
 
         binding.get().priceCardView.setOnClickListener(view -> navigationController.navigateToSearchViewActivity(this.getActivity(), Constants.ITEM_CURRENCY_TYPE, typeId, priceTypeId, conditionId, dealOptionId, currencyId, locationId));
@@ -677,7 +763,9 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             this.seller_name =  binding.get().sellerNameEditView.getText().toString() ;
             this.flatnum =  binding.get().flatnumEditText.getText().toString() ;
             this.product_title =  binding.get().titleEditText.getText().toString();
-            this.seller_state = binding.get().stateEditText.getText().toString() ;
+            this.nameinBank = binding.get().nameinBankEditText.getText().toString() ;
+            this.ifsc = binding.get().ifscEditText.getText().toString() ;
+            this.accnum = binding.get().accountnumEditText.getText().toString() ;
             Log.d("itemId" , "viewmodel : " + itemViewModel.itemId) ;
             if( (length != null || length != "") && (height != null && height!="" )&&
                     (breadth != null || breadth !="") && (weight != null || weight !="" ) &&
@@ -774,13 +862,18 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 ItemEntryFragment.this.checkIsShop();
 
                 if (itemViewModel.itemId != null) {
+                    Log.d("locationTest", "location id = " + ItemEntryFragment.this.locationId) ;
+
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
+                        Log.d("locationTest", "location id = " +ItemEntryFragment.this.locationId) ;
+
                         itemViewModel.setUploadItemObj(ItemEntryFragment.this.catId, ItemEntryFragment.this.subCatId, ItemEntryFragment.this.typeId, ItemEntryFragment.this.priceTypeId, ItemEntryFragment.this.currencyId, ItemEntryFragment.this.conditionId, ItemEntryFragment.this.locationId,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
                                 binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), ItemEntryFragment.this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, itemViewModel.is_sold_out, binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, itemViewModel.itemId, loginUserId);
                     } else {//add new item
+                        Log.d("locationTest", "location id = " +ItemEntryFragment.this.locationId) ;
                         itemViewModel.setUploadItemObj(ItemEntryFragment.this.catId, ItemEntryFragment.this.subCatId, ItemEntryFragment.this.typeId, ItemEntryFragment.this.priceTypeId, ItemEntryFragment.this.currencyId, ItemEntryFragment.this.conditionId, ItemEntryFragment.this.locationId,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
                                 binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), ItemEntryFragment.this.dealOptionId,
@@ -1021,7 +1114,43 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                                 Log.d("itemId" , "item id : " + itemViewModel.itemId) ;
 
                                 mDatabase = FirebaseDatabase.getInstance().getReference(itemViewModel.itemId) ;
+                                try {
+                                    courierInfoDB = mDatabase.child("courierDetails");
+                                    sellerInfoDB = mDatabase.child("sellerDetails");
+//
+//   ------------------------------Saving Courier Details------------------------------
 
+                                    courierInfoDB.child("seller_pincode").setValue(pickup_address);
+                                    courierInfoDB.child("flatnum").setValue(flatnum);
+                                    courierInfoDB.child("length").setValue(length);
+                                    courierInfoDB.child("breadth").setValue(breadth);
+                                    courierInfoDB.child("height").setValue(height);
+                                    courierInfoDB.child("weight").setValue(weight);
+//                                    courierInfoDB.child("price").setValue(courierPrice);
+                                    courierInfoDB.child("name").setValue(product_title);
+// ------------------------------------------------------------------------------------------
+
+                                    sellerInfoDB.child("pincode").setValue(pickup_address) ;
+                                    sellerInfoDB.child("address").setValue(flatnum) ;
+                                    sellerInfoDB.child("name").setValue(seller_name) ;
+                                    sellerInfoDB.child("email").setValue(seller_email) ;
+                                    sellerInfoDB.child("phone").setValue(seller_phone) ;
+                                    sellerInfoDB.child("city").setValue(seller_city) ;
+                                    sellerInfoDB.child("country").setValue(seller_country) ;
+                                    sellerInfoDB.child("state").setValue(seller_state) ;
+                                    sellerInfoDB.child("nameinbank").setValue(nameinBank) ;
+                                    sellerInfoDB.child("ifsc").setValue(ifsc) ;
+                                    sellerInfoDB.child("accnum").setValue(accnum) ;
+
+
+
+//                                ------------- Saving Courier End --------------------------
+                                }
+                                catch (Exception e){
+                                    Log.i("Error" , "Error in saving seller info :-  " + e.toString()) ;
+                                    Toast.makeText(getApplicationContext() , getString(R.string.error_message__item_cannot_upload_checkForm) , Toast.LENGTH_LONG).show();
+                                    psDialogMsg.show();
+                                }
 
 
                                 if (isFirstImageSelected) {//reload
@@ -1085,37 +1214,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                                 if(isLastResult) {
                                     progressDialog.cancel();
                                 }
-                                try {
-                                    courierInfoDB = mDatabase.child("courierDetails");
-                                    sellerInfoDB = mDatabase.child("sellerDetails");
-//
-//   ------------------------------Saving Courier Details------------------------------
 
-                                    courierInfoDB.child("seller_pincode").setValue(pickup_address);
-                                    courierInfoDB.child("flatnum").setValue(flatnum);
-                                    courierInfoDB.child("length").setValue(length);
-                                    courierInfoDB.child("breadth").setValue(breadth);
-                                    courierInfoDB.child("height").setValue(height);
-                                    courierInfoDB.child("weight").setValue(weight);
-//                                    courierInfoDB.child("price").setValue(courierPrice);
-                                    courierInfoDB.child("name").setValue(product_title);
-// ------------------------------------------------------------------------------------------
-
-                                    sellerInfoDB.child("pincode").setValue(pickup_address) ;
-                                    sellerInfoDB.child("address").setValue(flatnum) ;
-                                    sellerInfoDB.child("name").setValue(seller_name) ;
-                                    sellerInfoDB.child("email").setValue(seller_email) ;
-                                    sellerInfoDB.child("phone").setValue(seller_phone) ;
-                                    sellerInfoDB.child("city").setValue(seller_city) ;
-                                    sellerInfoDB.child("country").setValue(seller_country) ;
-                                    sellerInfoDB.child("state").setValue(seller_state) ;
-//                                ------------- Saving Courier End --------------------------
-                                }
-                                catch (Exception e){
-                                    Log.i("Error" , "Error in saving seller info :-  " + e.toString()) ;
-                                    Toast.makeText(getApplicationContext() , getString(R.string.error_message__item_cannot_upload_checkForm) , Toast.LENGTH_LONG).show();
-                                    psDialogMsg.show();
-                                }
                             } else {
 
                                 Toast.makeText(getActivity(), "item upload success", Toast.LENGTH_SHORT).show();

@@ -18,9 +18,7 @@
         android:layout_height="wrap_content"
         android:contentDescription="Notification Icon"
         android:gravity="center"
-        android:iconTint="@color/md_grey_700"
-        android:src="@drawable/baseline_noti_white_24"
-        app:iconTintMode="add"
+        android:src="@drawable/notificationicon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,6 +31,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/global__primary_light"
         android:background="@drawable/ps_baseline_red_circle_24"
         android:gravity="center"
         android:minWidth="17sp"
@@ -41,6 +40,8 @@
         android:textSize="9sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.233" />
 </androidx.constraintlayout.widget.ConstraintLayout>

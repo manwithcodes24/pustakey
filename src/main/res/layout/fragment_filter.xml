@@ -153,6 +153,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/setItemName" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/typeTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -207,6 +208,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/itemConditionCardView" />
 
             <TextView
+                android:visibility="gone"
                 android:id="@+id/dealOptionTitleTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -338,6 +340,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:id="@+id/typeCardView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -357,6 +360,7 @@
                     android:layout_height="match_parent">
 
                     <TextView
+
                         android:id="@+id/typeTextView"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -503,6 +507,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:visibility="gone"
                 android:id="@+id/dealOptionCardView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -576,7 +581,8 @@
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="8dp"
                     android:text="@string/sf__Filter_Button"
-                    android:textColor="@color/md_white_1000"
+                    android:background="@drawable/rounded_corner_shape"
+                    android:textColor="@color/colorBlack"
                     app:font='@{"normal"}'
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintCircleRadius="@dimen/space_16"

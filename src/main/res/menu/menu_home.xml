@@ -24,7 +24,7 @@
     <item
 
 
-        android:id="@+id/search_menu"
+        android:id="@+id/addItemButton"
         android:icon="@drawable/baseline_search_grey_24"
         android:title="@string/menu__search"
         />

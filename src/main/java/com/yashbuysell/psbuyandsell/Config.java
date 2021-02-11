@@ -12,7 +12,7 @@ public class Config {
      * AppVersion
      * For your app, you need to change according based on your app version
      */
-    public static String APP_VERSION = "2.9";
+    public static String APP_VERSION = "1";
 
     /**
      * APP Setting
@@ -75,10 +75,11 @@ public class Config {
     public static int ITEM_COUNT = 30;
 
     public static int LIST_CATEGORY_COUNT = 30;
+    public static int LIST_CATEGORY_HOMECOUNT = 9;
     public static int LIST_FILTER_CATEGORY_COUNT = 30;
     public static int LIST_SEARCH_CATEGORY_COUNT = 30;
     public static int LIST_CONDITION_COUNT = 30;
-    public static int LIST_CURRENCY_COUNT = 30;
+    public static int LIST_CURRENCY_COUNT = 10;
     public static int LIST_DEAL_OPTION_COUNT = 30;
     public static int LIST_LOCATION_COUNT = 30;
     public static int LIST_PRICE_TYPE_COUNT = 30;
@@ -93,9 +94,9 @@ public class Config {
 
     public static int LIST_NEW_FEED_COUNT_PAGER = 10; // cannot equal 15
 
-    public static int HISTORY_COUNT = 30;
+    public static int HISTORY_COUNT = 20;
 
-    public static int CHAT_HISTORY_COUNT = 30;
+    public static int CHAT_HISTORY_COUNT = 20;
 
     public static int OFFER_LIST_COUNT = 30;
 
@@ -176,7 +177,7 @@ public class Config {
     /**
      * Policy Url
      */
-    public static String POLICY_URL = "http://www.panacea-soft.com/policy/policy.html";
+    public static String POLICY_URL = "http://www.google.com/";
 
     /**
      * URI Authority File

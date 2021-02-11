@@ -8,7 +8,7 @@
 
     <string name="fb_login_protocol_scheme" translatable="false">fb0000000000000000</string>
 
-    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-0000000000000000/0000000000</string>
+    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-7168378223909401/7621007940</string>
 
     <string name="google_map_api_key" translatable="false">AIzaSyABCJoE65AD_ujN2Eaw9l6xnOlCiRJMHkw</string>
 
@@ -33,6 +33,7 @@
     <string name="phone_login_phone_hint" translatable="false">+959121212121</string>
     <!--History -->
     <string name="history__title">History</string>
+    <string name="app__slogan">Buy and Sell used books and notes.</string>
     <string name="title__activity_user_history_list">UserHistoryListActivity</string>
 
     <!-- Default Currency -->
@@ -91,6 +92,8 @@
 
     <!-- Login -->
     <string name="login__email">Email</string>
+    <string name="login__header" translatable="false">Welcome Back</string>
+    <string name="register__header" translatable="false">Welcome Back</string>
     <string name="login__password">Password</string>
     <string name="login__not_a_member_join_now">New here? Sign Up</string>
     <string name="login__forgot_your_password">Forgot password ?</string>
@@ -189,6 +192,12 @@
     <string name="edit_setting__app_info">App Info</string>
     <string name="edit_setting__title">Setting</string>
 
+    <!-- Tools -->
+    <string name="tools__tracking">Track Your Order</string>
+    <string name="tools__instruction">Instruction</string>
+    <string name="tools__cart">Cart</string>
+
+
     <!-- Message -->
     <string name="message__register_success">Successfully Register.</string>
     <string name="message__loading">Loading…</string>
@@ -197,14 +206,18 @@
     <string name="message__want_to_quit">Do you really want to quit?</string>
     <string name="message__ok_close">OK</string>
     <string name="message__cancel_close">Cancel</string>
-    <string name="message__seller">From Sellers</string>
-    <string name="message__buyer">From Buyers</string>
+    <string name="message__seller">Sellers</string>
+    <string name="message__buyer">Buyers</string>
     <string name="offer_message__seller">Offer Sent</string>
     <string name="offer_message__buyer">Offer Received</string>
 
+    <string name="subcategory__notSet" translatable="false">Sub Category</string>
+    <string name="bookname__notSet" translatable="false">Book Name</string>
+    <string name="price__notSet" translatable="false">Price</string>
+    <string name="discription__notSet" translatable="false">Discription</string>
 
     <!-- Search -->
-    <string name="search__notSet">Not Set</string>
+    <string name="search__notSet">Category</string>
     <string name="search__by_name">Product Name</string>
     <string name="search__by_type">Product Type</string>
     <string name="search__by_sub_type">Sub Product Type</string>
@@ -236,7 +249,7 @@
 
 
     <!--Special_Filtering-->
-    <string name="sf__notSet">Not Set</string>
+    <string name="sf__notSet">Item Condition</string>
     <string name="sf__notSet_zg">Not Set</string>
     <string name="sf__ByItemType">Book Name</string>
     <string name="sf__ByPrice">Set Price</string>
@@ -458,7 +471,7 @@
     <string name="item_detail__getting_this">Getting this</string>
     <string name="item_detail__meet_seller">Meet the seller</string>
     <string name="item_detail__joined_date">Joined -</string>
-    <string name="item_detail__chat">Chat</string>
+    <string name="item_detail__chat">Buy</string>
     <string name="item_detail__edit">Edit</string>
     <string name="item_detail__like">Likes</string>
     <string name="item_detail__sold">Sold</string>
@@ -505,6 +518,9 @@
     <string name="item_entry_detail__longitude">Longitude</string>
     <string name="item_entry_detail__location">Location</string>
     <string name="item_entry_detail__address">Pin Code</string>
+    <string name="item_entry_detail__nameinBank" translatable="false">Account Holder Name</string>
+    <string name="item_entry_detail__accnum" translatable="false">Account no.</string>
+    <string name="item_entry_detail__ifsc" translatable="false">IFSC</string>
     <string name="item_entry_detail__city" translatable="false">City</string>
     <string name="item_entry_detail__state" translatable="false">State</string>
     <string name="item_entry_detail__country" translatable="false">Country</string>
@@ -524,6 +540,9 @@
     <string name="item_entry_need_length" translatable="false">Enter item length</string>
     <string name="item_entry_need_breadth" translatable="false">Enter item breadth</string>
     <string name="item_entry_need_height" translatable="false">Enter item height</string>
+    <string name="item_entry_need_ifsc" translatable="false">Enter IFSC</string>
+    <string name="item_entry_need_nameinBank" translatable="false">Enter account holder name</string>
+    <string name="item_entry_need_accnum" translatable="false">Enter bank acccount number</string>
     <string name="item_entry_need_weight" translatable="false">Enter item Weight</string>
     <string name="item_entry_need_sellerName" translatable="false">Enter your name</string>
     <string name="item_entry_need_sellerEmail" translatable="false">Enter your Email</string>
@@ -569,7 +588,24 @@
     <string name="trackError" translatable="false">Tracking details not found</string>
     <string name="courierTrackBtn" translatable="false">Track</string>
     <string name="courierAwbField" translatable="false">Enter your AWB number</string>
+    <string name="instruction_textHeader" translatable="false">INSTRUCTION
+    <br />(for seller)
+    </string>
+    <string name="instruction_step1" translatable="false">
 
+1.Insure that you put every books in the box which you have dealt with buyer, incase of missing of books or false book your amount will be deducted from dealt price.
+  </string>  <string name="instruction_step2" translatable="false">
+
+        2. Use proper box or bag and pack it tightly for safety purpose download the labels from chatbox and fix it on the box .
+
+    </string>
+    <string name="instruction_step3" translatable="false">
+
+ 3. Our delivery executive will come to your home and will pick the books. Once book Will be delivered to the buyer you will recieve payment on your bank account.
+    </string>
+    <string name="instruction_step4" translatable="false">
+
+        4. As per our buisness policy we will deduct 18% of the total amount from your dealt price.</string>
 
     <!--courier APIs-->
     <string name="courierCheck_serviceability" translatable="false">https://apiv2.shiprocket.in/v1/external/courier/serviceability/</string>
@@ -579,6 +615,7 @@
     <string name="courierUser_addPickup" translatable="false">https://apiv2.shiprocket.in/v1/external/settings/company/addpickup</string>
     <string name="courierOrder_createOrder" translatable="false">https://apiv2.shiprocket.in/v1/external/shipments/create/forward-shipment</string>
     <string name="courierOrder_trackShipment" translatable="false">https://apiv2.shiprocket.in/v1/external/courier/track/awb/</string>
+    <string name="courierOrder_payout" translatable="false">https://apiv2.shiprocket.in/v1/external/courier/track/awb/</string>
 
     <!-- postal code API ( do not change )-->
     <string name="postalcode_checker" translatable="false">https://api.postalpincode.in/pincode/</string>

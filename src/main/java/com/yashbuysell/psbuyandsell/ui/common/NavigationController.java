@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,6 +16,7 @@ import androidx.fragment.app.FragmentActivity;
 import com.yashbuysell.psbuyandsell.Config;
 import com.yashbuysell.psbuyandsell.MainActivity;
 import com.yashbuysell.psbuyandsell.R;
+import com.yashbuysell.psbuyandsell.mainTools;
 import com.yashbuysell.psbuyandsell.ui.blog.detail.BlogDetailActivity;
 import com.yashbuysell.psbuyandsell.ui.blog.list.BlogListActivity;
 import com.yashbuysell.psbuyandsell.ui.category.list.CategoryListActivity;
@@ -87,6 +89,7 @@ import com.yashbuysell.psbuyandsell.ui.user.verifyphone.VerifyMobileFragment;
 import com.yashbuysell.psbuyandsell.utils.Constants;
 import com.yashbuysell.psbuyandsell.utils.Utils;
 import com.yashbuysell.psbuyandsell.viewobject.Noti;
+import com.yashbuysell.psbuyandsell.viewobject.User;
 import com.yashbuysell.psbuyandsell.viewobject.holder.ItemParameterHolder;
 import com.yashbuysell.psbuyandsell.viewobject.holder.UserParameterHolder;
 
@@ -448,12 +451,13 @@ public class NavigationController {
         }
     }
 
+
     public void navigateToInterest(MainActivity mainActivity) {
         if (checkFragmentChange(RegFragments.HOME_CATEGORY)) {
             try {
-                courierTrackingFragment fragment = new courierTrackingFragment();
+
                 mainActivity.getSupportFragmentManager().beginTransaction()
-                        .replace(containerId, fragment)
+                        .replace(containerId, new mainTools())
                         .commitAllowingStateLoss();
             } catch (Exception e) {
                 Utils.psErrorLog("Error! Can't replace fragment.", e);
@@ -474,9 +478,23 @@ public class NavigationController {
             }
         }
     }
-    public void navigateToItemSell(MainActivity mainActivity) {
-        Intent intent = new Intent(mainActivity, ItemEntryActivity.class);
-        mainActivity.startActivity(intent);
+    public void navigateToItemSell(SharedPreferences pref, User user, NavigationController navigationController, MainActivity mainActivity) {
+        String fragmentType = pref.getString(Constants.USER_ID_TO_VERIFY, Constants.EMPTY_STRING);
+
+        if (fragmentType.isEmpty()) {
+            if (user == null) {
+
+                mainActivity.setToolbarText(mainActivity.binding.toolbar, mainActivity.getString(R.string.login__login));
+                navigationController.navigateToUserLogin(mainActivity);
+            } else {
+
+                Intent intent = new Intent(mainActivity, ItemEntryActivity.class);
+                mainActivity.startActivity(intent);
+            }
+        } else {
+            navigationController.navigateToVerifyEmail(mainActivity);
+        }
+
     }
     public void navigateToCityList(MainActivity mainActivity) {
         if (checkFragmentChange(RegFragments.HOME_CITY_LIST)) {

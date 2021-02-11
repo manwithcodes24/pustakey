@@ -73,7 +73,7 @@ public class CategoryListFragment extends PSFragment implements DataBoundListAda
         if (getActivity() instanceof MainActivity) {
             ((MainActivity) getActivity()).setToolbarText(((MainActivity) getActivity()).binding.toolbar, getString(R.string.category__list_title));
             getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-            ((MainActivity) this.getActivity()).binding.toolbar.setBackgroundColor(getResources().getColor(R.color.global__primary));
+            ((MainActivity) this.getActivity()).binding.toolbar.setBackground(getResources().getDrawable(R.drawable.appbar));
             ((MainActivity) getActivity()).updateToolbarIconColor(Color.WHITE);
             ((MainActivity) getActivity()).updateMenuIconWhite();
             ((MainActivity) getActivity()).refreshPSCount();

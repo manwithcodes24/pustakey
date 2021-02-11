@@ -15,7 +15,7 @@
 
             <androidx.appcompat.widget.Toolbar
                 style="@style/ToolBarStyle.Event"
-                android:background="@color/global__primary"
+                android:background="@drawable/appbar"
                 android:id="@+id/toolbar"
                 android:layout_height="?android:attr/actionBarSize"
                 android:layout_width="match_parent"

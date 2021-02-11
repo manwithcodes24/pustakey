@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
+            android:padding="4dp"
             android:layout_marginBottom="8dp"
             android:background="@drawable/chat_sender_bubble"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -37,18 +38,17 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="4dp"
                 android:maxEms="10"
-                android:padding="@dimen/space_4"
                 android:singleLine="false"
                 android:text="@{message.message}"
                 android:textAlignment="viewStart"
-                android:textColor="@color/text__primary"
+                android:textColor="@color/text__primary_light"
                 android:textSize="@dimen/font_title_size"
                 app:font='@{"normal"}'
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="helloDAGSDGDFSADFDSFDSFSDDSFFDDDFSDSFFDDDSFDSDFDFFDDF" />
+                tools:text="helloDAGSDGDFSADFDSFDSFSDD" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -5,10 +5,10 @@
     <!-- Color Apply to Views                                               -->
     <!--********************************************************************-->
 
-    <color name="global__primary_light">#283ECF</color>
+    <color name="global__primary_light">#5165E7</color>
     <color name="global__primary">#0008FF</color>
     <color name="global__primary_transparent">#276C70F6</color>
-    <color name="global__primary_dark">#D20B0FA1</color>
+    <color name="global__primary_dark">#0B0FA1</color>
     <color name="global__accent">#90a4ae</color>
     <color name="paid_ad">#807CB342</color>
     <color name="paid_ad_completed">#80444444</color>
@@ -19,12 +19,12 @@
     <color name="view__primary_line">@color/md_grey_200</color>
 
     <color name="button__primary_text">@color/md_white_1000</color>
-    <color name="button__primary_bg">@color/md_deep_orange_700</color>
+    <color name="button__primary_bg">@color/md_blue_700</color>
     <color name="button__select_green">@color/md_green_200</color>
 
-    <color name="textview__primary_red">@color/md_deep_orange_700</color>
+    <color name="textview__primary_red">@color/md_blue_700</color>
     <color name="textview__transparent_red">@color/global__primary_light</color>
-    <color name="textview__star_point">@color/md_red_800</color>
+    <color name="textview__star_point">@color/md_blue_800</color>
 
     <color name="icon__primary">@color/md_grey_200</color>
     <color name="icon__green">@color/md_green_600</color>
@@ -32,8 +32,9 @@
     <color name="image_detail_bg">@color/md_black_1000</color>
 
     <color name="text__primary_light">@color/md_grey_200</color>
-    <color name="text__primary">@color/md_grey_600</color>
-    <color name="text__primary_dark">@color/md_grey_800</color>
+    <color name="text__primary">@color/md_grey_800</color>
+    <color name="text__primary_dark">@color/colorBlack
+    </color>
     <color name="text__white">@color/md_white_1000</color>
     <color name="text__secondary">@color/md_amber_700</color>
     <color name="text__rating_star_title">@color/md_blue_700</color>

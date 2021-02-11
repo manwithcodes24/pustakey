@@ -16,47 +16,51 @@
             android:scrollbarAlwaysDrawVerticalTrack="false">
 
 
-            <ImageView
-                android:id="@+id/bgImageView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:contentDescription="@string/image_default__image"
-                android:scaleType="centerCrop"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
             <Button
                 android:id="@+id/registerButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="24dp"
                 android:background="@drawable/rounded_corner_shape_button_for_login"
                 android:text="@string/register__register"
                 android:textColor="@color/button__primary_text"
                 app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
                 app:layout_constraintTop_toBottomOf="@+id/policyAndPrivacyCheckBox" />
 
-            <ImageView
-                android:id="@+id/imageView19"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:contentDescription="@string/image_default__image"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cardView11"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/login_header"
                 app:layout_constraintBottom_toTopOf="@+id/app_name_text2"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.333"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/login_app_logo" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0">
+
+                <TextView
+                    android:id="@+id/imageView19"
+android:text="@string/register__header"
+                    android:textSize="25dp"
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/image_default__image"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.764" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/app_name_text2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="401dp"
+                android:layout_height="71dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="60dp"
@@ -68,7 +72,10 @@
                 app:font='@{"bold"}'
                 app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView11"
+                app:layout_constraintVertical_bias="0.911" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout2"
@@ -174,6 +181,13 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/emailEditText" />
 
+                <ImageView
+                    android:id="@+id/bgImageView"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:contentDescription="@string/image_default__image"
+                    android:scaleType="centerCrop" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -182,13 +196,13 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="32dp"
                 android:text="@string/register__back_to_login"
                 android:textAllCaps="false"
                 android:textColor="@color/text__secondary"
                 app:font='@{"normal"}'
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.504"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/registerButton"
                 app:textSize='@{"button_text"}'
@@ -198,10 +212,10 @@
                 android:id="@+id/policyAndPrivacyCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="20dp"
+                android:checked="true"
                 android:text="@string/register__check_option"
                 android:textColor="@color/text__primary"
-                android:checked="true"
                 app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
 

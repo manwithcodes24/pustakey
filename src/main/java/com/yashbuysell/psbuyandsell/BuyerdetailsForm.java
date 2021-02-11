@@ -22,6 +22,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.JsonParser;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 import com.yashbuysell.psbuyandsell.ui.chat.chat.ChatActivity;
@@ -46,7 +47,9 @@ import android.widget.Toast;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
+import java.lang.reflect.Constructor;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -72,7 +75,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
     private Button submitBtn ;
     public String product_title = Constants.EMPTY_STRING;
     private DatabaseReference mDatabase, buyerInfoDB ,sellerInfoDB ,courierInfoDB;
-
+    double convertedAmount ;
     String appKeyId ;
     String appSecretKey ;
     private String itemId ;
@@ -94,6 +97,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
     private String currentDateandTime ;
     private String finalAmount ;
     private String order_id ;
+    private String seller_nameinBank, seller_ifsc, seller_accnum ;
     private ArrayList orderIdList
             = new ArrayList<Float>() ;
     private ArrayList<Double> rateList
@@ -211,6 +215,9 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                 seller_city = snapshot.child("city").getValue().toString() ;
                 seller_country = snapshot.child("country").getValue().toString() ;
                 seller_state = snapshot.child("state").getValue().toString() ;
+                seller_nameinBank = snapshot.child("nameinbank").getValue().toString() ;
+                seller_ifsc = snapshot.child("ifsc").getValue().toString() ;
+                seller_accnum = snapshot.child("accnum").getValue().toString() ;
             }
 
             @Override
@@ -511,7 +518,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 
     }
     public void startPayment() throws JSONException {
-        double convertedAmount = Math.round((Double.parseDouble(finalAmount) * 100.0)  * 100.0) / 100.0;
+        convertedAmount = Math.round((Double.parseDouble(finalAmount) * 100.0)  * 100.0) / 100.0;
         leastPriceCompanyId = priceAndIdObject.getString(leastCourierPrice).toString();
         Log.d("PaymentError" , "convertedAmount " + convertedAmount) ;
 
@@ -665,9 +672,38 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 
 
                 if(finalAmount != null){
+                    if(seller_nameinBank != Constants.EMPTY_STRING && seller_ifsc != Constants.EMPTY_STRING && seller_accnum != Constants.EMPTY_STRING){
 
+
+                    String payoutString = "{\n    \"account_number\": \"2323230008656323\",\n    \"amount\": "+convertedAmount+",\n    \"currency\": \"INR\",\n    \"mode\": \"IMPS\",\n    \"purpose\": \"payout\",\n    \"fund_account\": {\n        \"account_type\": \"bank_account\",\n        \"bank_account\": {\n            \"name\": \"" + seller_nameinBank + "\",\n            \"ifsc\": \""+seller_ifsc+"\",\n            \"account_number\": \""+seller_accnum+"\"\n        },\n        \"contact\": {\n            \"name\": \""+ seller_name+"\",\n            \"email\": \""+ seller_email +"\",\n            \"contact\": \""+seller_phone+"\",\n            \"type\": \"vendor\",\n            \"reference_id\": \""+itemId+"\",\n            \"notes\": {\n                \"notes_key_1\": \"payout to vendor\",\n                \"notes_key_2\": \"payout to vendor\"\n            }\n        }\n    },\n    \"queue_if_low_balance\": true,\n    \"reference_id\": \""+itemId+"\",\n    \"narration\": \"payout to vendor\",\n    \"notes\": {\n        \"notes_key_1\": \"payout to vendor\",\n        \"notes_key_2\": \"Engage\"\n    }\n}" ;
                     //
+                    JSONObject payoutobj = new JSONObject(payoutString) ;
+
+                    String createPayout  = getString(R.string.razor_createPayout) ;
+
+                    AndroidNetworking.post(createPayout)
+                            .addHeaders("Content-Type" , "application/json")
+                            .addJSONObjectBody(payoutobj)
+                            .setTag("createPayout")
+                            .setPriority(Priority.MEDIUM)
+                            .build()
+                            .getAsJSONObject(new JSONObjectRequestListener() {
+
+
+                                @Override
+                                public void onResponse(JSONObject response) {
+
+                                }
+
+                                @Override
+                                public void onError(ANError anError) {
+
+                                }
+                            });
+
+                    }
                     String createOrderURL  = getString(R.string.courierOrder_createOrder) ;
+
                     JSONObject jsonObject = new JSONObject();
                     JSONArray childArr =  new JSONArray() ;
                     JSONObject childObj =  new JSONObject() ;
@@ -768,7 +804,6 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 
                                                     notificationManager.createNotificationChannel(channel);
                                                 }
-
 
 
                                                 NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)

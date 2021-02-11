@@ -49,13 +49,15 @@
                         android:layout_width="@dimen/space_32"
                         android:layout_height="@dimen/space_32"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_marginTop="10dp"
                         android:contentDescription="@string/image_default__image"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@drawable/baseline_back_white_with_grey_bg_24" />
+                        app:srcCompat="@drawable/baseline_back_white_with_grey_bg_24"
+                        app:tint="@color/colorWhite" />
 
                     <ImageView
+                        android:tint="@color/colorWhite"
                         android:id="@+id/menuImageView"
                         android:layout_width="@dimen/space_40"
                         android:layout_height="@dimen/space_32"
@@ -159,7 +161,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     android:layout_marginEnd="8dp"
-                                    android:textColor="@color/text__primary"
+                                    android:textColor="@color/colorWhite"
+
                                     android:textSize="@dimen/font_body_size"
                                     app:font='@{"normal"}'
                                     app:layout_constraintBottom_toBottomOf="@+id/viewCountImageView"
@@ -203,7 +206,8 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     android:layout_marginEnd="8dp"
-                                    android:textColor="@color/text__primary"
+                                    android:textColor="@color/colorWhite"
+
                                     android:textSize="@dimen/font_body_size"
                                     app:font='@{"normal"}'
                                     app:layout_constraintBottom_toBottomOf="@+id/reViewImageView"
@@ -438,7 +442,8 @@
                                 android:layout_marginEnd="16dp"
                                 android:layout_marginBottom="16dp"
                                 android:text="@{item.address}"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -461,6 +466,7 @@
                         tools:layout_editor_absoluteX="0dp">
 
                         <androidx.constraintlayout.widget.ConstraintLayout
+                            android:visibility="gone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/md_light_green_50">
@@ -530,7 +536,8 @@
                                 android:maxLines="4"
                                 android:text="@string/item_detail__safety_tip"
                                 android:textAlignment="viewStart"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -582,6 +589,7 @@
                             android:layout_height="wrap_content">
 
                             <ImageView
+                                android:visibility="gone"
                                 android:id="@+id/contactInfoImageView"
                                 android:layout_width="@dimen/space_24"
                                 android:layout_height="@dimen/space_24"
@@ -594,6 +602,7 @@
                                 app:srcCompat="@drawable/baseline_contact_green_24" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/meetTheSellerTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -606,8 +615,10 @@
                                 app:font='@{"normal"}'
                                 app:layout_constraintBottom_toBottomOf="@+id/contactInfoImageView"
                                 app:layout_constraintEnd_toStartOf="@+id/meetTheSellerDownImageView"
+                                app:layout_constraintHorizontal_bias="1.0"
                                 app:layout_constraintStart_toEndOf="@+id/contactInfoImageView"
-                                app:layout_constraintTop_toTopOf="@+id/contactInfoImageView" />
+                                app:layout_constraintTop_toTopOf="@+id/contactInfoImageView"
+                                app:layout_constraintVertical_bias="0.0" />
 
                             <View
                                 android:id="@+id/view63"
@@ -621,6 +632,7 @@
                                 tools:ignore="MissingConstraints" />
 
                             <ImageView
+                                android:visibility="gone"
                                 android:id="@+id/meetTheSellerDownImageView"
                                 android:layout_width="50dp"
                                 android:layout_height="36dp"
@@ -727,17 +739,20 @@
                                     app:layout_constraintTop_toTopOf="@+id/ratingCountTextView" />
 
                                 <TextView
+                                    android:visibility="gone"
                                     android:id="@+id/joinedTextView"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
-                                    android:layout_marginTop="12dp"
+                                    android:layout_marginTop="16dp"
                                     android:layout_marginEnd="16dp"
                                     android:text="@{item.user.addedDate}"
-                                    android:textColor="@color/text__primary"
+                                    android:textColor="@color/colorWhite"
+
                                     android:textSize="@dimen/font_body_size"
                                     app:font='@{"normal"}'
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/userImageView"
                                     app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
                                     tools:text="Joined-02-03-2019" />
@@ -747,7 +762,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
-                                    android:textColor="@color/text__primary"
+                                    android:textColor="@color/colorBlack"
+
                                     android:textSize="@dimen/font_body_size"
                                     app:font='@{"normal"}'
                                     app:layout_constraintBottom_toBottomOf="@+id/ratingBarInformation"
@@ -762,7 +778,8 @@
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="8dp"
                                     android:text="@{item.user.overallRating}"
-                                    android:textColor="@color/text__primary"
+                                    android:textColor="@color/colorBlack"
+
                                     android:textSize="@dimen/font_body_size"
                                     app:font='@{"normal"}'
                                     app:layout_constraintStart_toEndOf="@+id/userImageView"
@@ -793,7 +810,8 @@
                                     android:layout_marginTop="8dp"
                                     android:layout_marginBottom="8dp"
                                     android:text="@string/profile__verified"
-                                    android:textColor="@color/text__primary"
+                                    android:textColor="@color/colorBlack"
+
                                     android:textSize="@dimen/font_body_size"
                                     app:font='@{"normal"}'
                                     app:layout_constraintBottom_toBottomOf="parent"
@@ -807,7 +825,8 @@
                                     android:layout_marginStart="8dp"
                                     android:layout_marginEnd="16dp"
                                     android:text='@{item.user.userPhone.isEmpty() ? " - "  : item.user.userPhone}'
-                                    android:textColor="@color/text__primary"
+                                    android:textColor="@color/colorBlack"
+
                                     android:textSize="@dimen/font_body_size"
                                     app:font='@{"normal"}'
                                     app:layout_constraintBottom_toBottomOf="@+id/phoneImageView"
@@ -841,14 +860,18 @@
 
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                            android:layout_height="match_parent"
+                            android:background="@drawable/itemdetailsbg"
+                            
+                            >
 
                             <ImageView
+                                app:tint="@color/colorWhite"
                                 android:id="@+id/imageView30"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="16dp"
+                                android:layout_marginTop="10dp"
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/orderTextView"
@@ -863,7 +886,8 @@
                                 android:layout_marginEnd="16dp"
                                 android:lineSpacingExtra="@dimen/space_4"
                                 android:text="@{item.description}"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -875,35 +899,62 @@
                             <Button
                                 android:id="@+id/checkAvailibilityButton"
                                 android:layout_width="77dp"
-                                android:layout_height="41dp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="8dp"
-                                android:layout_marginTop="50dp"
+                                android:background="@drawable/checkavailibilitybtnbg"
                                 android:text="Check"
-                                app:layout_constraintBottom_toTopOf="@+id/view20"
+                                android:textColor="@color/colorWhite"
+                                app:layout_constraintBottom_toBottomOf="@+id/checkAvailibilityEditText"
                                 app:layout_constraintEnd_toStartOf="@+id/checkAvailibilityEditText"
                                 app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toBottomOf="@+id/informationTextView"
+                                app:layout_constraintTop_toTopOf="@+id/checkAvailibilityEditText"
                                 app:layout_constraintVertical_bias="0.0" />
 
                             <EditText
                                 android:id="@+id/checkAvailibilityEditText"
-                                android:layout_width="249dp"
-                                android:layout_height="39dp"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
-                                android:layout_marginTop="50dp"
+                                android:layout_marginTop="24dp"
                                 android:layout_marginEnd="16dp"
-                                android:lineSpacingExtra="@dimen/space_4"
                                 android:hint="Check Availibility"
 
-                                android:textColor="@color/text__primary"
+                                android:lineSpacingExtra="@dimen/space_4"
+                                android:textColor="@color/colorWhite"
+
+                                android:textColorHint="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
-                                app:layout_constraintBottom_toTopOf="@+id/view20"
+                                app:layout_constraintBottom_toTopOf="@+id/courierPriceTextView"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="1.0"
                                 app:layout_constraintStart_toEndOf="@+id/checkAvailibilityButton"
-                                app:layout_constraintTop_toBottomOf="@+id/informationTextView" />
+                                app:layout_constraintTop_toBottomOf="@+id/informationTextView"
+                                app:layout_constraintVertical_bias="0.26" />
 
+                            <TextView
+                                android:id="@+id/courierPriceTextView"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="20dp"
+                                android:visibility="invisible"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginEnd="16dp"
+                                android:gravity="center"
+                                android:lineSpacingExtra="@dimen/space_4"
+                                android:text="@{item.description}"
+                                android:textColor="@color/colorWhite"
+
+                                android:textSize="@dimen/font_body_size"
+                                app:font='@{"normal"}'
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/checkAvailibilityEditText"
+                                 />
                             <TextView
                                 android:id="@+id/orderTextView"
                                 android:layout_width="0dp"
@@ -911,7 +962,8 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="16dp"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -921,28 +973,32 @@
                                 tools:text="item car order morethan one" />
 
                             <ImageView
+                                app:tint="@color/colorWhite"
                                 android:id="@+id/imageView29"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="10dp"
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/saleBuyTextView"
                                 app:srcCompat="@drawable/baseline_is_shop_grey_24" />
 
                             <ImageView
+                                app:tint="@color/colorWhite"
                                 android:id="@+id/imageView27"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
+                                android:visibility="gone"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="10dp"
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/brandTextView"
                                 app:srcCompat="@drawable/baseline_item_type_grey_24" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/saleBuyTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -950,7 +1006,8 @@
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="16dp"
                                 android:text="@{item.itemType.name}"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -960,17 +1017,20 @@
                                 tools:text="Sale,buy(item type)" />
 
                             <ImageView
+                                android:visibility="gone"
+                                app:tint="@color/colorWhite"
                                 android:id="@+id/imageView26"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="10dp"
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/categoryAndSubCategoryTextView"
                                 app:srcCompat="@drawable/baseline_hightlight_grey_24" />
 
                             <TextView
+                                android:visibility="gone"
                                 android:id="@+id/brandTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -978,7 +1038,8 @@
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="16dp"
                                 android:text="@{item.brand}"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -988,6 +1049,7 @@
                                 tools:text="Brand" />
 
                             <TextView
+                                 android:visibility="gone"
                                 android:id="@+id/highlightInfoTextView"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
@@ -996,7 +1058,8 @@
                                 android:layout_marginEnd="16dp"
                                 android:lineSpacingExtra="@dimen/space_4"
                                 android:text="@{item.highlightInfo}"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -1006,22 +1069,25 @@
                                 tools:text="HighLightInfo" />
 
                             <ImageView
+                                android:visibility="gone"
+                                app:tint="@color/colorWhite"
                                 android:id="@+id/imageView24"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="10dp"
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/highlightInfoTextView"
                                 app:srcCompat="@drawable/baseline_brand_grey_24" />
 
                             <ImageView
+                                app:tint="@color/colorWhite"
                                 android:id="@+id/imageView23"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="10dp"
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/newTextView"
@@ -1035,7 +1101,8 @@
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="16dp"
                                 android:contentDescription="@string/image_default__image"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -1045,11 +1112,12 @@
                                 tools:text="Category/SubCategory" />
 
                             <ImageView
+                                app:tint="@color/colorWhite"
                                 android:id="@+id/imageView22"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="10dp"
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/priceTypeTextView"
@@ -1063,7 +1131,8 @@
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="16dp"
                                 android:text="@{item.itemCondition.name}"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -1079,8 +1148,10 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="16dp"
+                                
                                 android:text='@{"( "+ item.itemPriceType.name +" )"}'
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
+
                                 android:textSize="@dimen/font_body_s_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -1090,11 +1161,12 @@
                                 tools:text="New" />
 
                             <ImageView
+                                app:tint="@color/colorWhite"
                                 android:id="@+id/imageView18"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="20dp"
+                                android:layout_marginTop="10dp"
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/likesTextView"
@@ -1107,7 +1179,7 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="4dp"
                                 android:layout_marginEnd="16dp"
-                                android:textColor="@color/md_blue_400"
+                                android:textColor="@color/md_grey_300"
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -1124,9 +1196,9 @@
                                 android:layout_marginTop="16dp"
                                 android:layout_marginEnd="16dp"
                                 android:text="@{item.title}"
-                                android:textColor="@color/text__primary_dark"
+                                android:textColor="@color/colorWhite"
                                 android:textSize="@dimen/font_h6_size"
-                                app:font='@{"normal"}'
+                                app:font='@{"bold"}'
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
@@ -1137,7 +1209,8 @@
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_marginStart="16dp"
-                                android:layout_marginTop="24dp"
+                                android:tint="@color/colorWhite"
+                                android:layout_marginTop="10dp"
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/itemNameTextView"
@@ -1149,7 +1222,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="4dp"
-                                android:textColor="@color/text__primary"
+                                android:textColor="@color/colorWhite"
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintStart_toEndOf="@+id/imageView16"
@@ -1165,7 +1238,8 @@
                                 android:contentDescription="@string/image_default__image"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/activeHourTextView"
-                                app:srcCompat="@drawable/baseline_price_tag_grey_24" />
+                                app:srcCompat="@drawable/baseline_price_tag_grey_24"
+                                app:tint="@color/colorWhite" />
 
                             <TextView
                                 android:id="@+id/priceTextView"
@@ -1201,7 +1275,7 @@
                                 android:layout_marginEnd="16dp"
                                 android:clickable="true"
                                 android:focusable="true"
-                                android:textColor="@color/md_blue_400"
+                                android:textColor="@color/colorWhite"
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'
                                 app:layout_constraintBottom_toBottomOf="@+id/activeHourTextView"
@@ -1378,7 +1452,8 @@
                                     android:layout_marginEnd="16dp"
                                     android:text="@string/item_detail__promote_sub_title"
                                     android:textAlignment="viewStart"
-                                    android:textColor="@color/text__primary"
+                                    android:textColor="@color/colorWhite"
+
                                     android:textSize="@dimen/font_body_size"
                                     app:font='@{"normal"}'
                                     app:layout_constraintEnd_toEndOf="parent"
@@ -1394,7 +1469,8 @@
                                     android:layout_marginEnd="32dp"
                                     android:text="@string/item_detail__promote_description"
                                     android:textAlignment="viewStart"
-                                    android:textColor="@color/text__primary"
+                                    android:textColor="@color/colorWhite"
+
                                     android:textSize="@dimen/font_body_size"
                                     app:font='@{"normal"}'
                                     app:layout_constraintEnd_toStartOf="@+id/userImageView2"
@@ -1466,7 +1542,7 @@
                 <Button
                     android:id="@+id/chatButton"
                     android:layout_width="0dp"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="16dp"
@@ -1475,6 +1551,9 @@
                     android:text="@string/item_detail__chat"
                     android:textColor="@color/md_white_1000"
                     app:font='@{"normal"}'
+                    android:textSize="16dp"
+                    android:paddingTop="1dp"
+                    android:paddingBottom="1dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/callButton"
@@ -1482,15 +1561,18 @@
                     app:layout_constraintVertical_bias="1.0" />
 
                 <Button
+                    android:visibility="gone"
                     android:id="@+id/callButton"
                     android:layout_width="70dp"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/rounded_corner_shape_button"
                     android:drawableStart="@drawable/baseline_phone_grey_24"
                     android:text="@string/item_detail__call"
+                    android:paddingTop="1dp"
+                    android:paddingBottom="1dp"
                     android:textColor="@color/md_white_1000"
                     app:drawableTint="@color/md_white_1000"
                     app:font='@{"normal"}'
@@ -1549,14 +1631,16 @@
                 <Button
                     android:id="@+id/deleteButton"
                     android:layout_width="0dp"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="16dp"
-                    android:background="@drawable/rounded_corner_shape_button"
+                    android:background="@drawable/itemeditbtnbg"
+                    android:textColor="@color/global__primary"
                     android:text="@string/item_detail__delete"
-                    android:textColor="@color/md_white_1000"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
                     android:textSize="@dimen/font_body_size"
                     app:font='@{"normal"}'
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -1568,14 +1652,15 @@
                 <Button
                     android:id="@+id/editButton"
                     android:layout_width="0dp"
-                    android:layout_height="35dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="16dp"
-                    android:background="@drawable/rounded_corner_shape_button"
-                    android:text="@string/item_detail__edit"
-                    android:textColor="@color/md_white_1000"
+                    android:background="@drawable/itemeditbtnbg"
+                    android:textColor="@color/global__primary"                    android:text="@string/item_detail__edit"
+                          android:paddingTop="3dp"
+                          android:paddingBottom="3dp"
                     android:textSize="@dimen/font_body_size"
                     app:font='@{"normal"}'
                     app:layout_constraintBottom_toBottomOf="parent"

@@ -191,7 +191,7 @@ public interface Constants {
     String PAYMENT_TOKEN = "TOKEN";
 
     //map
-    String MAP_MILES = "8";//cannot change
+    String MAP_MILES = "1000";//cannot change
     String MAP_PICK = "MAP_PICK";
     String MAP = "MAP";
     String MAP_FLAG = "MAP_FLAG";

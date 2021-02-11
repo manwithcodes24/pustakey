@@ -56,7 +56,7 @@
                     android:id="@+id/content_frame"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@color/layout__primary_background"
+                    android:background="@color/colorWhite"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -83,7 +83,6 @@
                     android:paddingBottom="0dp"
                     android:text="@string/selected_city_add"
                     android:elevation="10dp"
-                    android:textAlignment="center"
                     android:textColor="@color/text__white"
                     android:textSize="@dimen/font_title_size"
                     android:textStyle="bold"
@@ -98,17 +97,18 @@
             <com.google.android.material.bottomnavigation.BottomNavigationView
                 android:id="@+id/bottomNavigationView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:itemIconTint="@color/colorWhite"
-
+                android:layout_height="85dp"
                 android:layout_gravity="bottom"
+
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/bottombar"
-                app:labelVisibilityMode="labeled"
-                app:menu="@menu/menu_home"
                 android:padding="5dp"
-                android:layout_marginBottom="10dp"
+                android:paddingTop="40dp"
+                android:paddingBottom="40dp"
+                app:itemIconTint="@color/colorWhite"
                 app:itemTextColor="@color/colorWhite"
-                />
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/menu_home" />
             <!--app:layout_constraintBottom_toBottomOf="parent"-->
             <!--app:layout_constraintEnd_toEndOf="parent"-->
             <!--app:layout_constraintStart_toStartOf="parent"-->
@@ -119,10 +119,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:background="@drawable/drawerbglayout"
+
             android:fitsSystemWindows="true"
             app:headerLayout="@layout/drawer_header"
-            app:itemIconTint="@color/text__primary"
-            app:itemTextColor="@color/text__primary"
+
+            app:itemIconTint="@color/colorWhite"
+            app:itemTextColor="@color/colorWhite"
             app:menu="@menu/menu_drawer" />
 
     </androidx.drawerlayout.widget.DrawerLayout>

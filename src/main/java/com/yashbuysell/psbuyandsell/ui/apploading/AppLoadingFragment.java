@@ -147,8 +147,8 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
                     {
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 0, this);
-                        myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, this);
+                        myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
 
 
@@ -179,6 +179,8 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                                 this.city = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getLocality();
                                 this.postalcode = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getPostalCode();
                                 selected_location_id = "itm_loca" + postalcode ;
+                                Log.d("location_id" , selected_location_id) ;
+
                                 selectedLat = lat ;
                                 selectedLng = lan ;
 
@@ -186,7 +188,10 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
 
                                 Log.d("locationCity" , city) ;
-                                navigationController.navigateToMainActivity(getActivity(), "itm_loca" + postalcode,city, lat, lan);
+                                if(city != "" && city != null){
+                                    navigationController.navigateToMainActivity(getActivity(), selected_location_id,city, lat, lan);
+
+                                }
                             }
                             catch (Exception e){
                                 Log.d("locationError" , " Error in fetching location" + e.toString()) ;
@@ -259,6 +264,7 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                         MY_PERMISSIONS_REQUEST_LOCATION);
             }
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, this);
 
             while (gotMyLocation){
                 if (myLocation == null){
@@ -284,9 +290,15 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                     Log.d("locationCity", city);
                     selected_location_id = "itm_loca" + postalcode ;
                     selectedLat = lat ;
+                    Log.d("location_id" , selected_location_id) ;
+
                     selectedLng = lan ;
                     selected_location_name = city ;
-                    navigationController.navigateToMainActivity(getActivity(), "itm_loca" + postalcode, city, lat, lan);
+                    if(city != "" && city != null){
+
+                        navigationController.navigateToMainActivity(getActivity(), "itm_loca" + postalcode, city, lat, lan);
+
+                    }
                 } catch (Exception e) {
                     Log.d("locationError", "Error in fetching location" + e.toString());
                 }

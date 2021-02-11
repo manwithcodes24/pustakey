@@ -65,7 +65,7 @@ public class SelectedCityActivity extends PSAppCompactActivity {
 
                     break;
 
-                case R.id.search_menu:
+                case R.id.addItemButton:
 
 //                    navigationController.navigateToSearch(this);
 

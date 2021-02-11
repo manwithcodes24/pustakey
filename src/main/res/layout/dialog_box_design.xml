@@ -15,6 +15,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:src="@drawable/dialogbg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,7 +30,6 @@
                 android:id="@+id/dialogTitleView"
                 android:layout_width="wrap_content"
                 android:layout_height="65dp"
-                android:background="@color/md_orange_400"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,9 +67,9 @@
                 android:id="@+id/dialogOkButton"
                 android:layout_width="0dp"
                 android:layout_height="45dp"
-                android:background="@color/md_white_1000"
+                android:background="#00FFFFFF"
                 android:text="Button"
-                android:textColor="@color/global__primary"
+                android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

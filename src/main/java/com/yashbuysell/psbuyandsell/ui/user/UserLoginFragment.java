@@ -465,7 +465,6 @@ public class UserLoginFragment extends PSFragment {
 
         psDialogMsg = new PSDialogMsg(getActivity(), false);
 
-        dataBindingComponent.getFragmentBindingAdapters().bindFullImageDrawable(binding.get().bgImageView, getResources().getDrawable(R.drawable.login_app_bg));
 
         if (getActivity() instanceof MainActivity) {
             ((MainActivity) getActivity()).setToolbarText(((MainActivity) getActivity()).binding.toolbar, getString(R.string.login__login));

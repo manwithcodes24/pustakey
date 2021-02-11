@@ -16,7 +16,8 @@
         android:theme="@style/Base.PSTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name=".ui.courier.courierTracking"></activity>
+        <activity android:name=".ui.maintools.maintools"></activity>
+        <activity android:name=".ui.courier.courierTracking" />
         <activity
             android:name=".BuyerdetailsForm"
             android:label="@string/title_activity_buyerdetails_form"
@@ -318,9 +319,8 @@
 
         <service
             android:name=".utils.FirebaseMessagingService"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
             android:foregroundServiceType="location"
-            >
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.service.notification.NotificationListenerService" /> -->
@@ -341,11 +341,10 @@
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
-
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> &lt;!&ndash; for card.io card scanning &ndash;&gt; -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> &lt;!&ndash; for card.io card scanning &ndash;&gt; -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />

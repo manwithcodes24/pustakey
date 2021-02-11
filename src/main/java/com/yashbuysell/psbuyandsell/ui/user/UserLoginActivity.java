@@ -59,7 +59,6 @@ public class UserLoginActivity extends PSAppCompactActivity {
     private void initUI(ActivityUserLoginBinding binding) {
 
         // Toolbar
-        initToolbar(binding.toolbar, getResources().getString(R.string.login__login));
 
         // setup Fragment
         setupFragment(new UserLoginFragment());

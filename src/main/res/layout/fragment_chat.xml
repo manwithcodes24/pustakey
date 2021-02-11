@@ -59,12 +59,13 @@
                     android:id="@+id/notiConstraintLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:backgroundTint="@color/md_blue_grey_100"
                     >
 
                     <Button
                         android:id="@+id/labelButton"
-                        android:layout_width="90dp"
-                        android:layout_height="38dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
                         android:background="@drawable/rounded_corner_shape_button"
                         android:text="@string/buyerDetails_form_submit"
                         android:textColor="@color/md_white_1000"
@@ -81,15 +82,16 @@
                     <Button
                         android:id="@+id/offerButton"
                         textSize="2dp"
-                        android:layout_width="118dp"
-                        android:layout_height="38dp"
-                        android:layout_marginTop="16dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="29dp"
                         android:layout_marginEnd="4dp"
                         android:background="@drawable/rounded_corner_shape_button"
                         android:text="@string/chat__offer"
                         android:textColor="@color/md_white_1000"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.594" />
 
                     <TextView
                         android:id="@+id/priceTextView"
@@ -215,9 +217,9 @@
                 android:inputType="textMultiLine"
                 android:maxLength="2000"
                 android:paddingStart="8dp"
-                android:paddingTop="8dp"
+                android:paddingTop="10dp"
                 android:paddingEnd="8dp"
-                android:paddingBottom="8dp"
+                android:paddingBottom="10dp"
                 android:scrollHorizontally="true"
                 android:textColor="@color/text__primary"
                 android:textSize="14sp"
@@ -241,8 +243,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/editText"
-                app:srcCompat="@drawable/baseline_sent_white_24"
-                tools:ignore="NotSibling" />
+                app:srcCompat="@drawable/send"
+                tools:ignore="NotSibling"
+                />
 
             <ImageButton
                 android:id="@+id/imageButton"
@@ -253,7 +256,7 @@
                 android:background="@color/md_grey_50"
                 android:contentDescription="@string/image_default__image"
                 android:scaleType="center"
-                android:tint="@color/md_grey_600"
+                android:tint="@color/md_grey_900"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/editText"

@@ -253,7 +253,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
             itemCategoryViewModel.forceEndLoading = false;
 
             // update live data
-            itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_COUNT), String.valueOf(itemCategoryViewModel.offset));
+            itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_HOMECOUNT), String.valueOf(itemCategoryViewModel.offset));
             recentItemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), Config.LIMIT_FROM_DB_COUNT, Constants.ZERO, new ItemParameterHolder().getRecentItem());
 
             popularItemViewModel.setPopularItemListByKeyObj(Utils.checkUserId(loginUserId), Config.LIMIT_FROM_DB_COUNT, Constants.ZERO, popularItemViewModel.popularItemParameterHolder);
@@ -474,7 +474,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         //City Category
 
-        itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_COUNT), Constants.ZERO);
+        itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_HOMECOUNT), Constants.ZERO);
 
         itemCategoryViewModel.getCategoryListData().observe(this, listResource -> {
 
@@ -922,7 +922,11 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
     @Override
     public void onResume() {
+        itemCategoryViewModel.offset = 0;
+        itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_HOMECOUNT), String.valueOf(itemCategoryViewModel.offset));
+
         loadLoginUserId();
+
         super.onResume();
     }
 

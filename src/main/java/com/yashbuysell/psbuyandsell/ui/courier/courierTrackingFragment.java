@@ -138,6 +138,7 @@ public class courierTrackingFragment extends Fragment {
         FragmentCourierTrackingBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_courier_tracking, container, false, dataBindingComponent);
         binding = new AutoClearedValue<>(this, dataBinding);
         AndroidNetworking.initialize(getApplicationContext());
+        binding.get().showDestination.setVisibility(View.INVISIBLE);
 
         awbNumber = binding.get().awbNumber.getText().toString() ;
         String trackUrl = getApplicationContext().getString(R.string.courierOrder_trackShipment) ;
@@ -172,13 +173,15 @@ public class courierTrackingFragment extends Fragment {
                                                     @Override
                                                     public void onResponse(JSONObject response) {
                                                         try {
-                                                            JSONArray shipmentDataArray = (JSONArray) response.getJSONArray("shipment_track");
+                                                            JSONObject trackingData = (JSONObject)  response.get("tracking_data");
+                                                            JSONArray shipmentDataArray = (JSONArray) trackingData.getJSONArray("shipment_track_activities");
                                                             if(shipmentDataArray != null) {
                                                                 JSONObject shipmentObj = (JSONObject) shipmentDataArray.get(0);
-                                                                destination = shipmentObj.getString("destination") ;
-
+                                                                destination = shipmentObj.getString("activity") ;
+                                                                Toast.makeText(getApplicationContext(), "Destination : " + destination , Toast.LENGTH_LONG).show();
+                                                                    binding.get().showDestination.setText("Latest activity : " + destination);
+                                                                    binding.get().showDestination.setVisibility(View.VISIBLE);
                                                             }
-                                                            Toast.makeText(getApplicationContext(), "Destination : " + destination , Toast.LENGTH_LONG).show();
                                                         } catch (Exception e) {
                                                             Toast.makeText(getApplicationContext(), getString(R.string.trackError) , Toast.LENGTH_LONG).show();
 

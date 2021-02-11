@@ -94,14 +94,6 @@ import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_DATA_SYNC;
 import static android.content.pm.ServiceInfo.FOREGROUND_SERVICE_TYPE_LOCATION;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
-/**
- * MainActivity of Panacea-Soft
- * Contact Email : teamps.is.cool@gmail.com
- *
- * @author Panacea-soft
- * @version 1.0
- */
-
 public class MainActivity extends PSAppCompactActivity {
 
 
@@ -151,7 +143,7 @@ public class MainActivity extends PSAppCompactActivity {
     private ImageView notificationIconImageView;
 
     String notificationCount = "0";
-    private int toolbarIconColor = Color.GRAY;
+    private int toolbarIconColor = Color.BLACK;
     //endregion
 
 
@@ -562,11 +554,23 @@ public class MainActivity extends PSAppCompactActivity {
 
                     break;
 
-                case R.id.search_menu:
-                    Utils.addToolbarScrollFlag(binding.toolbar);
-                    binding.addItemButton.setVisibility(View.GONE);
-                    navigationController.navigateToItemSell(MainActivity.this);
-                    setToolbarText(binding.toolbar, getString(R.string.menu__search));
+                case R.id.addItemButton:
+                    Utils.navigateOnUserVerificationActivity(userIdToVerify, loginUserId, psDialogMsg, this, navigationController, () -> {
+                        try {
+                            locationId = pref.getString(Constants.SELECTED_LOCATION_ID, Constants.EMPTY_STRING);
+                            locationName = pref.getString(Constants.SELECTED_LOCATION_NAME, Constants.EMPTY_STRING);
+
+                        } catch (Exception e) {
+                            Utils.psErrorLog("", e);
+                        }
+
+                        navigationController.navigateToItemEntryActivity(MainActivity.this, Constants.ADD_NEW_ITEM, locationId, locationName);
+
+                    });
+//                    Utils.addToolbarScrollFlag(binding.toolbar);
+//                    binding.addItemButton.setVisibility(View.GONE);
+//                    navigationController.navigateToItemSell(pref,user,navigationController,this);
+//                    setToolbarText(binding.toolbar, getString(R.string.menu__search));
 
                     break;
 
@@ -588,22 +592,22 @@ public class MainActivity extends PSAppCompactActivity {
         });
 
         binding.addItemButton.setTypeface(Utils.getTypeFace(this, Utils.Fonts.ROBOTO));
-        binding.addItemButton.setOnClickListener(v -> {
-
-            Utils.navigateOnUserVerificationActivity(userIdToVerify, loginUserId, psDialogMsg, this, navigationController, () -> {
-                try {
-                    locationId = pref.getString(Constants.SELECTED_LOCATION_ID, Constants.EMPTY_STRING);
-                    locationName = pref.getString(Constants.SELECTED_LOCATION_NAME, Constants.EMPTY_STRING);
-
-                } catch (Exception e) {
-                    Utils.psErrorLog("", e);
-                }
-
-                navigationController.navigateToItemEntryActivity(MainActivity.this, Constants.ADD_NEW_ITEM, locationId, locationName);
-
-            });
-
-        });
+//        binding.addItemButton.setOnClickListener(v -> {
+//
+//            Utils.navigateOnUserVerificationActivity(userIdToVerify, loginUserId, psDialogMsg, this, navigationController, () -> {
+//                try {
+//                    locationId = pref.getString(Constants.SELECTED_LOCATION_ID, Constants.EMPTY_STRING);
+//                    locationName = pref.getString(Constants.SELECTED_LOCATION_NAME, Constants.EMPTY_STRING);
+//
+//                } catch (Exception e) {
+//                    Utils.psErrorLog("", e);
+//                }
+//
+//                navigationController.navigateToItemEntryActivity(MainActivity.this, Constants.ADD_NEW_ITEM, locationId, locationName);
+//
+//            });
+//
+//        });
 
         // Configure Google Sign In
         GoogleSignInOptions googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

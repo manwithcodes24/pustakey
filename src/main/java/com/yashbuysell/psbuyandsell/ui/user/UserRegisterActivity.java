@@ -50,7 +50,6 @@ public class UserRegisterActivity extends PSAppCompactActivity {
     private void initUI(ActivityUserRegisterBinding binding) {
 
         // Toolbar
-        initToolbar(binding.toolbar, getResources().getString(R.string.register__register));
 
         // setup Fragment
         setupFragment(new UserRegisterFragment());

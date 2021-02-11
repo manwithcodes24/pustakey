@@ -38,67 +38,44 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:adjustViewBounds="false"
-                    android:baselineAlignBottom="false"
-                    android:contentDescription="@string/image_default__image"
-                    android:scaleType="centerCrop"
-                    app:imageUrl="@{category.defaultPhoto.imgPath}"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@mipmap/ic_launcher" />
-
-                <ImageView
-                    android:id="@+id/imageView13"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:contentDescription="@string/image_default__image"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/grey_40" />
 
                 <TextView
                     android:id="@+id/newsTitleTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
                     android:ellipsize="end"
+                    android:gravity="center"
                     android:maxLines="1"
                     android:text="@{category.name}"
                     android:textAlignment="center"
-                    android:textColor="#f9f5f5"
+                    android:textColor="@color/global__primary"
                     app:font='@{"normal"}'
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/imageView13"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.727"
                     app:textSize='@{"tag"}'
-                    tools:text="Text description Name Text Name TextName TextName TextName Text" />
+                    tools:text="Text " />
 
                 <ImageView
                     android:id="@+id/categoryIconImageView"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginBottom="8dp"
+                    android:layout_width="44dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="36dp"
                     android:adjustViewBounds="false"
+                    android:layout_marginTop="10dp"
                     android:baselineAlignBottom="false"
                     android:contentDescription="@string/image_default__image"
                     android:scaleType="centerCrop"
                     app:imageCircleUrl="@{category.defaultIcon.imgPath}"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintBottom_toTopOf="@+id/newsTitleTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
                     tools:srcCompat="@mipmap/ic_launcher" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

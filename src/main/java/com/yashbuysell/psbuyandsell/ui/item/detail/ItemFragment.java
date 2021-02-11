@@ -159,7 +159,7 @@ public class ItemFragment extends PSFragment {
         } else {
             binding.get().adView.setVisibility(View.GONE);
         }
-
+        binding.get().courierPriceTextView.setVisibility(View.INVISIBLE);
         binding.get().phoneTextView.setOnClickListener(v -> {
             String number = binding.get().phoneTextView.getText().toString();
             if (!(number.trim().isEmpty() || number.trim().equals("-"))) {
@@ -200,105 +200,114 @@ public class ItemFragment extends PSFragment {
 
                @Override
                public void onDataChange(@NonNull DataSnapshot snapshot) {
+try{
+    sellerPinCode = snapshot.child("seller_pincode").getValue().toString();
 
-                   sellerPinCode = snapshot.child("seller_pincode").getValue().toString();
+    courierWeight = snapshot.child("weight").getValue().toString() ;
 
-                   courierWeight = snapshot.child("weight").getValue().toString() ;
-
-                   url = getString(R.string.courierCheck_serviceability);
-                   cAuthURL = getString(R.string.courierUser_auth) ;
-                   if(cAuthURL != Constants.EMPTY_STRING && cAuthURL != null) {
-                       AndroidNetworking.post(cAuthURL)
-                               .addHeaders("Content-Type", "application/json")
-                               .addBodyParameter("email", getString(R.string.courierUser_auth_email))
-                               .addBodyParameter("password", getString(R.string.courierUser_auth_pass))
-                               .setTag("test")
-                               .setPriority(Priority.MEDIUM)
-                               .build()
-                               .getAsJSONObject(new JSONObjectRequestListener() {
-                                   @Override
-                                   public void onResponse(JSONObject response) {
-                                       try {
-                                           token = response.get("token").toString();
-                                           Log.d("courierToken", response.get("token").toString());
-                                           if(token != null && token!="") {
-
-
-                                               AndroidNetworking.get(url+"?pickup_postcode="+sellerPinCode+"&delivery_postcode="+buyerPinCode+"&weight="+courierWeight+"&cod=0")
-                                                       .addHeaders("Content-Type", "application/json")
-                                                       .addHeaders("Authorization" ,"Bearer " + token)
-                                                       .setTag("test")
-                                                       .setPriority(Priority.MEDIUM)
-                                                       .build()
-                                                       .getAsJSONObject(new JSONObjectRequestListener() {
-                                                           @Override
-                                                           public void onResponse(JSONObject response) {
+    url = getString(R.string.courierCheck_serviceability);
+    cAuthURL = getString(R.string.courierUser_auth) ;
+    if(cAuthURL != Constants.EMPTY_STRING && cAuthURL != null) {
+        AndroidNetworking.post(cAuthURL)
+                .addHeaders("Content-Type", "application/json")
+                .addBodyParameter("email", getString(R.string.courierUser_auth_email))
+                .addBodyParameter("password", getString(R.string.courierUser_auth_pass))
+                .setTag("test")
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            token = response.get("token").toString();
+                            Log.d("courierToken", response.get("token").toString());
+                            if(token != null && token!="") {
 
 
-                                                               Log.d("courierResponse", response.toString());
-                                                               try {
-
-                                                                   JSONObject data = (JSONObject) response.getJSONObject("data");
-                                                                   JSONArray availableCourierCompanies = (JSONArray)  data.get("available_courier_companies");
-
-                                                                   Log.d("courierResponse" , availableCourierCompanies.toString()) ;
-
-                                                                   for(int i = 0; i < availableCourierCompanies.length(); i++) {
-                                                                       JSONObject obj = (JSONObject) availableCourierCompanies.get(i);
-                                                                       String rate = obj.getString("rate");
-
-                                                                       Log.d("courierRate" , rate) ;
-                                                                       if(rate != null )
-                                                                           rateList.add(Float.parseFloat(rate));
+                                AndroidNetworking.get(url+"?pickup_postcode="+sellerPinCode+"&delivery_postcode="+buyerPinCode+"&weight="+courierWeight+"&cod=0")
+                                        .addHeaders("Content-Type", "application/json")
+                                        .addHeaders("Authorization" ,"Bearer " + token)
+                                        .setTag("test")
+                                        .setPriority(Priority.MEDIUM)
+                                        .build()
+                                        .getAsJSONObject(new JSONObjectRequestListener() {
+                                            @Override
+                                            public void onResponse(JSONObject response) {
 
 
-                                                                   }
-                                                                   Collections.sort(rateList);
-                                                                   if(rateList != null){
-                                                                       try {
-                                                                           Toast.makeText(getApplicationContext(), "Delivery Charge : " + rateList.get(0).toString(), Toast.LENGTH_LONG ).show();
-                                                                           mData.child("lowestRate").setValue(rateList.get(0).toString()) ;
-                                                                       }
-                                                                       catch (Exception e){
-                                                                           Toast.makeText(getApplicationContext(), " Error Getting Courier Charge ", Toast.LENGTH_LONG ).show();
+                                                Log.d("courierResponse", response.toString());
+                                                try {
 
-                                                                           e.printStackTrace();
-                                                                       }
+                                                    JSONObject data = (JSONObject) response.getJSONObject("data");
+                                                    JSONArray availableCourierCompanies = (JSONArray)  data.get("available_courier_companies");
 
-                                                                   }
+                                                    Log.d("courierResponse" , availableCourierCompanies.toString()) ;
 
-                                                               } catch (JSONException e) {
-                                                                   e.printStackTrace();
-                                                               }
+                                                    for(int i = 0; i < availableCourierCompanies.length(); i++) {
+                                                        JSONObject obj = (JSONObject) availableCourierCompanies.get(i);
+                                                        String rate = obj.getString("rate");
 
-                                                           }
-
-                                                           @Override
-                                                           public void onError(ANError error) {
-                                                               Log.d("courierError" , error.toString() ) ;
-                                                           }
-                                                       });
-
-                                           }
-                                           else {
-                                               Toast.makeText(getApplicationContext(), "Try Again" , Toast.LENGTH_SHORT).show();
-                                           }
-                                       } catch (JSONException e) {
-                                           e.printStackTrace();
-                                       }
-                                   }
-
-                                   @Override
-                                   public void onError(ANError error) {
-                                       // handle error
-                                   }
-                               });
+                                                        Log.d("courierRate" , rate) ;
+                                                        if(rate != null )
+                                                            rateList.add(Float.parseFloat(rate));
 
 
-                   }
-                   else {
-                       Toast.makeText(getApplicationContext(), "Try Again" , Toast.LENGTH_SHORT).show();
-                   }
+                                                    }
+                                                    if(rateList != null){
+                                                        Collections.sort(rateList);
+
+                                                        try {
+                                                            mData.child("lowestRate").setValue(rateList.get(0).toString()) ;
+                                                            binding.get().courierPriceTextView.setText(rateList.get(0).toString());
+
+                                                            binding.get().courierPriceTextView.setVisibility(View.VISIBLE);
+
+                                                        }
+                                                        catch (Exception e){
+                                                            Toast.makeText(getApplicationContext(), " Error Getting Courier Charge ", Toast.LENGTH_LONG ).show();
+
+                                                            e.printStackTrace();
+                                                        }
+
+                                                    }
+
+                                                } catch (JSONException e) {
+                                                    e.printStackTrace();
+                                                }
+
+                                            }
+
+                                            @Override
+                                            public void onError(ANError error) {
+                                                Log.d("courierError" , error.toString() ) ;
+                                            }
+                                        });
+
+                            }
+                            else {
+                                Toast.makeText(getApplicationContext(), "Try Again" , Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError error) {
+                        // handle error
+                    }
+                });
+
+
+    }
+    else {
+        Toast.makeText(getApplicationContext(), "Try Again" , Toast.LENGTH_SHORT).show();
+    }
+}
+catch (Exception e){
+
+}
+
 
 
 
@@ -1344,6 +1353,7 @@ public class ItemFragment extends PSFragment {
 
     private void bindingSoldData(Item item) {
         if (item.isSoldOut.equals(Constants.ONE)) {
+            binding.get().chatButton.setVisibility(View.GONE);
             binding.get().soldTextView.setText(getString(R.string.item_detail__sold));
         } else {
             if (item.addedUserId.equals(loginUserId)) {

@@ -1318,7 +1318,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
     private void bindItemData() {
         bindingButtonText(chatViewModel.chatFlag);
-        binding.get().itemTextView.setText(chatViewModel.receiverName);
+        binding.get().itemTextView.setText(chatViewModel.itemName);
 
         if (!chatViewModel.itemCurrency.equals("") && !chatViewModel.itemPrice.equals("")) {
 

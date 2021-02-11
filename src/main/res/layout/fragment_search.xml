@@ -53,7 +53,7 @@
                     android:layout_marginEnd="16dp"
                     android:background="@color/text__white"
                     android:ems="10"
-                    android:hint="@string/search__notSet"
+                    android:hint="@string/bookname__notSet"
                     android:inputType="textPersonName"
                     android:paddingStart="10dp"
                     android:paddingEnd="10dp"

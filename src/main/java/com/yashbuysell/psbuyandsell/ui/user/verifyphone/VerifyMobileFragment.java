@@ -194,6 +194,7 @@ public class VerifyMobileFragment extends PSFragment {
 
     private void verifyVerificationCode(String code) {
         //creating the credential
+
         PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, code);
 
         //signing the user

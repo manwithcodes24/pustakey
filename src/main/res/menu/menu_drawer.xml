@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu android:drawable="@color/colorWhite" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group
         android:id="@+id/group_before_login"
         android:checkableBehavior="single">
 
-        <item android:title="@string/menu__home">
+        <item android:title="@string/menu__home"
+            android:drawable="@color/colorWhite"
+            android:iconTint="@color/colorWhite"
+
+            >
+
+
+
             <menu>
                 <group android:checkableBehavior="single">
 
