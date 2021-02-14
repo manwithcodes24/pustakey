@@ -313,37 +313,6 @@ public class MainActivity extends PSAppCompactActivity {
 
 
 
-
-
-
-
-
-
-    private void getCourierToken() {
-        AndroidNetworking.post("https://apiv2.shiprocket.in/v1/external/auth/login")
-                .addHeaders("Content-Type", "application/json")
-                .addBodyParameter("email", "Pustakey@gmail.com")
-                .addBodyParameter("password", "8210451164")
-                .setTag("token")
-                .setPriority(Priority.MEDIUM)
-                .build()
-                .getAsJSONObject(new JSONObjectRequestListener() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-//
-                        try {
-                            srToken = response.getString("token") ;
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    @Override
-                    public void onError(ANError error) {
-                        // handle error
-                    }
-                });
-    }
-
     @Override
     protected void attachBaseContext(Context newBase) {
 
@@ -388,20 +357,22 @@ public class MainActivity extends PSAppCompactActivity {
             {
                 if(fragment instanceof SelectedCityFragment)
                 {
-                    String message = getBaseContext().getString(R.string.message__want_to_quit);
-                    String okStr =getBaseContext().getString(R.string.message__ok_close);
-                    String cancelStr = getBaseContext().getString(R.string.message__cancel_close);
-
-                    psDialogMsg.showConfirmDialog(message, okStr,cancelStr );
-
-                    psDialogMsg.show();
-
-                    psDialogMsg.okButton.setOnClickListener(view -> {
-                        psDialogMsg.cancel();
-                        finish() ;
-                        System.exit(0);
-                    });
-                    psDialogMsg.cancelButton.setOnClickListener(view -> psDialogMsg.cancel());
+                    this.finish();
+                    System.exit(0);
+//                    String message = getBaseContext().getString(R.string.message__want_to_quit);
+//                    String okStr =getBaseContext().getString(R.string.message__ok_close);
+//                    String cancelStr = getBaseContext().getString(R.string.message__cancel_close);
+//
+//                    psDialogMsg.showConfirmDialog(message, okStr,cancelStr );
+//
+//                    psDialogMsg.show();
+//
+//                    psDialogMsg.okButton.setOnClickListener(view -> {
+//                        psDialogMsg.cancel();
+//                        finish();
+//                        System.exit(0);
+//                    });
+//                    psDialogMsg.cancelButton.setOnClickListener(view -> psDialogMsg.cancel());
                 }else {
                     setSelectMenu(R.id.nav_home);
                     showBottomNavigation();

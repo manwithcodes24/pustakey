@@ -6,19 +6,13 @@
 
     <string name="facebook_app_id" translatable="false">0000000000000000</string>
 
-    <string name="fb_login_protocol_scheme" translatable="false">fb0000000000000000</string>
-
     <string name="admob_banner_ads_key" translatable="false">ca-app-pub-7168378223909401/7621007940</string>
 
     <string name="google_map_api_key" translatable="false">AIzaSyABCJoE65AD_ujN2Eaw9l6xnOlCiRJMHkw</string>
 
-    <string name="shiprocket_token" translatable="false">eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEwOTQxMTIsImlzcyI6Imh0dHBzOi8vYXBpdjIuc2hpcHJvY2tldC5pbi92MS9leHRlcm5hbC9hdXRoL2xvZ2luIiwiaWF0IjoxNjA5NjA2ODIyLCJleHAiOjE2MTA0NzA4MjIsIm5iZiI6MTYwOTYwNjgyMiwianRpIjoiOWVtQ05vVFUwTVZxQ2xPNCJ9.WzFHKR0qw0V5sW315K0a0fZxLD5FM6Iyu00h2Bacy7o.XoChzYPNvywj4NUr1u6-UoRQs-bwifls1uKL7_U9-Eg</string>
-
     <string name="adview_publisher_key" translatable="false">pub-0000000000000000</string>
 
     <string name="razor_key" translatable="false">rzp_test_WsEasIH8weUues</string>
-    <string name="razor_secretKey" translatable="false">DIwVjODGaOUT1pkyKlYLTBg1</string>
-    <string name="razor_createOrder" translatable="false">https://api.razorpay.com/v1/orders</string>
     <string name="razor_createPayout" translatable="false">https://api.razorpay.com/v1/payouts</string>
 
     <!--GDPR-->
@@ -37,7 +31,6 @@
     <string name="title__activity_user_history_list">UserHistoryListActivity</string>
 
     <!-- Default Currency -->
-    <string name="default_currency" translatable="false">Favourites</string>
 
     <!-- Favourite -->
     <string name="favourite__title">Favourites</string>
@@ -48,7 +41,6 @@
 
     <!-- Gallery -->
     <string name="gallery__title">Gallery</string>
-    <string name="gallery_image__gallery">Image Gallery</string>
     <string name="gallery_img__desc">Image Description</string>
 
     <!-- Image Related -->
@@ -63,10 +55,6 @@
     <string name="app__drawer_open">Drawer Open</string>
     <string name="app__drawer_close">Drawer Close</string>
 
-    <string name="menu__fb_login">Facebook Login</string>
-    <string name="menu__comment_list">Comment List</string>
-    <string name="menu__notification_list">Notification List</string>
-
     <!-- Register -->
     <string name="register__user_name">User Name</string>
     <string name="register__email">Email</string>
@@ -80,7 +68,6 @@
     <string name="forgot_password__title">Forgot Password</string>
     <string name="forgot_password__email">Email</string>
     <string name="forgot_password__back_to_login">Already member ? Login</string>
-    <string name="forgot_password__password_recovery">Password Recovery</string>
     <string name="forgot_password__save">Save</string>
     <string name="forgot_password__send">Send</string>
 
@@ -98,8 +85,6 @@
     <string name="login__not_a_member_join_now">New here? Sign Up</string>
     <string name="login__forgot_your_password">Forgot password ?</string>
     <string name="login__login">SignIn</string>
-    <string name="login__welcome_title">Welcome To Market Place</string>
-    <string name="login__choice_text">OR</string>
     <string name="login__with_phone">SignIn with Phone</string>
     <string name="login__with_google">SignIn with Google</string>
     <string name="login__exception_error">There is something wrong.</string>
@@ -120,43 +105,27 @@
     <!-- Notification Setting -->
     <string name="notification_setting__on_off">Notification Setting ( On/Off )</string>
     <string name="notification_setting__latest_message_from_system">Latest Message From System</string>
-    <string name="notification__notification">Notification!</string>
     <string name="notification__title">Notification</string>
     <string name="notification_setting__title">Notification Setting</string>
     <string name="notification_detail__title">Notification Detail</string>
     <string name="notification__alert">Alert</string>
-    <string name="notification__custom_alert">Notification</string>
-    <string name="notification__custom_open">Open Item</string>
 
     <!-- Language -->
-    <string name="language__english">English</string>
-    <string name="language__arabic">Arabic</string>
-    <string name="language__spanish">Spanish</string>
     <string name="language__language_change">Are you sure you want to change to %1$s?</string>
     <string name="language__title">Language</string>
     <!-- Prompt -->
-    <string name="shipping_address" translatable="false">Enter your Shipping address</string>
     <!-- Buttons -->
     <string name="pay_to_seller" translatable="false">Pay</string>
 
 
     <!-- Comment -->
-    <string name="comment__replies">-- %1$s replies</string>
-    <string name="comment__dates">-- %1$s </string>
-    <string name="comment__title">Comment List</string>
-    <string name="comment__detail_title">Comment Replies</string>
-    <string name="comment__empty_comment">Comment is Empty.</string>
-    <string name="comment__comment">Comment</string>
 
     <!-- Rating -->
     <string name="rating__list">Rating List</string>
     <string name="rating__write_review">Write Review</string>
     <string name="rating__total_count">%1$s Customer Reviews</string>
     <string name="rating__total_value">%1$s out of 5 stars</string>
-    <string name="rating__total_count_n_value">%1$s out of 5 stars (%2$s Reviews)</string>
-    <string name="rating__count">%1$s star</string>
     <string name="rating__percent">%1$s %%</string>
-    <string name="rating__in_stock">In Stock</string>
     <string name="rating__title">Title</string>
     <string name="rating__message">Message</string>
     <string name="rating__user_rating">User Rating Entry !</string>
@@ -166,15 +135,6 @@
     <string name="rating__three_star">3 star</string>
     <string name="rating__two_star">2 star</string>
     <string name="rating__one_star">1 star</string>
-    <string name="rating__rating_range">Rating Range</string>
-    <string name="rating__one">1 and higher</string>
-    <string name="rating__two">2 and higher</string>
-    <string name="rating__three">3 and higher</string>
-    <string name="rating__four">4 and higher</string>
-    <string name="rating__five">5 \n</string>
-    <string name="rating__comar">","</string>
-    <string name="rating_value">rating</string>
-    <string name="rating_city_value">rating</string>
 
     <!--Button Sheet Dialog Messages-->
     <string name="dialog__title_m_mun">Sorting</string>
@@ -185,7 +145,6 @@
 
     <!-- edit setting -->
     <string name="edit_setting__notification_setting">Notification Setting</string>
-    <string name="edit_setting__edit_profile">Edit Profile</string>
     <string name="edit_setting__logout">Logout</string>
     <string name="edit_setting__logout_question">Are you sure to logout ? </string>
     <string name="edit_setting__terms_and_conditions">Terms and Conditions</string>
@@ -193,16 +152,11 @@
     <string name="edit_setting__title">Setting</string>
 
     <!-- Tools -->
-    <string name="tools__tracking">Track Your Order</string>
-    <string name="tools__instruction">Instruction</string>
-    <string name="tools__cart">Cart</string>
 
 
     <!-- Message -->
-    <string name="message__register_success">Successfully Register.</string>
     <string name="message__loading">Loading…</string>
     <string name="message__please_wait">Please wait…</string>
-    <string name="message__welcome">Welcome form Market Place</string>
     <string name="message__want_to_quit">Do you really want to quit?</string>
     <string name="message__ok_close">OK</string>
     <string name="message__cancel_close">Cancel</string>
@@ -212,23 +166,13 @@
     <string name="offer_message__buyer">Offer Received</string>
 
     <string name="subcategory__notSet" translatable="false">Sub Category</string>
-    <string name="bookname__notSet" translatable="false">Book Name</string>
     <string name="price__notSet" translatable="false">Price</string>
-    <string name="discription__notSet" translatable="false">Discription</string>
 
     <!-- Search -->
     <string name="search__notSet">Category</string>
-    <string name="search__by_name">Product Name</string>
-    <string name="search__by_type">Product Type</string>
-    <string name="search__by_sub_type">Sub Product Type</string>
     <string name="search__by_price">Price Range</string>
     <string name="search__lowest_price">Minimum</string>
     <string name="search__highest_price">Maximum</string>
-    <string name="search__special_check">Special Check</string>
-    <string name="search__feature">Featured Products</string>
-    <string name="search__discount_price">Discount Prices</string>
-    <string name="search__search">Search</string>
-    <string name="search__title_activity_font_select">FontSelectActivity</string>
     <!--Dimension_Filtering-->
     <string name="sf__length" translatable="false">Length</string>
     <string name="sf__breadth" translatable="false">Breadth</string>
@@ -250,17 +194,9 @@
 
     <!--Special_Filtering-->
     <string name="sf__notSet">Item Condition</string>
-    <string name="sf__notSet_zg">Not Set</string>
     <string name="sf__ByItemType">Book Name</string>
-    <string name="sf__ByPrice">Set Price</string>
-    <string name="sf__LowestPrice">Lowest Price</string>
-    <string name="sf__HighestPrice">Highest Price</string>
-    <string name="sf__AdvanceFiltering">Advanced Filtering</string>
-    <string name="sf__Feature">Feature Items</string>
-    <string name="sf__Discount">Discount Items</string>
     <string name="sf__Filter_Button">Filter</string>
     <string name="sf__Search_Button">Search</string>
-    <string name="typefilter">Filtered By Product type</string>
     <string name="sf__deal_option">Deal Option</string>
     <string name="sf__price_type">Price Type</string>
     <string name="sf__item_conditio">Item Condition</string>
@@ -271,33 +207,21 @@
     <string name="sf__sellerName" translatable="false">Name</string>
     <string name="sf__sellerEmail" translatable="false">Email</string>
     <string name="sf__sellerPhone" translatable="false">Phone no.</string>
-    <string name="sf__sellerFlat" translatable="false">Flat no.</string>
 
 
     <!-- Error Message -->
-    <string name="error_message__select_location">Please select location.!</string>
     <string name="error_message__login_first">Please login first!</string>
     <string name="error_message__rating">Please fill completely for rating.</string>
-    <string name="error_message__youtube_not_valid">YouTube is not valid.</string>
     <string name="error_message__blank_email">Please input Email.</string>
     <string name="error_message__choose_category">Choose Category First</string>
-    <string name="error_message__enter_required" translatable="false">Enter Required Fields</string>
-    <string name="error_message__insert_value_search">Insert a value to search</string>
-    <string name="error_message__order_fail">Process Failed with unknown error! Please try again</string>
     <string name="error_message__blank_contact_message">Please input Contact Message.</string>
     <string name="error_message__blank_password">Please enter the password.</string>
     <string name="error_message__blank_name">Please input name.</string>
     <string name="error_message__blank_phone_no">Please input the phone number.</string>
-    <string name="error_message__blank_keyword">Please input search keyword.</string>
     <string name="error_message__password_not_equal">Password are not equal!</string>
-    <string name="error_message__no_internet">No internet connection.</string>
-    <string name="error_message__email_exists">Email Already Exist</string>
     <string name="error_message__image_cannot_upload">Image cannot be Uploaded</string>
     <string name="error_message__item_cannot_upload">Item cannot be Uploaded</string>
     <string name="error_message__item_cannot_upload_checkForm" translatable="false">Please Enter Every Field Correctly</string>
-    <string name="error_message__something_went_wrong" translatable="false">Something Went Wrong!</string>
-    <string name="error_message__code_not_verify">Your code is not verify.</string>
-    <string name="error_message__already_accept">Your item has already sold</string>
     <string name="error_message__webp_image">Sorry , you cannot upload .webp image</string>
     <string name="error_message__to_check_agreement">You need to check an agreement of privacy and policy.</string>
 
@@ -308,7 +232,6 @@
     <string name="Feature_UI_Sort__Button">Filter with Map</string>
     <string name="Feature_UI__item_list_no_item_title">No Data</string>
     <string name="Feature_UI__item_list_no_item_desc">There is no result! Please try to adjust the filter.</string>
-    <string name="Feature_UI__item_list_loading_item_title">We are loading</string>
     <string name="Feature_UI__search_alert_cat_title">Choose Category</string>
     <string name="Feature_UI__search_alert_sub_cat_title">Choose Sub Category</string>
     <string name="Feature_UI__search_alert_type_title">Choose Item Type</string>
@@ -327,26 +250,16 @@
     <string name="about_us__pinterest">Pinterest</string>
     <string name="about_us__twitter">Twitter</string>
     <string name="about_us__visit_website">Visit To Our Website</string>
-    <string name="about_us__email">Email</string>
-    <string name="about_us__contact">Contact</string>
-    <string name="about_us__source_address">Source Address</string>
     <string name="about_us__title">App Info</string>
 
     <!-- Profile -->
     <string name="profile__title">Profile</string>
-    <string name="profile__name">Name</string>
     <string name="profile__edit">Edit</string>
-    <string name="profile__likes">Likes</string>
-    <string name="profile__history">History</string>
     <string name="profile__favourites">Favourites</string>
     <string name="profile__setting">Setting</string>
     <string name="profile__joined_on">Joined On</string>
-    <string name="profile__joined_date">Joined Date</string>
-    <string name="profile__orders">History</string>
     <string name="profile__see_all">View all</string>
     <string name="profile__verified">Verified</string>]
-    <string name="profile__status">Status</string>
-    <string name="profile__notification">Notification</string>
     <string name="profile__followers">Followers</string>
     <string name="profile__following">Following</string>
     <string name="profile__listing">Listing</string>
@@ -358,7 +271,6 @@
     <string name="profile__joined">Joined - </string>
     <string name="profile__deactivate">Deactivate Account</string>
     <string name="profile__confirm_deactivate">Are you sure to Deactivate this account ?</string>
-    <string name="profile__no_paid_ad">No paid Ad</string>
     <string name="profile__paid_ad">Paid Ad</string>
 
     <!-- Edit Profile -->
@@ -366,25 +278,9 @@
     <string name="edit_profile__user_name">User Name</string>
     <string name="edit_profile__about_me">About Me</string>
     <string name="edit_profile__email">Email</string>
-    <string name="edit_profile__password">Password</string>
     <string name="edit_profile__password_change">Password Change</string>
     <string name="edit_profile__save">Save</string>
-    <string name="edit_profile__town">Town</string>
-    <string name="edit_profile__division">Division</string>
-    <string name="edit_profile__country">Country</string>
     <string name="edit_profile__phone">Phone</string>
-    <string name="edit_profile__address">Shipping Address</string>
-    <string name="first_name">First Name</string>
-    <string name="last_name">Last Name</string>
-    <string name="email">Email</string>
-    <string name="phone">Phone</string>
-    <string name="company">Company</string>
-    <string name="address_1">Address 1</string>
-    <string name="address_2">Address 2</string>
-    <string name="country">Country</string>
-    <string name="state">State</string>
-    <string name="city">City</string>
-    <string name="postal_code">Postal Code</string>
     <string name="next">Next</string>
     <string name="verify_email">Verify Email</string>
     <string name="verify_phone_code">Enter OTP Code</string>
@@ -392,27 +288,19 @@
 
     <!-- Menu -->
     <string name="menu__home">Home</string>
-    <string name="menu__all_cities">All Cities</string>
-    <string name="menu__popular_cities">Popular Cities</string>
-    <string name="menu__recommended_cities">Recommended  Cities</string>
     <string name="menu__profile">Profile</string>
-    <string name="menu__like">Like</string>
     <string name="menu__favourite_items">Favourite</string>
-    <string name="menu__transaction">Transaction</string>
     <string name="menu__user_history">User History</string>
     <string name="menu__logout">Logout</string>
     <string name="menu__about_app">About Us</string>
     <string name="menu__contact_us">Contact Us</string>
-    <string name="menu__notification_setting">Notification Setting</string>
     <string name="menu__language">Language</string>
     <string name="menu__setting">Setting</string>
     <string name="menu__user">User</string>
     <string name="menu__interest">Tools</string>
     <string name="menu__app_setting">App</string>
     <string name="menu__user_info">User Info</string>
-    <string name="menu__save">Save</string>
     <string name="menu__search">Sell</string>
-    <string name="menu__side_bar_menu">More</string>
     <string name="menu__filter">Filter</string>
     <string name="menu__latest_item">Latest Items</string>
     <string name="menu__discount">Promotion Items</string>
@@ -420,19 +308,14 @@
     <string name="menu__featured_item">Best things Items</string>
     <string name="menu__subcategory">SubCategory</string>
     <string name="menu__trending_item">Popular Items</string>
-    <string name="menu__trending_category">Trending Categories</string>
-    <string name="menu__home_category_view_All_zg">View All</string>
     <string name="menu__home_category_view_All_un">View All</string>
-    <string name="menu__home_category_textView">Categories</string>
     <string name="menu__collections">Collections</string>
     <string name="menu__map_filter_apply">APPLY</string>
     <string name="menu__map_filter_reset">RESET</string>
-    <string name="menu__home_discount_view_all">View All Discount Products</string>
     <string name="menu__rate">Rate this app</string>
     <string name="menu__message">Messages</string>
     <string name="menu__offer_item">Offer</string>
     <string name="menu__offer_message">Offer</string>
-    <string name="menu__chat">Chat</string>
     <string name="menu__report_item">Report Item</string>
     <string name="menu__share">Share</string>
     <string name="menu__privacy_policy">Privacy Policy </string>
@@ -440,37 +323,17 @@
 
 
     <!-- Collection List -->
-    <string name="collection__list_title">Collection List</string>
 
     <!--Item detail-->
-    <string name="item_detail__isFeatured">Featured</string>
     <string name="item_detail__rating">No rating.</string>
     <string name="item_detail__view_count">%1$s Views</string>
-    <string name="item_detail__review_count">%1$s Reviews</string>
-    <string name="item_detail__comment_count">%1$s Comments</string>
     <string name="item_detail__fav_count">%1$s Favorite</string>
-    <string name="item_detail__time">%1$s - %2$s</string>
-    <string name="item_detail__time_remark">Remark : %1$s</string>
-    <string name="item_detail__category">%1$s / %2$s</string>
     <string name="item_detail__read_more">Read More</string>
     <string name="item_detail__view_on_map">View On Map</string>
     <string name="item_detail__call">Call</string>
-    <string name="item_detail__what_you_get">What you get ?</string>
-    <string name="item_detail__address">Address</string>
-    <string name="item_detail__hour">Opening Hour</string>
-    <string name="item_detail__highlight">Highlighted Information</string>
-    <string name="item_detail__info">Contact Info</string>
     <string name="item_detail__statistic">Statistic</string>
-    <string name="item_detail__tag">Tags</string>
-    <string name="item_detail__category_title">Category</string>
-    <string name="item_detail__how_rate">How would you rate this place ?</string>
-    <string name="item_detail__policy">Cancellation Policy</string>
-    <string name="item_detail__term_con">Terms And Condition</string>
-    <string name="item_detail__add_info">Additional Info</string>
-    <string name="item_detail__help_other">Help other find the best place to enjoy</string>
     <string name="item_detail__getting_this">Getting this</string>
     <string name="item_detail__meet_seller">Meet the seller</string>
-    <string name="item_detail__joined_date">Joined -</string>
     <string name="item_detail__chat">Buy</string>
     <string name="item_detail__edit">Edit</string>
     <string name="item_detail__like">Likes</string>
@@ -485,7 +348,6 @@
     <string name="item_detail__confirm_sold_out">Are yout sure to sold out this item ?</string>
     <string name="item_detail__safety_tip">Safety Tips</string>
     <string name="item_detail__item_location">Item Location</string>
-    <string name="item_detail__price_type">Price Type</string>
 
     <string name="item_detail__promote_title">Promote Your Item</string>
     <string name="item_detail__promote_sub_title">Promote your item and reach more buyers</string>
@@ -493,21 +355,8 @@
     <string name="item_detail__promote">Promote</string>
 
 
-    <string name="item_entry_detail__item_name">Item Name</string>
-    <string name="item_entry_detail__category_name">Category</string>
-    <string name="item_entry_detail__subcategory_name">SubCategory</string>
-    <string name="item_entry_detail__discount_name">Discount Type</string>
-    <string name="item_entry_detail__search_name">Search Tags/Keyword</string>
     <string name="item_entry_detail__description">Description</string>
-    <string name="item_entry_detail__is_published">is Published</string>
-    <string name="item_entry_detail__item_images">Item Images</string>
-    <string name="item_entry_detail__view_all">View All ></string>
-    <string name="item_entry_detail__btn_attributes">ATTRIBUTES</string>
-    <string name="item_entry_detail__btn_upload_image">UPLOAD IMAGE</string>
-    <string name="item_entry_detail__btn_save">SAVE</string>
-    <string name="item_entry_detail__btn_filter">SEARCH</string>
     <string name="item_entry_detail__price">Price</string>
-    <string name="item_entry_detail__title">What are you listing today ?</string>
     <string name="item_entry_detail__desc">Choose nice photo to showcase your thing.</string>
     <string name="item_entry_detail__remark">Remark</string>
     <string name="item_entry_detail__shop_setting">Shop Setting</string>
@@ -536,7 +385,6 @@
     <string name="item_entry_need_image">Please select at least one image</string>
     <string name="item_entry_need_category">Choose category</string>
     <string name="item_entry_need_subcategory">Choose subcategory</string>
-    <string name="item_entry_need_type">Choose type</string>
     <string name="item_entry_need_list_title">Fill your item title</string>
     <string name="item_entry_need_item_condition">Choose item condition</string>
     <string name="item_entry_need_length" translatable="false">Enter item length</string>
@@ -553,12 +401,8 @@
     <string name="item_entry_need_sellerAddressInvalidflatnum" translatable="false">Enter Flat/House no. </string>
     <string name="item_entry_need_sellerAddress" translatable="false">Enter your address </string>
     <string name="item_entry_need_sellerPincode" translatable="false">Enter your Pin Code</string>
-    <string name="item_entry_need_sellerCity" translatable="false">Enter your City</string>
-    <string name="item_entry_need_sellerState" translatable="false">Enter your State</string>
-    <string name="item_entry_need_sellerCounrty" translatable="false">Enter your Country</string>
     <string name="item_entry_need_details" translatable="false">Enter all the details properly</string>
 
-    <string name="item_entry_need_deal_option">Choose deal option</string>
     <string name="item_entry_need_description">Write description for your item</string>
     <string name="item_entry_need_price">Write your price</string>
     <string name="item_entry_need_currency_symbol">Choose your currency symbol</string>
@@ -583,9 +427,6 @@
     <string name="courierOrder_mode" translatable="false">Surface</string>
     <string name="labelNotificationTitle" translatable="false">Label Generated</string>
     <string name="labelNotificationDis" translatable="false">Click here to download your label</string>
-    <string name="chatNotificationTitle" translatable="false">Message</string>
-    <string name="chatNotificationBuyerDis" translatable="false">You have got new messages</string>
-    <string name="chatNotificationSellerDis" translatable="false">Seller sent you a message</string>
     <string name="paymentDone" translatable="false">success</string>
     <string name="paymentPending" translatable="false">pending</string>
     <string name="paymentError" translatable="false">Error</string>
@@ -616,10 +457,8 @@
     <string name="courierUser_auth" translatable="false">https://apiv2.shiprocket.in/v1/external/auth/login</string>
     <string name="courierUser_auth_email" translatable="false">Pustakey@gmail.com</string>
     <string name="courierUser_auth_pass" translatable="false">8210451164</string>
-    <string name="courierUser_addPickup" translatable="false">https://apiv2.shiprocket.in/v1/external/settings/company/addpickup</string>
     <string name="courierOrder_createOrder" translatable="false">https://apiv2.shiprocket.in/v1/external/shipments/create/forward-shipment</string>
     <string name="courierOrder_trackShipment" translatable="false">https://apiv2.shiprocket.in/v1/external/courier/track/awb/</string>
-    <string name="courierOrder_payout" translatable="false">https://apiv2.shiprocket.in/v1/external/courier/track/awb/</string>
 
     <!-- postal code API ( do not change )-->
     <string name="postalcode_checker" translatable="false">https://api.postalpincode.in/pincode/</string>
@@ -629,7 +468,6 @@
 
 
     <!--Discount-->
-    <string name="discount__rating5">%1$s rating ( %2$s )</string>
 
     <!--Map-->
     <string name="map_filter__map_title">Map Filter</string>
@@ -645,10 +483,6 @@
     <!--NOTIFICATION-->
 
     <string name="update_noti">Please Wait! Still updating notification setting.</string>
-    <string name="copied_to_clipboard">Copied to clipboard.</string>
-    <string name="confirm_to_Buy">Please confirm to proceed this order</string>
-    <string name="delete_item_from_basket">Are you sure to delete this from basket :(</string>
-    <string name="add_to_basket_confirm_box">Are you sure to add into basket :)</string>
 
     <string name="success">SUCCESS</string>
     <string name="confirm">CONFIRM</string>
@@ -657,7 +491,6 @@
     <string name="warning">WARNING</string>
     <string name="version_update">Version Update</string>
     <string name="update">Update</string>
-    <string name="error_message__no_image_uploaded">No Image Uploaded Yet</string>
     <string name="error_message__user_deleted">Your account is deleted by Admin</string>
     <string name="error_message__user_banned">Your account is banned by Admin</string>
     <string name="error_message__user_unpublished">Your account is unpublished by Admin</string>
@@ -666,7 +499,6 @@
     <string name="category__list_title">What is your interest ?</string>
 
     <!--SUB CATEGORY LIST -->
-    <string name="sub_category__list_title">Sub Category List</string>
 
     <!--BlogList-->
     <string name="blog_list__title">Blog List</string>
@@ -690,28 +522,12 @@
     <string name="item_list_title">Item List</string>
 
     <!--force update-->
-    <string name="force_update_true">Update is available</string>
     <string name="force_update__button_update"> Update </string>
 
 
     <!--Dashboard-->
     <string name="dashboard_keyword">Find books, novels and school books</string>
-    <string name="dashboard_best_things">Best things to do in the city</string>
-    <string name="dashboard_popular_cities">Popular cities around the world</string>
-    <string name="dashboard_best_cities">Best cities to visit around the world</string>
-    <string name="dashboard_new_cities">New Cities</string>
     <string name="dashboard_blog">Instruction</string>
-    <string name="dashboard_popular_places">Popular Places</string>
-    <string name="dashboard_new_places">New Places</string>
-    <string name="dashboard_promo_list">Promo List</string>
-
-    <string name="dashboard_review">Reviews</string>
-
-    <string name="dashboard_city_category">City Categories</string>
-    <string name="dashboard_new_items">New Places</string>
-    <string name="dashboard_featured_items">Featured Places</string>
-    <string name="dashboard_popular_items">Popular Places</string>
-    <string name="dashboard_discount_items">Places with Discount</string>
 
     <string name="dashboard_category_desc">1Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="dashboard_recent_item_desc">2Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
@@ -721,19 +537,14 @@
     <!--Dashboard-->
 
     <!--Selected City-->
-    <string name="selected_city_know_more">I want to know more about this city !</string>
-    <string name="selected_city_interested_in">What are you interested in ?</string>
-    <string name="selected_city_best_things">Best things to do in the city</string>
     <string name="selected_city_popular_item">Popular Items</string>
     <string name="selected_city_recent">Nearby Uploaded Items</string>
     <string name="selected_city_item_follower">Items from your followers</string>
-    <string name="selected_city_read_all">Read All About This City Name</string>
     <string name="selected_city_category">Category</string>
     <string name="selected_city_add"> SUBMIT A FREE AD </string>
     <!--Selected City-->
 
     <!--City List-->
-    <string name="city_list_title">City List</string>
     <!--City List-->
 
     <!--Location-->
@@ -751,9 +562,6 @@
     <!--<string name="setting__image_cache_size">Image Cache Size</string>-->
 
     <!--Chat-->
-    <string name="chat__retry_message">Failed to login into to chat, do you want to retry?</string>
-    <string name="chat__retry_retry">Retry</string>
-    <string name="chat__retry_no">No</string>
     <string name="chat__mark_as_sold">Mark As Sold</string>
     <string name="chat__accept">Accept</string>
     <string name="chat__reject">Reject</string>
@@ -801,14 +609,11 @@
     <string name="item_promote__promote_for">Promote For</string>
     <string name="item_promote__how_many_days">How Many Days?</string>
     <string name="item_promote__warning_for_start_date">Please select your starting date.</string>
-    <string name="item_promote__warning_for_day">Please select at least one day</string>
-    <string name="item_promote__amount">Amount</string>
     <string name="item_promote__paypal">Pay with Paypal</string>
     <string name="item_promote__stripe">Pay with Card</string>
     <string name="item_promote__razor">Pay with Razor</string>
     <string name="item_promote__offline">Pay with Offline</string>
     <string name="item_promote__success_message">Successfully paid AD.</string>
-    <string name="item_promote__error_message">Error paid AD.</string>
     <string name="item_promote__enter_day">Please enter day</string>
 
 
@@ -837,15 +642,11 @@
     <string name="location_filter__descending">Descending</string>
     <string name="location_filter__button">Filter</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="title_activity_buyerdetails_form" translatable="false">buyerdetailsForm</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label" translatable="false">First Fragment</string>
-    <string name="second_fragment_label" translatable="false">Second Fragment</string>
     <string name="previous" translatable="false">Previous</string>
 
     <string name="hello_first_fragment" translatable="false">Hello first fragment</string>
-    <string name="hello_second_fragment" translatable="false">Hello second fragment. Arg: %1$s</string>
 
 </resources>
 

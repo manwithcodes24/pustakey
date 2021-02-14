@@ -107,8 +107,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     private String seller_email = Constants.EMPTY_STRING ;
     private String seller_name = Constants.EMPTY_STRING ;
     private String nameinBank, ifsc, accnum = Constants.EMPTY_STRING ;
-//    do not change
-    private String seller_details_title = "seller_details" ;
+
 //    ------------
     private Boolean isExpanded = false;
     private Boolean isAddressDetails = true ;
@@ -572,32 +571,20 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         binding.get().bookDetailsLeadBtn.setOnClickListener(v ->{
             this.isExpanded = !this.isExpanded ;
 
-//            if (binding.get().bookDetailsContainer.getVisibility() == View.VISIBLE) {
-//                Log.d("addressDetailsContainer" , "Gone")  ;
-//
-//
-//                binding.get().bookDetailsContainer.setVisibility(View.GONE);
-//            } else {
-//                Log.d("bookDetailsContainer" , "visible")  ;
-//
-//                binding.get().bookDetailsContainer.setVisibility(View.VISIBLE);
-//                binding.get().addressDetailsContainer.setVisibility(View.GONE);
-////                binding.get().bankDetailsContainer.setVisibility(View.GONE);
-//            }
 
 
-            if(isExpanded == true){
 
+            if(isExpanded){
 
+                this.isAddressDetails  = true  ;
+                this.isBankDetails = true ;
                 binding.get().addressDetailsContainer.setVisibility(View.GONE);
                 binding.get().bankDetailsContainer.setVisibility(View.GONE);
 
                 binding.get().bookDetailsContainer.setVisibility(View.VISIBLE);
 
             }
-            if(isExpanded == false) {
-
-                this.isAddressDetails  = !this.isAddressDetails ;
+            if(!isExpanded) {
 
                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
 
@@ -607,22 +594,10 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         binding.get().addressDetailsBtn.setOnClickListener(v -> {
 
 
-//            if (binding.get().addressDetailsContainer.getVisibility() == View.VISIBLE) {
-//                 Log.d("addressDetailsContainer" , "Gone")  ;
-//
-//                binding.get().addressDetailsContainer.setVisibility(View.GONE);
-//            } else {
-//                Log.d("addressDetailsContainer" , "visible")  ;
-//
-//                binding.get().bookDetailsContainer.setVisibility(View.GONE);
-//                binding.get().addressDetailsContainer.setVisibility(View.VISIBLE);
-////                binding.get().bankDetailsContainer.setVisibility(View.GONE);
-//            }
-
             this.isAddressDetails  = !this.isAddressDetails ;
 
 
-            if(isAddressDetails == true){
+            if(isAddressDetails){
 
 
                 binding.get().addressDetailsContainer.setVisibility(View.GONE);
@@ -630,7 +605,9 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
 
             }
-            if(isAddressDetails == false ) {
+            if(!isAddressDetails) {
+                this.isExpanded  = false  ;
+                this.isBankDetails = true ;
 
                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
                 binding.get().bankDetailsContainer.setVisibility(View.GONE);
@@ -644,23 +621,10 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
          binding.get().bankDetailsBtn.setOnClickListener(v -> {
 
 
-//             if (binding.get().bankDetailsContainer.getVisibility() == View.VISIBLE) {
-//
-//                 Log.d("addressDetailsContainer" , "Gone")  ;
-//
-//                 binding.get().bankDetailsContainer.setVisibility(View.GONE);
-//             } else {
-//                 Log.d("bankDetailsContainer" , "VISIBLE")  ;
-//
-//                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
-//                 binding.get().addressDetailsHooks.setVisibility(View.GONE);
-//                 binding.get().bankDetailsContainer.setVisibility(View.VISIBLE);
-//             }
-
              this.isBankDetails  = !this.isBankDetails ;
 
 
-            if(isBankDetails == true){
+            if(isBankDetails){
 
 
                 binding.get().bankDetailsContainer.setVisibility(View.GONE);
@@ -668,8 +632,9 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
 
             }
-            if(isBankDetails == false) {
-
+            if(!isBankDetails) {
+                this.isExpanded  = false  ;
+                this.isAddressDetails = true ;
                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
                 binding.get().addressDetailsContainer.setVisibility(View.GONE);
 

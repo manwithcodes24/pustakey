@@ -28,8 +28,7 @@ import com.yashbuysell.psbuyandsell.ui.chat.chat.ChatActivity;
  * Contact Email : teamps.is.cool@gmail.com
  */
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
-    final String CHANNEL_ID1 = "1" ;
-    public String channelId = "PSBuyAndSellChannelId1";
+    public final String channelId = "PustakeyChannelId1";
     public  String flag,msg, itemId, buyerUserId, sellerUserId, senderName, senderImagePath;
     public int currentNotiIdPosition , notiId;
     public String userId ,sendUserId;
@@ -173,9 +172,18 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                     channelId,
                     getString(R.string.notification__alert),
                     NotificationManager.IMPORTANCE_DEFAULT);
+
+            AudioAttributes audioAttrib = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .build();
+            channel.setSound(Settings.System.DEFAULT_RINGTONE_URI, audioAttrib);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+
             if(manager != null) {
                 manager.createNotificationChannel(channel);
             }
+
             builder.setChannelId(channelId);
         }
 

@@ -117,6 +117,7 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
     }
 
 
+
     @Override
     protected void initUIAndActions() {
 
@@ -156,15 +157,15 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
 
 
-                        while (gotMyLocation){
-                            if (myLocation == null){
-                                myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-
-                            }
-                            else {
-                                gotMyLocation = false;
-                            }
-                        }
+//                        while (gotMyLocation){
+//                            if (myLocation == null){
+//                                myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+//
+//                            }
+//                            else {
+//                                gotMyLocation = false;
+//                            }
+//                        }
 
 
                         if(myLocation != null) {
@@ -175,11 +176,9 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                                 Log.d("locationCity" , lan) ;
 
 //                addresses = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                                Log.d("locationCity" , geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).toString()) ;
                                 this.city = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getLocality();
                                 this.postalcode = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getPostalCode();
                                 selected_location_id = "itm_loca" + postalcode ;
-                                Log.d("location_id" , selected_location_id) ;
 
                                 selectedLat = lat ;
                                 selectedLng = lan ;
@@ -187,7 +186,6 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                                 selected_location_name = city ;
 
 
-                                Log.d("locationCity" , city) ;
                                 if(city != "" && city != null){
                                     navigationController.navigateToMainActivity(getActivity(), selected_location_id,city, lat, lan);
 
@@ -217,13 +215,15 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(@SuppressWarnings("unused") final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         startActivityForResult(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS),1 );
-//                        getActivity().finishAndRemoveTask();
+
 
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(final DialogInterface dialog, @SuppressWarnings("unused") final int id) {
                         dialog.cancel();
+                        getActivity().finish();
+                        System.exit(0);
                     }
                 });
         final AlertDialog alert = builder.create();
@@ -233,15 +233,18 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        getActivity().recreate();
         if (resultCode == 1) {
             switch (requestCode) {
                 case 1:
+
                     initData();
                     break;
             }
         }
 
     }
+
 
     @Override
     protected void initData() {
