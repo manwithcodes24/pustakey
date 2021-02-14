@@ -110,7 +110,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 //    do not change
     private String seller_details_title = "seller_details" ;
 //    ------------
-    private Boolean isExpanded = true;
+    private Boolean isExpanded = false;
     private Boolean isAddressDetails = true ;
     private Boolean isBankDetails = true ;
     private String firstImageId = Constants.EMPTY_STRING;
@@ -165,7 +165,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         binding.get().priceTextView.setText("₹");
         this.currencyId = "itm_curencyb1b50927c7f950b2f9f9220f2d5fc699";
-
+        this.locationId = getActivity().getIntent().getExtras().getString(Constants.SELECTED_LOCATION_ID);
+        binding.get().locationTextView.setText(getActivity().getIntent().getExtras().getString(Constants.SELECTED_LOCATION_NAME));
 
 
 
@@ -225,6 +226,17 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             binding.get().subCategoryTextView.setText("");
             itemViewModel.holder.currency_id = this.currencyId;
 
+            itemViewModel.latValue = getActivity().getIntent().getExtras().getString(Constants.LAT);
+            itemViewModel.lngValue = getActivity().getIntent().getExtras().getString(Constants.LNG);
+
+            itemViewModel.holder.location_id = this.locationId;
+            itemViewModel.locationId =this.locationId ;
+            itemViewModel.locationName =getActivity().getIntent().getExtras().getString(Constants.SELECTED_LOCATION_NAME) ;
+            itemViewModel.mapLat = itemViewModel.latValue;
+            itemViewModel.mapLng = itemViewModel.lngValue;
+
+            bindMap(itemViewModel.latValue, itemViewModel.lngValue);
+
         } else if (requestCode == Constants.REQUEST_CODE__SEARCH_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_SUBCATEGORY) {
 
             this.subCatId = data.getStringExtra(Constants.SUBCATEGORY_ID);
@@ -243,7 +255,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_CURRENCY_TYPE) {
 
             this.currencyId = data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_ID);
-            Log.d("currencyCode" , data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_ID));
             binding.get().priceTextView.setText(data.getStringExtra(Constants.ITEM_CURRENCY_TYPE_NAME));
             itemViewModel.holder.currency_id = this.currencyId;
         } else if (requestCode == Constants.REQUEST_CODE__SEARCH_VIEW_FRAGMENT && resultCode == Constants.RESULT_CODE__SEARCH_WITH_ITEM_OPTION_TYPE) {
@@ -263,7 +274,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             itemViewModel.lngValue = data.getStringExtra(Constants.LNG);
             binding.get().locationTextView.setText(data.getStringExtra(Constants.ITEM_LOCATION_TYPE_NAME));
             itemViewModel.holder.location_id = this.locationId;
-            Log.d("locationTest", "locaionid = " + ItemEntryFragment.this.locationId) ;
+
 
             itemViewModel.mapLat = itemViewModel.latValue;
             itemViewModel.mapLng = itemViewModel.lngValue;
@@ -524,9 +535,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
         }
 
-        binding.get().titleEditText.setHint(R.string.search__notSet);
-        binding.get().categoryTextView.setHint(R.string.search__notSet);
-        binding.get().subCategoryTextView.setHint(R.string.search__notSet);
+
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
         AutoClearedValue<AlertDialog.Builder> alertDialog = new AutoClearedValue<>(this, builder);
@@ -614,7 +623,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
 
             if(isAddressDetails == true){
-                Log.d("addressBoolean" , isAddressDetails.toString()) ;
 
 
                 binding.get().addressDetailsContainer.setVisibility(View.GONE);
@@ -623,7 +631,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
             }
             if(isAddressDetails == false ) {
-                Log.d("addressBoolean" , isAddressDetails.toString()) ;
 
                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
                 binding.get().bankDetailsContainer.setVisibility(View.GONE);
@@ -654,7 +661,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
 
             if(isBankDetails == true){
-                Log.d("bankBoolean" , isBankDetails.toString()) ;
 
 
                 binding.get().bankDetailsContainer.setVisibility(View.GONE);
@@ -663,7 +669,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
             }
             if(isBankDetails == false) {
-                Log.d("addressBoolean" , isAddressDetails.toString()) ;
 
                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
                 binding.get().addressDetailsContainer.setVisibility(View.GONE);
@@ -716,13 +721,11 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                         .getAsJSONArray(new JSONArrayRequestListener() {
                             @Override
                             public void onResponse(JSONArray response) {
-                                Log.d("postal_Code" , response.toString()) ;
                                 JSONArray data = response ;
                                 try {
                                     JSONObject objData = (JSONObject) response.get(0);
                                     String status = objData.getString("Status");
                                         JSONObject PostalOffices = (JSONObject) objData.getJSONArray("PostOffice").get(0) ;
-                                        Log.d("postalcode_object" , PostalOffices.toString()) ;
                                         String postalcode_city = PostalOffices.getString("District");
                                         String postalcode_country = PostalOffices.getString("Country");
                                         String postalcode_state = PostalOffices.getString("State");
@@ -731,7 +734,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                                         binding.get().stateEditText.setText(postalcode_state);
 
 
-                                    Log.d("postalcode_status" , status) ;
 
 
 
@@ -760,32 +762,33 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             this.seller_city =  binding.get().cityEditText.getText().toString() ;
             this.courierPrice =  binding.get().priceEditText.getText().toString() ;
             this.seller_country =  binding.get().countryEditText.getText().toString() ;
+            this.seller_state =  binding.get().stateEditText.getText().toString() ;
             this.seller_name =  binding.get().sellerNameEditView.getText().toString() ;
             this.flatnum =  binding.get().flatnumEditText.getText().toString() ;
             this.product_title =  binding.get().titleEditText.getText().toString();
             this.nameinBank = binding.get().nameinBankEditText.getText().toString() ;
             this.ifsc = binding.get().ifscEditText.getText().toString() ;
             this.accnum = binding.get().accountnumEditText.getText().toString() ;
-            Log.d("itemId" , "viewmodel : " + itemViewModel.itemId) ;
-            if( (length != null || length != "") && (height != null && height!="" )&&
-                    (breadth != null || breadth !="") && (weight != null || weight !="" ) &&
-                    (flatnum != null || flatnum != "") && (pickup_address != null && pickup_address != "")
-                    && (seller_phone != null || seller_phone != "") && (seller_email != null || seller_email != "")
-                    && (seller_city != null || seller_city != "") && (seller_country != null || seller_phone != "")
-                    && (seller_name != null || seller_name != "") && (product_title != null || product_title != "")
-                    && (seller_state != null || seller_state != "")
+            boolean isnoDigit = true ;
+            boolean isPhoneLonger = true ;
+            char[] chars = flatnum.toCharArray();
 
 
-            ){
+            if(!binding.get().flatnumEditText.getText().toString().isEmpty()){
 
 
-
+                for(char c : chars){
+                    if(Character.isDigit(c)){
+                        isnoDigit = false ;
+                    }
+                }
 
             }
-            else {
-                psDialogMsg.showWarningDialog(getString(R.string.error_message__enter_required), getString(R.string.app__ok));
+            if(!binding.get().sellerPhoneEditText.getText().toString().isEmpty()){
+                if(seller_phone.length() ==10) {
+                    isPhoneLonger = false ;
+                }
 
-                psDialogMsg.show();
             }
 
             if ( ( itemViewModel.firstImagePath.equals("") && firstImageId.equals("") )
@@ -835,6 +838,12 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             }else if (binding.get().addressEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_sellerAddress), ItemEntryFragment.this.getString(R.string.app__ok));
                 psDialogMsg.show();
+            } else if (isnoDigit) {
+                psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_sellerAddressInvalidflatnum), ItemEntryFragment.this.getString(R.string.app__ok));
+                psDialogMsg.show();
+            } else if (isPhoneLonger) {
+                psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_sellerPhoneInvalidflatnum), ItemEntryFragment.this.getString(R.string.app__ok));
+                psDialogMsg.show();
             } else if (binding.get().cityEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_height), ItemEntryFragment.this.getString(R.string.app__ok));
                 psDialogMsg.show();
@@ -853,6 +862,15 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             } else if (binding.get().priceTextView.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_currency_symbol), ItemEntryFragment.this.getString(R.string.app__ok));
                 psDialogMsg.show();
+            }else if (binding.get().ifscEditText.getText().toString().isEmpty()) {
+                psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_ifsc), ItemEntryFragment.this.getString(R.string.app__ok));
+                psDialogMsg.show();
+            } else if (binding.get().accountnumEditText.getText().toString().isEmpty()) {
+                psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_accnum), ItemEntryFragment.this.getString(R.string.app__ok));
+                psDialogMsg.show();
+            }else if (binding.get().nameinBankEditText.getText().toString().isEmpty()) {
+                psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_nameinBank), ItemEntryFragment.this.getString(R.string.app__ok));
+                psDialogMsg.show();
             } else {
 
                 isUploadSuccess = false;
@@ -862,18 +880,15 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 ItemEntryFragment.this.checkIsShop();
 
                 if (itemViewModel.itemId != null) {
-                    Log.d("locationTest", "location id = " + ItemEntryFragment.this.locationId) ;
 
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
-                        Log.d("locationTest", "location id = " +ItemEntryFragment.this.locationId) ;
 
-                        itemViewModel.setUploadItemObj(ItemEntryFragment.this.catId, ItemEntryFragment.this.subCatId, ItemEntryFragment.this.typeId, ItemEntryFragment.this.priceTypeId, ItemEntryFragment.this.currencyId, ItemEntryFragment.this.conditionId, ItemEntryFragment.this.locationId,
+                        itemViewModel.setUploadItemObj(ItemEntryFragment.this.catId, ItemEntryFragment.this.subCatId, ItemEntryFragment.this.typeId, ItemEntryFragment.this.priceTypeId, ItemEntryFragment.this.currencyId, ItemEntryFragment.this.conditionId, selected_location_id,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
                                 binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), ItemEntryFragment.this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, itemViewModel.is_sold_out, binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, itemViewModel.itemId, loginUserId);
                     } else {//add new item
-                        Log.d("locationTest", "location id = " +ItemEntryFragment.this.locationId) ;
                         itemViewModel.setUploadItemObj(ItemEntryFragment.this.catId, ItemEntryFragment.this.subCatId, ItemEntryFragment.this.typeId, ItemEntryFragment.this.priceTypeId, ItemEntryFragment.this.currencyId, ItemEntryFragment.this.conditionId, ItemEntryFragment.this.locationId,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
                                 binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), ItemEntryFragment.this.dealOptionId,
@@ -1111,7 +1126,6 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
                                 boolean isLastResult = true;
                                 itemViewModel.itemId = result.data.id;
-                                Log.d("itemId" , "item id : " + itemViewModel.itemId) ;
 
                                 mDatabase = FirebaseDatabase.getInstance().getReference(itemViewModel.itemId) ;
                                 try {

@@ -103,10 +103,6 @@ import javax.inject.Inject;
 
 //import com.panaceasoft.psbuyandsell.ui.city.selectedCity.SelectedCityFragment;
 
-/**
- * Created by Panacea-Soft on 11/17/17.
- * Contact Email : teamps.is.cool@gmail.com
- */
 
 public class NavigationController {
 
@@ -115,6 +111,7 @@ public class NavigationController {
     private final int containerId;
     private RegFragments currentFragment;
     public Uri photoURI;
+    private String locationId, locationName, lat, lng ;
 
     //endregion
 
@@ -764,10 +761,18 @@ public class NavigationController {
         activity.startActivity(intent);
     }
 
-    public void navigateToItemEntryActivity(Activity activity, String itemId, String locationId, String locationName) {
+    public void navigateToItemEntryActivity(Activity activity, String itemId, String locationId, String locationName, String lat, String lan) {
         Intent intent = new Intent(activity, ItemEntryActivity.class);
         intent.putExtra(Constants.ITEM_ID, itemId);
+
+        Log.d("sendLocationId" , "sent locatio id = "  + locationId) ;
+
         intent.putExtra(Constants.SELECTED_LOCATION_ID, locationId);
+        intent.putExtra(Constants.ITEM_LOCATION_TYPE_ID, locationId);
+        intent.putExtra(Constants.ITEM_LOCATION_TYPE_NAME, locationName);
+        intent.putExtra(Constants.SELECTED_LOCATION_NAME, locationName);
+        intent.putExtra(Constants.LAT, lat);
+        intent.putExtra(Constants.LNG, lan);
         intent.putExtra(Constants.SELECTED_LOCATION_NAME, locationName);
 
         activity.startActivity(intent);
@@ -873,6 +878,24 @@ public class NavigationController {
             } catch (Exception e) {
                 Utils.psErrorLog("Error! Can't replace fragment.", e);
             }
+        }
+    }
+    public void navigateToHomeLatestrecentFiltering(FragmentActivity mainActivity, ItemParameterHolder itemParameterHolder) {
+        if (checkFragmentChange(RegFragments.HOME_LATEST_PRODUCTS)) {
+            try {
+                SearchListFragment fragment = new SearchListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(Constants.ITEM_PARAM_HOLDER_KEY, itemParameterHolder);
+                fragment.setArguments(bundle);
+                mainActivity.getSupportFragmentManager().beginTransaction()
+                        .replace(containerId, fragment)
+                        .commitAllowingStateLoss();
+            } catch (Exception e) {
+                Utils.psErrorLog("Error! Can't replace fragment.", e);
+            }
+
+
+
         }
     }
 
@@ -1096,11 +1119,18 @@ public class NavigationController {
 
     public void navigateToMainActivity(Activity activity, String selectedLocationId, String selectedLocationName, String lat, String lng) {
         Intent intent = new Intent(activity, MainActivity.class);
-        Log.d("citycodes", selectedLocationId) ;
+        intent.putExtra(Constants.ITEM_LOCATION_TYPE_ID, selectedLocationId);
         intent.putExtra(Constants.SELECTED_LOCATION_ID, selectedLocationId);
+        intent.putExtra(Constants.ITEM_LOCATION_TYPE_NAME, selectedLocationName);
         intent.putExtra(Constants.SELECTED_LOCATION_NAME, selectedLocationName);
         intent.putExtra(Constants.LAT, lat);
         intent.putExtra(Constants.LNG, lng);
+
+        this.locationId = selectedLocationId ;
+        this.locationName = selectedLocationName ;
+        this.lat = lat ;
+        this.lng = lng ;
+
         activity.startActivityForResult(intent, Constants.REQUEST_CODE__SELECTED_CITY_FRAGMENT);
     }
 

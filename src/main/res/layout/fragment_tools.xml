@@ -45,9 +45,9 @@
         <ImageView
             android:id="@+id/imageView42"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="468dp"
             android:layout_gravity="bottom"
 
-            tools:src="@drawable/ladki" />
+            tools:src="@drawable/ic_launcher" />
     </LinearLayout>
 </FrameLayout>

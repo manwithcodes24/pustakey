@@ -273,11 +273,11 @@ public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 itemChatListOfferAcceptedSenderBinding.markAsSoldButton.setVisibility(View.VISIBLE);
             }
 
-            itemChatListOfferAcceptedSenderBinding.markAsSoldButton.setOnClickListener(v -> {
-                Message chatMessage = itemChatListOfferAcceptedSenderBinding.getMessage();
-
-                callback.onMarkAsSoldButtonClicked(chatMessage);
-            });
+//            itemChatListOfferAcceptedSenderBinding.markAsSoldButton.setOnClickListener(v -> {
+//                Message chatMessage = itemChatListOfferAcceptedSenderBinding.getMessage();
+//
+//                callback.onMarkAsSoldButtonClicked(chatMessage);
+//            });
 
 
 

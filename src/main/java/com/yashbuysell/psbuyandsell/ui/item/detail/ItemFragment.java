@@ -258,7 +258,7 @@ try{
 
                                                         try {
                                                             mData.child("lowestRate").setValue(rateList.get(0).toString()) ;
-                                                            binding.get().courierPriceTextView.setText(rateList.get(0).toString());
+                                                            binding.get().courierPriceTextView.setText("Delivery Charge : "  + "₹ " + rateList.get(0).toString() );
 
                                                             binding.get().courierPriceTextView.setVisibility(View.VISIBLE);
 
@@ -461,7 +461,7 @@ catch (Exception e){
 
         binding.get().coverUserImageView.setOnClickListener(v -> navigationController.navigateToGalleryActivity(ItemFragment.this.getActivity(), Constants.IMAGE_TYPE_PRODUCT, itemViewModel.itemId));
 
-        binding.get().editButton.setOnClickListener(v -> navigationController.navigateToItemEntryActivity(getActivity(), itemViewModel.itemId, itemViewModel.locationId, itemViewModel.locationName));
+        binding.get().editButton.setOnClickListener(v -> navigationController.navigateToItemEntryActivity(getActivity(), itemViewModel.itemId, selected_location_id, selected_location_name, selectedLat , selectedLng));
 
         binding.get().soldTextView.setOnClickListener(v -> {
             if (binding.get().soldTextView.getText().equals(getResources().getString(R.string.item_detail__mark_sold))) {
@@ -725,12 +725,12 @@ catch (Exception e){
 //
 //        });
 
-        binding.get().promoteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigationController.navigateToItemPromoteActivity(ItemFragment.this.getActivity(), itemViewModel.itemId);
-            }
-        });
+//        binding.get().promoteButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                navigationController.navigateToItemPromoteActivity(ItemFragment.this.getActivity(), itemViewModel.itemId);
+//            }
+//        });
     }
 
 

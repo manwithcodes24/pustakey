@@ -459,9 +459,9 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                 psDialogMsg.show();
 
                 psDialogMsg.okButton.setOnClickListener(v -> {
+                    message.offerStatus = Constants.CHAT_STATUS_ACCEPT;
 
                     psDialogMsg.cancel();
-                    message.offerStatus = Constants.CHAT_STATUS_ACCEPT;
                     chatViewModel.offerMessage = message;
                     chatViewModel.offerItemPrice = message.getPriceOnly();
 
@@ -512,6 +512,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
             public void onMarkAsSoldButtonClicked(Message message) {
 
                 message.offerStatus = Constants.CHAT_STATUS_ACCEPT;
+
                 message.isSold = true;
                 chatViewModel.offerMessage = message;
                 chatViewModel.offerItemPrice = message.getPriceOnly();
@@ -1213,20 +1214,21 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
         });
 
         chatViewModel.getAcceptOfferData().observe(this, result -> {
+            addAcceptedText();
 
             if (result != null) {
                 switch (result.status) {
                     case SUCCESS:
 
                         //add offer text
-                        addAcceptedText();
+
 
                         break;
 
                     case ERROR:
 
-                        psDialogMsg.showErrorDialog(getString(R.string.error_message__already_accept), getString(R.string.app__ok));
-                        psDialogMsg.show();
+//                        psDialogMsg.showErrorDialog(getString(R.string.error_message__already_accept), getString(R.string.app__ok));
+//                        psDialogMsg.show();
 
                         break;
                 }
@@ -1635,9 +1637,9 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
             }
         } else {
             if (chatHistory.isOffer.equals(Constants.ONE)) {
-
-                binding.get().offerButton.setVisibility(View.GONE);
-                binding.get().offerButton.setEnabled(false);
+//
+//                binding.get().offerButton.setVisibility(View.GONE);
+//                binding.get().offerButton.setEnabled(false);
 
             } else {
                 binding.get().offerButton.setVisibility(View.VISIBLE);

@@ -118,13 +118,23 @@
 
         <EditText
             android:id="@+id/buyerAddressEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
             android:layout_marginTop="8dp"
-            android:ems="10"
-            android:hint="@string/buyerDetails_address"
-            android:textSize="12sp"
-            android:inputType="textPostalAddress"
+            android:gravity="top"
+            android:hint="@string/item_entry_detail__flatnum"
+            android:inputType="textMultiLine"
+            android:paddingStart="@dimen/space_12"
+            android:paddingLeft="@dimen/space_12"
+            android:paddingTop="8dp"
+            android:paddingEnd="@dimen/space_12"
+            android:paddingRight="@dimen/space_12"
+            android:paddingBottom="8dp"
+            android:singleLine="false"
+            android:textAlignment="viewStart"
+            android:textColor="@color/text__primary"
+            android:textSize="14sp"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
@@ -232,6 +242,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/buyerDetails_submit"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

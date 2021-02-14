@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@{message.time}"
-            android:textColor="@color/text__primary_light"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/font_body_s_size"
             android:visibility="visible"
             app:font='@{"normal"}'

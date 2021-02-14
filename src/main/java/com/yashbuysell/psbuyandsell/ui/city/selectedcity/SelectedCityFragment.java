@@ -71,7 +71,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
     //    private PSAppInfoViewModel psAppInfoViewModel;
 //    private ClearAllDataViewModel clearAllDataViewModel;
     private ItemFromFollowerViewModel itemFromFollowerViewModel;
-    private ItemParameterHolder searchItemParameterHolder = new ItemParameterHolder().getRecentItem();
+    private ItemParameterHolder searchItemParameterHolder = new ItemParameterHolder();
 
 
 
@@ -143,7 +143,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         binding.get().followerViewAllTextView.setOnClickListener(v -> navigationController.navigateToItemListFromFollower(getActivity()));
 
-        binding.get().recentItemViewAllTextView.setOnClickListener(v -> navigationController.navigateToHomeLatestFiltering((MainActivity) getActivity(), new ItemParameterHolder().getRecentItem()));
+        binding.get().recentItemViewAllTextView.setOnClickListener(v -> navigationController.navigateToHomeFilteringActivity(getActivity(), new ItemParameterHolder().getRecentItem() ,getString(R.string.selected_city_recent ), selectedCityLat , selectedCityLng, "10000") );
 
         binding.get().categoryViewAllTextView.setOnClickListener(v -> navigationController.navigateToCategoryActivity(getActivity()));
 
@@ -152,13 +152,13 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
             Utils.navigateOnUserVerificationActivity(userIdToVerify, loginUserId, psDialogMsg, getActivity(), navigationController, new Utils.NavigateOnUserVerificationActivityCallback() {
                 @Override
                 public void onSuccess() {
-                    navigationController.navigateToItemEntryActivity(SelectedCityFragment.this.getActivity(), Constants.ADD_NEW_ITEM, recentItemViewModel.locationId, recentItemViewModel.locationName);
+//                    navigationController.navigateToItemEntryActivity(SelectedCityFragment.this.getActivity(), Constants.ADD_NEW_ITEM, recentItemViewModel.locationId, recentItemViewModel.locationName);
                 }
             });
 
         });
 
-        binding.get().locationTextView.setOnClickListener(v -> navigationController.navigateToLocationActivity(getActivity(), Constants.SELECT_LOCATION_FROM_HOME,selected_location_id));
+//        binding.get().locationTextView.setOnClickListener(v -> navigationController.navigateToLocationActivity(getActivity(), Constants.SELECT_LOCATION_FROM_HOME,selected_location_id));
 
 
 //        binding.get().blogViewPager.setOnFocusChangeListener((v, hasFocus) -> {
@@ -265,8 +265,9 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
     private void callSearchList() {
 
         searchItemParameterHolder.keyword = binding.get().searchBoxEditText.getText().toString();
-
-        navigationController.navigateToHomeFilteringActivity(getActivity(), searchItemParameterHolder, searchItemParameterHolder.keyword, selectedCityLat, selectedCityLng, Constants.MAP_MILES);
+        ItemParameterHolder tempHolder = new ItemParameterHolder().getRecentItem() ;
+        tempHolder.keyword = binding.get().searchBoxEditText.getText().toString() ;
+        navigationController.navigateToHomeFilteringActivity(getActivity(), tempHolder, searchItemParameterHolder.keyword, selectedCityLat, selectedCityLng, Constants.MAP_MILES);
 
     }
 

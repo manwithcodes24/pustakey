@@ -30,10 +30,10 @@
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="item_detail__meetup" translatable="false">Meetup</string>
     <string name="item_detail__mailing_on_delivery" translatable="false">Mailing On Delivery</string>
-    <string name="phone_login_phone_hint" translatable="false">+959121212121</string>
+    <string name="phone_login_phone_hint" translatable="false">Enter your phone no.</string>
     <!--History -->
     <string name="history__title">History</string>
-    <string name="app__slogan">Buy and Sell used books and notes.</string>
+    <string name="app__slogan">Buy and Sell used books, notes and study material</string>
     <string name="title__activity_user_history_list">UserHistoryListActivity</string>
 
     <!-- Default Currency -->
@@ -100,7 +100,7 @@
     <string name="login__login">SignIn</string>
     <string name="login__welcome_title">Welcome To Market Place</string>
     <string name="login__choice_text">OR</string>
-    <string name="login__with_phone">SigIn with Phone</string>
+    <string name="login__with_phone">SignIn with Phone</string>
     <string name="login__with_google">SignIn with Google</string>
     <string name="login__exception_error">There is something wrong.</string>
     <string name="login__failure_error">Authentication failed.</string>
@@ -265,7 +265,7 @@
     <string name="sf__price_type">Price Type</string>
     <string name="sf__item_conditio">Item Condition</string>
     <string name="sf__type">Type</string>
-    <string name="sf__weight" translatable="false">Weight</string>
+    <string name="sf__weight" translatable="false">Weight (in Kg)</string>
     <string name="sf__dimension" translatable="false">Dimension (in CM)</string>
     <!--    item Entry -->
     <string name="sf__sellerName" translatable="false">Name</string>
@@ -519,12 +519,14 @@
     <string name="item_entry_detail__location">Location</string>
     <string name="item_entry_detail__address">Pin Code</string>
     <string name="item_entry_detail__nameinBank" translatable="false">Account Holder Name</string>
+    <string name="item_entry_detail__bankDescri" translatable="false">Fill the bank details properly, because we transfer money directly into the bank account after your book will be sold.</string>
     <string name="item_entry_detail__accnum" translatable="false">Account no.</string>
     <string name="item_entry_detail__ifsc" translatable="false">IFSC</string>
     <string name="item_entry_detail__city" translatable="false">City</string>
     <string name="item_entry_detail__state" translatable="false">State</string>
     <string name="item_entry_detail__country" translatable="false">Country</string>
-    <string name="item_entry_detail__flatnum" translatable="false">Address</string>
+    <string name="item_entry_detail__flatnum" translatable="false">Address ( Complete Address )</string>
+    <string name="item_entry_detail__flatnumInput" translatable="false">flat/house no. mandatory</string>
     <string name="item_entry_detail__submit">Submit</string>
     <string name="item_entry_detail__brand">Brand ( Optional )</string>
     <string name="item_entry_toolbar">Listing Entry</string>
@@ -544,10 +546,12 @@
     <string name="item_entry_need_nameinBank" translatable="false">Enter account holder name</string>
     <string name="item_entry_need_accnum" translatable="false">Enter bank acccount number</string>
     <string name="item_entry_need_weight" translatable="false">Enter item Weight</string>
-    <string name="item_entry_need_sellerName" translatable="false">Enter your name</string>
-    <string name="item_entry_need_sellerEmail" translatable="false">Enter your Email</string>
-    <string name="item_entry_need_sellerPhone" translatable="false">Enter your Phone</string>
-    <string name="item_entry_need_sellerAddress" translatable="false">Enter your address properly </string>
+    <string name="item_entry_need_sellerName" translatable="false">Enter your name Properly</string>
+    <string name="item_entry_need_sellerEmail" translatable="false">Enter your Email </string>
+    <string name="item_entry_need_sellerPhone" translatable="false">Enter your Phone no.</string>
+    <string name="item_entry_need_sellerPhoneInvalidflatnum" translatable="false">Enter your Phone Properly</string>
+    <string name="item_entry_need_sellerAddressInvalidflatnum" translatable="false">Enter Flat/House no. </string>
+    <string name="item_entry_need_sellerAddress" translatable="false">Enter your address </string>
     <string name="item_entry_need_sellerPincode" translatable="false">Enter your Pin Code</string>
     <string name="item_entry_need_sellerCity" translatable="false">Enter your City</string>
     <string name="item_entry_need_sellerState" translatable="false">Enter your State</string>
@@ -696,7 +700,7 @@
     <string name="dashboard_popular_cities">Popular cities around the world</string>
     <string name="dashboard_best_cities">Best cities to visit around the world</string>
     <string name="dashboard_new_cities">New Cities</string>
-    <string name="dashboard_blog">Blog</string>
+    <string name="dashboard_blog">Instruction</string>
     <string name="dashboard_popular_places">Popular Places</string>
     <string name="dashboard_new_places">New Places</string>
     <string name="dashboard_promo_list">Promo List</string>
@@ -721,7 +725,7 @@
     <string name="selected_city_interested_in">What are you interested in ?</string>
     <string name="selected_city_best_things">Best things to do in the city</string>
     <string name="selected_city_popular_item">Popular Items</string>
-    <string name="selected_city_recent">Recent Uploaded Items</string>
+    <string name="selected_city_recent">Nearby Uploaded Items</string>
     <string name="selected_city_item_follower">Items from your followers</string>
     <string name="selected_city_read_all">Read All About This City Name</string>
     <string name="selected_city_category">Category</string>
@@ -754,9 +758,11 @@
     <string name="chat__accept">Accept</string>
     <string name="chat__reject">Reject</string>
     <string name="chat__make_offer_title">Make Offer For This Item</string>
-    <string name="chat__offer">Make Offer</string>
+    <string name="chat__offer">Make Offer ( Buy )</string>
     <string name="chat__make_offer_sender">Make Offer</string>
+    <string name="chat__make_offer_senderDesc" translatable="false">Pay after seller accept your offer, and get your books within 6 days</string>
     <string name="chat__make_offer_receiver">Offer Received</string>
+    <string name="chat__make_offer_receiverDesc" translatable="false">read selling instruction in tools before accepting offer.</string>
     <string name="chat__accept_text">Offer Accepted</string>
     <string name="chat__reject_text">Offer Rejected</string>
     <string name="chat__sold">Sold</string>

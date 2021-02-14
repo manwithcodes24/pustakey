@@ -31,7 +31,7 @@
 
     <color name="image_detail_bg">@color/md_black_1000</color>
 
-    <color name="text__primary_light">@color/md_grey_200</color>
+    <color name="text__primary_light">@color/md_grey_400</color>
     <color name="text__primary">@color/md_grey_800</color>
     <color name="text__primary_dark">@color/colorBlack
     </color>

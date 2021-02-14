@@ -117,6 +117,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
@@ -259,29 +260,29 @@
                             <EditText
                                 android:id="@+id/descEditText"
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
+                                android:layout_height="150dp"
+                                android:layout_marginStart="16dp"
                                 android:layout_marginTop="8dp"
-                                android:layout_marginEnd="@dimen/space_16"
-                                android:background="@color/text__white"
-                                android:hint="@string/discription__notSet"
-                                android:inputType="textLongMessage"
-                                android:paddingStart="10dp"
+                                android:layout_marginEnd="16dp"
+                                android:background="@drawable/custom_progress_bar_horizontal"
+                                android:gravity="top"
+                                android:inputType="textMultiLine"
+                                android:paddingStart="@dimen/space_12"
                                 android:paddingLeft="@dimen/space_12"
-                                android:paddingTop="25dp"
+                                android:paddingTop="8dp"
                                 android:paddingEnd="@dimen/space_12"
                                 android:paddingRight="@dimen/space_12"
-                                android:paddingBottom="25dp"
+                                android:paddingBottom="8dp"
+                                android:singleLine="false"
                                 android:textAlignment="viewStart"
                                 android:textColor="@color/text__primary"
                                 android:textSize="14sp"
                                 app:font='@{"normal"}'
-                                app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toBottomOf="@+id/descTextView"
-
+                                tools:ignore="RtlCompat"
                                 tools:text="descEditText" />
 
 
@@ -1173,8 +1174,8 @@
                                         android:background="@color/text__white"
                                         android:gravity="center_vertical"
 
-                                        android:hint="In KGS"
-                                        android:inputType="none"
+                                        android:hint="In Kg"
+                                        android:inputType="numberDecimal"
                                         android:paddingStart="10dp"
                                         android:paddingTop="17dp"
                                         android:paddingEnd="10dp"
@@ -1233,7 +1234,7 @@
                                         android:background="@color/text__white"
                                         android:gravity="center_vertical"
                                         android:hint="@string/sf__length"
-                                        android:inputType="none"
+                                        android:inputType="numberDecimal"
                                         android:paddingStart="10dp"
                                         android:paddingTop="17dp"
                                         android:paddingEnd="10dp"
@@ -1294,7 +1295,7 @@
                                         android:background="@color/text__white"
                                         android:gravity="center_vertical"
                                         android:hint="@string/sf__breadth"
-                                        android:inputType="none"
+                                        android:inputType="numberDecimal"
                                         android:paddingStart="10dp"
                                         android:paddingTop="17dp"
                                         android:paddingEnd="10dp"
@@ -1356,7 +1357,7 @@
                                         android:background="@color/text__white"
                                         android:gravity="center_vertical"
                                         android:hint="@string/sf__heigth"
-                                        android:inputType="none"
+                                        android:inputType="numberDecimal"
                                         android:paddingStart="10dp"
                                         android:paddingTop="17dp"
                                         android:paddingEnd="10dp"
@@ -1787,7 +1788,7 @@
                         android:layout_width="match_parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_height="wrap_content"
-
+                        android:visibility="gone"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         >
@@ -1839,6 +1840,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/sellerEmailTextView"
                             android:background="@color/text__white"
                             android:paddingTop="17dp"
+                            android:inputType="textEmailAddress"
                             android:paddingBottom="17dp"
                             />
 
@@ -1864,6 +1866,7 @@
                             app:layout_constraintTop_toBottomOf="@+id/sellerPhoneTextView"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
+                            android:inputType="number"
                             android:hint="Max 10 digit"
 
                             android:background="@color/colorWhite"
@@ -1890,22 +1893,23 @@
                         <EditText
                             android:id="@+id/flatnumEditText"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="150dp"
                             android:layout_marginTop="8dp"
-                            android:background="@color/text__white"
-                            android:paddingTop="17dp"
-                            android:paddingBottom="17dp"                android:hint="Flatno."
-                            android:inputType="textPersonName"
+                            android:background="@drawable/custom_progress_bar_horizontal"
+                            android:gravity="top"
+                            android:hint="@string/item_entry_detail__flatnumInput"
+                            android:inputType="textMultiLine"
                             android:paddingStart="@dimen/space_12"
                             android:paddingLeft="@dimen/space_12"
+                            android:paddingTop="8dp"
                             android:paddingEnd="@dimen/space_12"
                             android:paddingRight="@dimen/space_12"
-
+                            android:paddingBottom="8dp"
+                            android:singleLine="false"
                             android:textAlignment="viewStart"
                             android:textColor="@color/text__primary"
                             android:textSize="14sp"
                             app:font='@{"normal"}'
-
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -1938,7 +1942,7 @@
                             android:paddingTop="17dp"
                             android:paddingBottom="17dp"
 
-                            android:inputType="textPersonName"
+                            android:inputType="number"
 
 
 
@@ -2104,7 +2108,7 @@
                     tools:layout_editor_absoluteY="8dp">
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/bankDetailsContainer"
-                        android:visibility="visible"
+                        android:visibility="gone"
                         android:layout_width="match_parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_height="wrap_content"
@@ -2113,6 +2117,25 @@
                         app:layout_constraintStart_toStartOf="parent"
                         >
 
+                        <TextView
+
+                            android:id="@+id/bankdetailsDescri"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="10dp"
+
+                            android:paddingTop="@dimen/space_4"
+                            android:paddingBottom="@dimen/space_4"
+                            android:text="@string/item_entry_detail__bankDescri"
+                            android:textColor="@color/md_grey_600"
+                            android:textSize="@dimen/font_title_size"
+                            app:font='@{"normal"}'
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/nameinBankTextView"
+                            app:layout_constraintTop_toTopOf="parent" />
                         <TextView
 
                             android:id="@+id/nameinBankTextView"
@@ -2130,7 +2153,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toBottomOf="@+id/bankdetailsDescri" />
                         <EditText
                             android:id="@+id/nameinBankEditText"
                             android:layout_width="0dp"

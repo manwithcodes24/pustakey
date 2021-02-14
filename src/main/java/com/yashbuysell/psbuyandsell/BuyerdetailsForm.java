@@ -132,7 +132,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         this.submitBtn = findViewById(R.id.submitButton) ;
         this.itemId = getIntent().getStringExtra("itemId");
         Checkout.preload(getApplicationContext());
-        pickup_location = UUID.randomUUID().toString().substring(0,7)  ;
+        pickup_location = UUID.randomUUID().toString().substring(0,5)  ;
 
 
 
@@ -301,9 +301,9 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                     (address.getText().toString() != ""
                             && address.getText().toString() != null) &&
                     (phoneno.getText().toString() != ""
-                            && phoneno.getText().toString() != null) &&
+                            && phoneno.getText().toString() != null) && (alternatephone.getText().toString().length() == 10) &&
                     (alternatephone.getText().toString() != ""
-                            && alternatephone.getText().toString() != null) &&
+                            && alternatephone.getText().toString() != null) && (alternatephone.getText().toString().length() == 10) &&
                     (pincode.getText().toString() != ""
                             && pincode.getText().toString() != null) &&
                     (city.getText().toString() != ""
@@ -523,47 +523,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         Log.d("PaymentError" , "convertedAmount " + convertedAmount) ;
 
         try {
-            JSONObject orderRequest = new JSONObject();
-            orderRequest.put("amount", String.valueOf(convertedAmount)); // amount in the smallest currency unit
-            orderRequest.put("currency", "INR");
-            orderRequest.put("receipt", "order_rcptid_" + itemId.substring(0,6));
-            String createRazorOrder = getString(R.string.razor_createOrder);
-            appKeyId = getString(R.string.razor_key) ;
-            appSecretKey = getString(R.string.razor_secretKey);
-            String cred = appKeyId +":" +appSecretKey ;
-            String encoding =  android.util.Base64.encodeToString(cred.getBytes(), Base64.DEFAULT) ;
-            Log.d("encoding" , "base64 == " + encoding) ;
-            AndroidNetworking.post(createRazorOrder)
-                    .addHeaders("Content-Type" , "application/json")
-                    .addHeaders("Authorization" , "Basic " + encoding)
-                    .addJSONObjectBody(orderRequest)
-                    .setTag("createRazorOrder")
-                    .setPriority(Priority.HIGH)
-                    .build()
-                    .getAsJSONObject(new JSONObjectRequestListener() {
 
-
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            try {
-                                order_id = response.getString("id") ;
-                                JSONObject orderRequest = new JSONObject();
-                                orderRequest.put(itemId,order_id) ;
-                                orderIdList.add(orderRequest);
-                                mDatabase.child("order_id").setValue(order_id) ;
-                                mDatabase.child("order").setValue(order_id) ;
-                                mDatabase.child("orderAmount").setValue(String.valueOf(convertedAmount)) ;
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
-                        @Override
-                        public void onError(ANError anError) {
-                            anError.getErrorBody();
-                        }
-                    });
 
 
 
@@ -596,11 +556,11 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         try {
             JSONObject options = new JSONObject();
 
-            options.put("name", "Yash Rajan Shukla");
+            options.put("name", seller_name);
             options.put("description", "payment for " + product_title);
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             Log.d("orderId" , " RazorPayId = " + itemId) ;
-            options.put("order_id", order_id);//from response of step 3.
+//            options.put("order_id", itemId);//from response of step 3.
             options.put("theme.color", "#3399cc");
             options.put("currency", "INR");
             options.put("amount", String.valueOf(convertedAmount));//pass amount in currency subunits
@@ -609,6 +569,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
             checkout.open(activity, options);
         } catch(Exception e) {
             e.printStackTrace();
+            psDialogMsg.showErrorDialog( "Error in payment! Check your data" , getString(R.string.app__ok));
             Log.e(TAG, "Error in starting Razorpay Checkout"+ e);
         }
         /**
@@ -712,6 +673,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                     vendorDetailsObj.put("phone" , seller_phone) ;
                     vendorDetailsObj.put("name" , seller_name) ;
                     vendorDetailsObj.put("address" , seller_address) ;
+                    vendorDetailsObj.put("address_2" , "") ;
                     vendorDetailsObj.put("city" , seller_city) ;
                     vendorDetailsObj.put("state" , seller_state) ;
                     vendorDetailsObj.put("country" , seller_country) ;
@@ -720,28 +682,28 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 
 
                     childObj.put("name" , courier_title) ;
-                    childObj.put("sku" , itemId.substring(0,6)) ;
+                    childObj.put("sku" , "ch123") ;
                     childObj.put("units" , "1") ;
-                    Log.d("courierOrder" , "final amount = " + finalAmount) ;
                     childObj.put("selling_price" , finalAmount) ;
 
                     childArr.put(childObj) ;
                     try {
                         jsonObject.put("mode" , getString(R.string.courierOrder_mode)) ;
-                        jsonObject.put("order_id", pickup_location);
                         jsonObject.put("request_pickup", '1');
                         jsonObject.put("print_label", '1');
-                        jsonObject.put("generate_manifest", '1');
                         jsonObject.put("courier_id",leastPriceCompanyId );
+                        jsonObject.put("order_id", pickup_location);
+
                         jsonObject.put("order_date", currentDateandTime);
-                        jsonObject.put("pickup_location", pickup_location );
                         jsonObject.put("billing_customer_name", name.getText().toString());
                         jsonObject.put("billing_last_name", name.getText().toString());
                         jsonObject.put("billing_address", address.getText().toString());
+                        jsonObject.put("billing_address_2", "");
                         jsonObject.put("billing_city", city.getText().toString());
-                        jsonObject.put("billing_pincode", pincode.getText().toString());
                         jsonObject.put("billing_state", state.getText().toString());
                         jsonObject.put("billing_country", country.getText().toString());
+                        jsonObject.put("billing_pincode", pincode.getText().toString());
+
                         jsonObject.put("billing_email", email.getText().toString());
                         jsonObject.put("billing_phone", phoneno.getText().toString());
                         jsonObject.put("billing_alternate_phone", alternatephone.getText().toString());
@@ -749,14 +711,17 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 
                         jsonObject.put("order_items", childArr);
                         jsonObject.put("payment_method", "Prepaid");
-                        jsonObject.put("vendor_details", vendorDetailsObj);
+
 
                         jsonObject.put("sub_total", finalAmount);
+                        jsonObject.put("weight", courier_weight);
+
                         jsonObject.put("length", courier_length);
                         jsonObject.put("breadth", courier_breadth);
                         jsonObject.put("height", courier_height);
-                        jsonObject.put("weight", courier_weight);
+                        jsonObject.put("pickup_location", pickup_location );
 
+                        jsonObject.put("vendor_details", vendorDetailsObj);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -844,6 +809,8 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                                     }
                                     @Override
                                     public void onError(ANError error) {
+                                        psDialogMsg.showErrorDialog( "Error creating order!" , getString(R.string.app__ok));
+
                                         Log.d("courierOrderError" , "Error creating Order " + error.getErrorBody()) ;
                                     }
                                 });

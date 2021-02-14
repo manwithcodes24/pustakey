@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@{message.time}"
-            android:textColor="@color/text__primary_light"
+            android:textColor="@color/colorBlack"
             android:textSize="@dimen/font_body_s_size"
             android:visibility="visible"
             app:font='@{"normal"}'
@@ -68,6 +68,22 @@
                     tools:text="@string/chat__make_offer_receiver" />
 
                 <TextView
+                    android:id="@+id/titleTextViewDesc"
+                    android:layout_width="235dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
+                    android:padding="@dimen/space_8"
+                    android:text="@string/chat__make_offer_receiverDesc"
+                    android:textColor="@color/md_grey_600"
+                    android:textSize="@dimen/font_title_size"
+                    app:font='@{"normal"}'
+                    app:layout_constraintBottom_toTopOf="@+id/priceTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                    tools:text="@string/chat__make_offer_receiverDesc" />
+
+                <TextView
                     android:id="@+id/priceTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -82,7 +98,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTextViewDesc"
                     tools:text="$10" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 

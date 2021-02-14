@@ -116,7 +116,7 @@ public class MainActivity extends PSAppCompactActivity {
     public String selectedLocationId, selectedLocationName, selected_lat, selected_lng;
     private String loginUserId;
     private String locationId;
-    private String locationName;
+    private String locationName , lat,lng;
     final String CHANNEL_ID1 = "1" ;
     final String CHANNEL_ID2 = "2" ;
 
@@ -273,7 +273,6 @@ public class MainActivity extends PSAppCompactActivity {
 
                             // Log and toast
                             String msg = "userToken = " + usertoken;
-                            Log.d("userToken", msg);
                             DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
                             DatabaseReference users = mDatabase.child(userId) ;
                             users.child("fcmtoken").setValue(usertoken) ;
@@ -300,7 +299,6 @@ public class MainActivity extends PSAppCompactActivity {
         public void onReceive(Context context, Intent intent) {
             // Get extra data included in the Intent
             String message = intent.getStringExtra("message");
-            Log.d("receiver", "Got message: " + message);
             Intent notificationIntent = new Intent(getApplicationContext(), ChatActivity.class);
             PendingIntent pi = PendingIntent.getActivity(context, 0, notificationIntent, 0);
 
@@ -334,7 +332,6 @@ public class MainActivity extends PSAppCompactActivity {
                     public void onResponse(JSONObject response) {
 //
                         try {
-                            Log.d("srToken", response.getString("token")) ;
                             srToken = response.getString("token") ;
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -401,7 +398,7 @@ public class MainActivity extends PSAppCompactActivity {
 
                     psDialogMsg.okButton.setOnClickListener(view -> {
                         psDialogMsg.cancel();
-                        MainActivity.this.finish();
+                        finish() ;
                         System.exit(0);
                     });
                     psDialogMsg.cancelButton.setOnClickListener(view -> psDialogMsg.cancel());
@@ -563,8 +560,7 @@ public class MainActivity extends PSAppCompactActivity {
                         } catch (Exception e) {
                             Utils.psErrorLog("", e);
                         }
-
-                        navigationController.navigateToItemEntryActivity(MainActivity.this, Constants.ADD_NEW_ITEM, locationId, locationName);
+                        navigationController.navigateToItemEntryActivity(MainActivity.this, Constants.ADD_NEW_ITEM, locationId, locationName, selected_lat , selected_lng);
 
                     });
 //                    Utils.addToolbarScrollFlag(binding.toolbar);

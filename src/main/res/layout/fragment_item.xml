@@ -226,10 +226,10 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="16dp"
                                 android:contentDescription="@string/image_default__image"
-                                android:tint="@color/global__primary"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/baseline_statistic_green_24" />
+                                app:srcCompat="@drawable/baseline_statistic_green_24"
+                                app:tint="@color/global__primary" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -272,10 +272,10 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="16dp"
                                 android:contentDescription="@string/image_default__image"
-                                android:tint="@color/global__primary"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/baseline_location_grey_24" />
+                                app:srcCompat="@drawable/baseline_location_grey_24"
+                                app:tint="@color/global__primary" />
 
                             <TextView
                                 android:id="@+id/locationTitleTextView"
@@ -596,10 +596,10 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="16dp"
                                 android:contentDescription="@string/image_default__image"
-                                android:tint="@color/global__primary"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/baseline_contact_green_24" />
+                                app:srcCompat="@drawable/baseline_contact_green_24"
+                                app:tint="@color/global__primary" />
 
                             <TextView
                                 android:visibility="gone"
@@ -663,11 +663,11 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     android:contentDescription="@string/image_default__image"
-                                    android:tint="@color/md_grey_700"
                                     app:layout_constraintBottom_toBottomOf="@+id/mailImageView"
                                     app:layout_constraintStart_toEndOf="@+id/mailImageView"
                                     app:layout_constraintTop_toTopOf="@+id/mailImageView"
-                                    app:srcCompat="@drawable/baseline_phone_grey_24" />
+                                    app:srcCompat="@drawable/baseline_phone_grey_24"
+                                    app:tint="@color/md_grey_700" />
 
                                 <ImageView
                                     android:id="@+id/phoneImageView"
@@ -675,6 +675,7 @@
                                     android:layout_height="15dp"
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="12dp"
+                                    android:visibility="gone"
                                     android:contentDescription="@string/image_default__image"
                                     android:src="@drawable/phone"
                                     app:layout_constraintStart_toEndOf="@+id/userImageView"
@@ -697,11 +698,11 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     android:contentDescription="@string/image_default__image"
-                                    android:tint="@color/md_grey_700"
                                     app:layout_constraintBottom_toBottomOf="@+id/phoneImage"
                                     app:layout_constraintStart_toEndOf="@+id/phoneImage"
                                     app:layout_constraintTop_toTopOf="@+id/phoneImage"
-                                    app:srcCompat="@drawable/googleg_standard_color_18" />
+                                    app:srcCompat="@drawable/googleg_standard_color_18"
+                                    app:tint="@color/md_grey_700" />
 
                                 <ImageView
                                     android:id="@+id/userImageView"
@@ -821,6 +822,7 @@
                                 <TextView
                                     android:id="@+id/phoneTextView"
                                     android:layout_width="0dp"
+                                    android:visibility="gone"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="8dp"
                                     android:layout_marginEnd="16dp"
@@ -833,7 +835,7 @@
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toEndOf="@+id/phoneImageView"
                                     app:layout_constraintTop_toTopOf="@+id/phoneImageView"
-                                    tools:text="09456548" />
+                                   />
                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -917,7 +919,7 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="24dp"
                                 android:layout_marginEnd="16dp"
-                                android:hint="Check Availibility"
+                                android:hint="Check Availibility ( enter pincode )"
 
                                 android:lineSpacingExtra="@dimen/space_4"
                                 android:textColor="@color/colorWhite"
@@ -947,7 +949,7 @@
                                 android:text="@{item.description}"
                                 android:textColor="@color/colorWhite"
 
-                                android:textSize="@dimen/font_body_size"
+                                android:textSize="16dp"
                                 app:font='@{"normal"}'
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
@@ -1387,10 +1389,10 @@
                                 android:layout_marginStart="16dp"
                                 android:layout_marginTop="16dp"
                                 android:contentDescription="@string/image_default__image"
-                                android:tint="@color/global__primary"
                                 app:layout_constraintStart_toStartOf="parent"
                                 app:layout_constraintTop_toTopOf="parent"
-                                app:srcCompat="@drawable/baseline_contact_green_24" />
+                                app:srcCompat="@drawable/baseline_contact_green_24"
+                                app:tint="@color/global__primary" />
 
                             <TextView
                                 android:id="@+id/promoteTitleTextView"
@@ -1561,7 +1563,6 @@
                     app:layout_constraintVertical_bias="1.0" />
 
                 <Button
-                    android:visibility="gone"
                     android:id="@+id/callButton"
                     android:layout_width="70dp"
                     android:layout_height="wrap_content"
@@ -1579,6 +1580,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/constraintLayout3"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/chatButton"
                     app:layout_constraintVertical_bias="1.0" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout

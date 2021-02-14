@@ -96,7 +96,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
         if (message == null || message.equals("")) {
             i.putExtra(Constants.NOTI_EXISTS_TO_SHOW, false);
-            displayMessage = "Welcome from PS Buy Sell";
+            displayMessage = "Welcome from Pustakey";
         } else {
             i.putExtra(Constants.NOTI_EXISTS_TO_SHOW, true);
             displayMessage = message; //"You've received new message.";
