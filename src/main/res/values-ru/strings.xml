@@ -118,8 +118,6 @@
 
     <string name="message__loading">Loading …</string>
     <string name="message__please_wait">Пожалуйста, подождите…</string>
-    <string name="message__want_to_quit">Вы действительно хотите бросить?</string>
-    <string name="message__ok_close">Хорошо</string>
     <string name="message__cancel_close">отменить</string>
     <string name="message__seller">От продавцов</string>
     <string name="message__buyer">От покупателей</string>

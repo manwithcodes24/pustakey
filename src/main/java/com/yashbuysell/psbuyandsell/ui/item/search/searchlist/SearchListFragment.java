@@ -3,6 +3,7 @@ package com.yashbuysell.psbuyandsell.ui.item.search.searchlist;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import com.yashbuysell.psbuyandsell.MainActivity;
 import com.yashbuysell.psbuyandsell.R;
 import com.yashbuysell.psbuyandsell.binding.FragmentDataBindingComponent;
 import com.yashbuysell.psbuyandsell.databinding.FragmentItemListBinding;
+import com.yashbuysell.psbuyandsell.ui.city.selectedcity.SelectedCityFragment;
 import com.yashbuysell.psbuyandsell.ui.common.DataBoundListAdapter;
 import com.yashbuysell.psbuyandsell.ui.common.PSFragment;
 import com.yashbuysell.psbuyandsell.ui.item.adapter.ItemVerticalListAdapter;
@@ -35,6 +37,7 @@ import com.yashbuysell.psbuyandsell.viewobject.common.Status;
 import com.yashbuysell.psbuyandsell.viewobject.holder.ItemParameterHolder;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -279,6 +282,41 @@ public class SearchListFragment extends PSFragment implements DataBoundListAdapt
 
                             if (listResource.data != null) {
                                 if (listResource.data.size() == 0) {
+                                    ArrayList<Double> distanceList
+                                            = new ArrayList<Double>();
+
+                                    for (int x = 0 ; x < listResource.data.size() ; x++){
+
+                                        double dis = SelectedCityFragment.getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(x).lat) , Double.parseDouble(listResource.data.get(x).lng));
+
+                                        distanceList.add(dis);
+
+
+
+
+                                    }
+                                    try {
+                                        Collections.sort(distanceList);
+                                    }
+                                    catch (Exception e) {
+
+                                    }
+
+
+                                    for(int i = 0  ; i < listResource.data.size() ; i++) {
+                                        for(int x = 0 ; x < distanceList.size() ; x++){
+
+                                            double dis2 = SelectedCityFragment.getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(i).lat) , Double.parseDouble(listResource.data.get(i).lng));
+                                            if(dis2 == distanceList.get(x)){
+                                                double temp = dis2 ;
+
+                                                Collections.swap(listResource.data, i, x);
+
+
+                                            }
+
+                                        }
+                                    }
 
                                     if (!binding.get().getLoadingMore()) {
                                         binding.get().noItemConstraintLayout.setVisibility(View.VISIBLE);

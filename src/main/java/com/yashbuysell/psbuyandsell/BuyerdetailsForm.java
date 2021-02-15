@@ -57,6 +57,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.UUID;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResultListener {
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -134,6 +136,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         Checkout.preload(getApplicationContext());
         pickup_location = UUID.randomUUID().toString().substring(0,5)  ;
 
+        AndroidNetworking.initialize(getApplicationContext());
 
 
 
@@ -246,7 +249,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                 String postelcode_checkingURL = getString(R.string.postalcode_checker) ;
                 AndroidNetworking.get(postelcode_checkingURL + pincode.getText().toString())
                         .setTag("postalcodeDetails")
-                        .setPriority(Priority.LOW)
+                        .setPriority(Priority.MEDIUM)
                         .build()
                         .getAsJSONArray(new JSONArrayRequestListener() {
                             @Override
@@ -332,7 +335,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                             .addBodyParameter("email", getString(R.string.courierUser_auth_email))
                             .addBodyParameter("password", getString(R.string.courierUser_auth_pass))
                             .setTag("token")
-                            .setPriority(Priority.MEDIUM)
+                            .setPriority(Priority.IMMEDIATE)
                             .build()
                             .getAsJSONObject(new JSONObjectRequestListener() {
                                 @Override
@@ -347,7 +350,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                                                         .addHeaders("Content-Type", "application/json")
                                                         .addHeaders("Authorization" ,"Bearer " + token)
                                                         .setTag("test")
-                                                        .setPriority(Priority.MEDIUM)
+                                                        .setPriority(Priority.IMMEDIATE)
                                                         .build()
                                                         .getAsJSONObject(new JSONObjectRequestListener() {
                                                             @Override
@@ -646,7 +649,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                             .addHeaders("Content-Type" , "application/json")
                             .addJSONObjectBody(payoutobj)
                             .setTag("createPayout")
-                            .setPriority(Priority.MEDIUM)
+                            .setPriority(Priority.IMMEDIATE)
                             .build()
                             .getAsJSONObject(new JSONObjectRequestListener() {
 
@@ -733,7 +736,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                                 .addHeaders("Authorization" , "Bearer " + token)
                                 .addJSONObjectBody(jsonObject)
                                 .setTag("createOrder")
-                                .setPriority(Priority.HIGH)
+                                .setPriority(Priority.IMMEDIATE)
                                 .build()
                                 .getAsJSONObject(new JSONObjectRequestListener() {
                                     @RequiresApi(api = Build.VERSION_CODES.M)

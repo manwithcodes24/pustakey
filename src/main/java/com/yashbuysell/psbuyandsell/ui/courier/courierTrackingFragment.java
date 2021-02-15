@@ -151,7 +151,7 @@ public class courierTrackingFragment extends Fragment {
                         .addBodyParameter("email", getString(R.string.courierUser_auth_email))
                         .addBodyParameter("password", getString(R.string.courierUser_auth_pass))
                         .setTag("token")
-                        .setPriority(Priority.MEDIUM)
+                        .setPriority(Priority.HIGH)
                         .build()
                         .getAsJSONObject(new JSONObjectRequestListener() {
 

@@ -62,7 +62,7 @@
     <string name="register__back_to_login">Already member ? Login</string>
     <string name="register__register">Register</string>
     <string name="register__new_account">Register New User Account</string>
-    <string name="register__check_option">Are you agreement this privacy and policy?</string>
+    <string name="register__check_option">Do you agree this privacy and policy?</string>
 
     <!-- Forgot Password -->
     <string name="forgot_password__title">Forgot Password</string>
@@ -94,6 +94,8 @@
     <string name="login__auth_facebook">This email is logged in with Facebook. Please try to login with Facebook.</string>
     <string name="login__fail">SignIn Failed</string>
     <string name="login__fail_account">Cannot SignIn your account</string>
+    <string name="message__want_to_quit" translatable="false">Do you want to close ?</string>
+    <string name="message__ok_close" translatable="false">Ok</string>
 
     <!-- Contact Us -->
     <string name="contact_us__name">Contact Name</string>
@@ -157,8 +159,6 @@
     <!-- Message -->
     <string name="message__loading">Loading…</string>
     <string name="message__please_wait">Please wait…</string>
-    <string name="message__want_to_quit">Do you really want to quit?</string>
-    <string name="message__ok_close">OK</string>
     <string name="message__cancel_close">Cancel</string>
     <string name="message__seller">Sellers</string>
     <string name="message__buyer">Buyers</string>

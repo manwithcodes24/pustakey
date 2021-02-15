@@ -121,8 +121,6 @@
     <!-- Message -->
     <string name="message__loading">Cargando…</string>
     <string name="message__please_wait">por favor espera…</string>
-    <string name="message__want_to_quit">¿Realmente quieres salir?</string>
-    <string name="message__ok_close">DE ACUERDO</string>
     <string name="message__cancel_close">Cancelar</string>
     <string name="message__seller">De los vendedores</string>
     <string name="message__buyer">De los compradores</string>

@@ -118,8 +118,6 @@
 
     <string name="message__loading">Yükleniyor…</string>
     <string name="message__please_wait">Lütfen bekle…</string>
-    <string name="message__want_to_quit">Gerçekten çıkmak istiyor musun?</string>
-    <string name="message__ok_close">tamam</string>
     <string name="message__cancel_close">İptal etmek</string>
     <string name="message__seller">Satıcılardan</string>
     <string name="message__buyer">Alıcılardan</string>

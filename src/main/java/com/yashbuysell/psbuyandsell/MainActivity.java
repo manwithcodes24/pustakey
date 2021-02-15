@@ -357,22 +357,22 @@ public class MainActivity extends PSAppCompactActivity {
             {
                 if(fragment instanceof SelectedCityFragment)
                 {
-                    this.finish();
-                    System.exit(0);
-//                    String message = getBaseContext().getString(R.string.message__want_to_quit);
-//                    String okStr =getBaseContext().getString(R.string.message__ok_close);
-//                    String cancelStr = getBaseContext().getString(R.string.message__cancel_close);
-//
-//                    psDialogMsg.showConfirmDialog(message, okStr,cancelStr );
-//
-//                    psDialogMsg.show();
-//
-//                    psDialogMsg.okButton.setOnClickListener(view -> {
-//                        psDialogMsg.cancel();
-//                        finish();
-//                        System.exit(0);
-//                    });
-//                    psDialogMsg.cancelButton.setOnClickListener(view -> psDialogMsg.cancel());
+                    String message = getBaseContext().getString(R.string.message__want_to_quit);
+                    String okStr =getBaseContext().getString(R.string.message__ok_close);
+                    String cancelStr = getBaseContext().getString(R.string.message__cancel_close);
+
+                    psDialogMsg.showConfirmDialog(message, okStr,cancelStr );
+
+                    psDialogMsg.show();
+
+                    psDialogMsg.okButton.setOnClickListener(view -> {
+                        psDialogMsg.cancel();
+                        finishActivity( 1) ;
+                        finish();
+                        System.exit(0);
+                    });
+                    psDialogMsg.cancelButton.setOnClickListener(view -> psDialogMsg.cancel());
+
                 }else {
                     setSelectMenu(R.id.nav_home);
                     showBottomNavigation();

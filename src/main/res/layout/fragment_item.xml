@@ -919,12 +919,12 @@
                                 android:layout_marginStart="10dp"
                                 android:layout_marginTop="24dp"
                                 android:layout_marginEnd="16dp"
-                                android:hint="Check Availibility ( enter pincode )"
+                                android:hint="Check Delivery Charge (enter pincode)"
 
                                 android:lineSpacingExtra="@dimen/space_4"
                                 android:textColor="@color/colorWhite"
 
-                                android:textColorHint="@color/colorWhite"
+                                android:textColorHint="@color/md_grey_300"
 
                                 android:textSize="@dimen/font_body_size"
                                 app:font='@{"normal"}'

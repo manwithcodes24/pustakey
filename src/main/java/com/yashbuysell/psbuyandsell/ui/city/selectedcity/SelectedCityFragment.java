@@ -551,16 +551,13 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
         //Popular Item
 
         //Recent Item
-        Log.d("OrderRange" , " Login User Id " + Utils.checkUserId(loginUserId));
 
         recentItemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), Config.LIMIT_FROM_DB_COUNT, Constants.ZERO, new ItemParameterHolder().getRecentItem());
-        Log.d("OrderRange" , " Recent Item View " + recentItemViewModel.toString());
 
         recentItemViewModel.getItemListByKeyData().observe(this, listResource -> {
 
 
             if (listResource != null) {
-                Log.d("OrderRange" , " listResource Reached" + listResource.toString());
                 switch (listResource.status) {
                     case SUCCESS:
 
@@ -573,20 +570,16 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
                                     double dis = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(x).lat) , Double.parseDouble(listResource.data.get(x).lng));
                                     distanceList.add(dis);
-                                    Log.d("OrderRange" , "location name = " + listResource.data.get(x).title + " distance = " + dis );
 
 
 
 
                                 }
-                                Log.d("OrderRange" , "DistanceListItems Size " +  distanceList.size());
 
                                 Collections.sort(distanceList);
-                                Log.d("OrderRange" , "DistanceListItems Size = " +  distanceList.size());
 
                                 for(int i = 0  ; i < listResource.data.size() ; i++) {
                                     for(int x = 0 ; x < distanceList.size() ; x++){
-                                        Log.d("OrderRange" , "DistanceListItems at " +  x + " = " + distanceList.get(x));
 
                                         double dis2 = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(i).lat) , Double.parseDouble(listResource.data.get(i).lng));
                                         if(dis2 == distanceList.get(x)){
@@ -616,36 +609,37 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
                                 ArrayList<Double> distanceList
                                         = new ArrayList<Double>();
 
-                                for (int x = 0 ; x < listResource.data.size() ; x++){
+//                                for (int x = 0 ; x < listResource.data.size() ; x++){
+//
+//                                    double dis = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(x).lat) , Double.parseDouble(listResource.data.get(x).lng));
+//                                    distanceList.add(dis);
+//
+//
+//
+//
+//                                }
+//                                try {
+//                                    Collections.sort(distanceList);
+//
+//                                    for(int i = 0  ; i < listResource.data.size() ; i++) {
+//                                        for(int x = 0 ; x < distanceList.size() ; x++){
+//
+//                                            double dis2 = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(i).lat) , Double.parseDouble(listResource.data.get(i).lng));
+//                                            if(dis2 == distanceList.get(x)){
+//                                                double temp = dis2 ;
+//
+//                                                Collections.swap(listResource.data, i, x);
+//
+//
+//                                            }
+//
+//                                        }
+//                                    }
+//                                }
+//                                catch (Exception e) {
+//
+//                                }
 
-                                    double dis = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(x).lat) , Double.parseDouble(listResource.data.get(x).lng));
-                                    distanceList.add(dis);
-                                    Log.d("OrderRange" , "location name = " + listResource.data.get(x).title + " distance = " + dis );
-
-
-
-
-                                }
-                                Log.d("OrderRange" , "DistanceListItems Size " +  distanceList.size());
-
-                                Collections.sort(distanceList);
-                                Log.d("OrderRange" , "DistanceListItems Size = " +  distanceList.size());
-
-                                for(int i = 0  ; i < listResource.data.size() ; i++) {
-                                    for(int x = 0 ; x < distanceList.size() ; x++){
-                                        Log.d("OrderRange" , "DistanceListItems at " +  x + " = " + distanceList.get(x));
-
-                                        double dis2 = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(i).lat) , Double.parseDouble(listResource.data.get(i).lng));
-                                        if(dis2 == distanceList.get(x)){
-                                            double temp = dis2 ;
-
-                                            Collections.swap(listResource.data, i, x);
-
-
-                                        }
-
-                                    }
-                                }
 
                                 SelectedCityFragment.this.replaceRecentItemList(listResource.data);
                             }
@@ -755,7 +749,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private Double getDistance(double lat1 , double lon1 , double lat2 , double lon2) {
+    public static Double getDistance(double lat1, double lon1, double lat2, double lon2) {
 
         final int R = 6371; // Radius of the earth
         lon1 = Math.toRadians(lon1);

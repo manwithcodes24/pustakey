@@ -118,8 +118,6 @@
 
     <string name="message__loading">読み込み中…</string>
     <string name="message__please_wait">お待ちください…</string>
-    <string name="message__want_to_quit">本当に辞めますか？</string>
-    <string name="message__ok_close">OK</string>
     <string name="message__cancel_close">キャンセル</string>
     <string name="message__seller">売り手から</string>
     <string name="message__buyer">バイヤーから</string>

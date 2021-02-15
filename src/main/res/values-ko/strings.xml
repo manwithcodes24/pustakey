@@ -118,8 +118,6 @@
 
     <string name="message__loading">로드 중…</string>
     <string name="message__please_wait">기다려주세요…</string>
-    <string name="message__want_to_quit">정말로 끝내고 싶습니까?</string>
-    <string name="message__ok_close">승인</string>
     <string name="message__cancel_close">취소</string>
     <string name="message__seller">판매자로부터</string>
     <string name="message__buyer">구매자로부터</string>

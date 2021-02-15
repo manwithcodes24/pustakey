@@ -119,8 +119,6 @@
 
     <string name="message__loading">Caricamento in corso…</string>
     <string name="message__please_wait">Attendere prego…</string>
-    <string name="message__want_to_quit">Vuoi veramente abbandonare?</string>
-    <string name="message__ok_close">ok</string>
     <string name="message__cancel_close">Annulla</string>
     <string name="message__seller">Dai venditori</string>
     <string name="message__buyer">Dagli acquirenti</string>

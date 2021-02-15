@@ -194,7 +194,6 @@ public class ItemFragment extends PSFragment {
 
             this.mData = mDatabase.child(courierDetails);
            this.buyerPinCode = binding.get().checkAvailibilityEditText.getText().toString() ;
-            Log.d("itemId" , "itemId at ItemFragment : " + itemViewModel.itemId ) ;
            mData.addValueEventListener(new ValueEventListener() {
 
 
@@ -213,14 +212,13 @@ try{
                 .addBodyParameter("email", getString(R.string.courierUser_auth_email))
                 .addBodyParameter("password", getString(R.string.courierUser_auth_pass))
                 .setTag("test")
-                .setPriority(Priority.MEDIUM)
+                .setPriority(Priority.IMMEDIATE)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
                             token = response.get("token").toString();
-                            Log.d("courierToken", response.get("token").toString());
                             if(token != null && token!="") {
 
 
@@ -228,26 +226,23 @@ try{
                                         .addHeaders("Content-Type", "application/json")
                                         .addHeaders("Authorization" ,"Bearer " + token)
                                         .setTag("test")
-                                        .setPriority(Priority.MEDIUM)
+                                        .setPriority(Priority.HIGH)
                                         .build()
                                         .getAsJSONObject(new JSONObjectRequestListener() {
                                             @Override
                                             public void onResponse(JSONObject response) {
 
 
-                                                Log.d("courierResponse", response.toString());
                                                 try {
 
                                                     JSONObject data = (JSONObject) response.getJSONObject("data");
                                                     JSONArray availableCourierCompanies = (JSONArray)  data.get("available_courier_companies");
 
-                                                    Log.d("courierResponse" , availableCourierCompanies.toString()) ;
 
                                                     for(int i = 0; i < availableCourierCompanies.length(); i++) {
                                                         JSONObject obj = (JSONObject) availableCourierCompanies.get(i);
                                                         String rate = obj.getString("rate");
 
-                                                        Log.d("courierRate" , rate) ;
                                                         if(rate != null )
                                                             rateList.add(Float.parseFloat(rate));
 

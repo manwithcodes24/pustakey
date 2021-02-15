@@ -118,8 +118,6 @@
 
     <string name="message__loading">लोड हो रहा है…</string>
     <string name="message__please_wait">कृपया प्रतीक्षा करें…</string>
-    <string name="message__want_to_quit">क्या आप वास्तव में छोड़ना चाहते हैं?</string>
-    <string name="message__ok_close">ठीक</string>
     <string name="message__cancel_close">रद्द करना</string>
     <string name="message__seller">सेलर्स से</string>
     <string name="message__buyer">खरीदारों से</string>

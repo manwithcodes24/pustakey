@@ -97,18 +97,12 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 //        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 //        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-
-        if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
-
-        }
+//
+//        if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+//
+////            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 500, this);
+//
+//        }
 
 
 
@@ -148,32 +142,27 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
                     {
-                        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, this);
-                        myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 30000, 500, this);
+                        myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
+                        while (gotMyLocation){
+                            if (myLocation == null){
+                                myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
+                            }
+                            else {
+                                gotMyLocation = false;
 
-
-
-
-
-//                        while (gotMyLocation){
-//                            if (myLocation == null){
-//                                myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
-//
-//                            }
-//                            else {
-//                                gotMyLocation = false;
-//                            }
-//                        }
+                            }
+                        }
 
 
                         if(myLocation != null) {
+
                             try {
                                 this.lat = String.valueOf(myLocation.getLatitude());
                                 this.lan  = String.valueOf(myLocation.getLongitude()) ;
-                                Log.d("locationCity" , lat) ;
-                                Log.d("locationCity" , lan) ;
+
 
 //                addresses = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
                                 this.city = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getLocality();
@@ -233,12 +222,21 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        getActivity().recreate();
+
+        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            requestPermissions(
+                    new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                            android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    MY_PERMISSIONS_REQUEST_LOCATION);
+        }
+
         if (resultCode == 1) {
             switch (requestCode) {
                 case 1:
 
-                    initData();
+
+
                     break;
             }
         }
@@ -250,28 +248,28 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
     protected void initData() {
         if(!isGPSEnabled) {
             buildAlertMessageNoGps() ;
-            return;
+
         }
+        else {
+
 
 
 //        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 
-            Log.d("locationCity" , "Reached Here 181") ;
-
             if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-                Log.d("locationCity" , "Reached Here 184") ;
 
                 requestPermissions(
                         new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,
                                 android.Manifest.permission.ACCESS_FINE_LOCATION},
                         MY_PERMISSIONS_REQUEST_LOCATION);
             }
+
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 0, this);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 500, this);
 
             while (gotMyLocation){
                 if (myLocation == null){
-                    myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                    myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                 }
                 else {
@@ -283,23 +281,19 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                 try {
                     this.lat = String.valueOf(myLocation.getLatitude());
                     this.lan = String.valueOf(myLocation.getLongitude());
-                    Log.d("locationCity", lat);
-                    Log.d("locationCity", lan);
+
 
 //                addresses = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                    Log.d("locationCity", geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).toString());
                     this.city = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getLocality();
                     this.postalcode = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getPostalCode();
-                    Log.d("locationCity", city);
                     selected_location_id = "itm_loca" + postalcode ;
                     selectedLat = lat ;
-                    Log.d("location_id" , selected_location_id) ;
 
                     selectedLng = lan ;
                     selected_location_name = city ;
                     if(city != "" && city != null){
 
-                        navigationController.navigateToMainActivity(getActivity(), "itm_loca" + postalcode, city, lat, lan);
+                        navigationController.navigateToMainActivity(getActivity(), selected_location_id, city, lat, lan);
 
                     }
                 } catch (Exception e) {
@@ -307,6 +301,7 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                 }
                 locationFetched = true;
 
+            }
 
                 if (connectivity.isConnected()) {
                     if (startDate.equals(Constants.ZERO)) {

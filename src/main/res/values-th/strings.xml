@@ -117,8 +117,6 @@
 
     <string name="message__loading">กำลังโหลด …</string>
     <string name="message__please_wait">โปรดรอ…</string>
-    <string name="message__want_to_quit">คุณต้องการเลิกจริงๆหรือ</string>
-    <string name="message__ok_close">ตกลง</string>
     <string name="message__cancel_close">ยกเลิก</string>
     <string name="message__seller">จากผู้ขาย</string>
     <string name="message__buyer">จากผู้ซื้อ</string>

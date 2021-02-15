@@ -120,8 +120,6 @@
     <!-- Message -->
     <string name="message__loading">جار التحميل…</string>
     <string name="message__please_wait">ارجوك انتظر…</string>
-    <string name="message__want_to_quit">حقيقة تريد الاستقالة؟</string>
-    <string name="message__ok_close">حسنا</string>
     <string name="message__cancel_close">إلغاء</string>
     <string name="message__seller">من البائعين</string>
     <string name="message__buyer">من المشترين</string>

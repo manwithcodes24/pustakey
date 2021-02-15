@@ -117,8 +117,6 @@
 
     <string name="message__loading">Chargement…</string>
     <string name="message__please_wait">S\'il vous plaît, attendez…</string>
-    <string name="message__want_to_quit">Veux-tu vraiment arrêter de fumer?</string>
-    <string name="message__ok_close">D\'accord</string>
     <string name="message__cancel_close">Annuler</string>
     <string name="message__seller">Chez les vendeurs</string>
     <string name="message__buyer">Des acheteurs</string>

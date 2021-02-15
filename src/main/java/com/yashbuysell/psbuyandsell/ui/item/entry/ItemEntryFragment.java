@@ -522,15 +522,10 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
         progressDialog.setCancelable(false);
 
         if (Config.SHOW_ADMOB && connectivity.isConnected()) {
-            AdRequest adRequest = new AdRequest.Builder()
-                    .build();
-            binding.get().adView.loadAd(adRequest);
-            AdRequest adRequest2 = new AdRequest.Builder()
-                    .build();
 
 
         } else {
-            binding.get().adView.setVisibility(View.GONE);
+
 
         }
 
@@ -671,17 +666,10 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
                 String postelcode_checkingURL = getString(R.string.postalcode_checker) ;
                 AndroidNetworking.get(postelcode_checkingURL + binding.get().addressEditText.getText().toString())
-                        .addHeaders("x-rapidapi-key", "af6b2262damsha151b076c1fbf96p16ba9ajsn66c4db3f1549")
-                        .addHeaders("x-rapidapi-host", "gpc.p.rapidapi.com")
                         .setTag("postalcodeDetails")
-                        .setPriority(Priority.LOW)
+                        .setPriority(Priority.MEDIUM)
                         .build()
                         .getAsJSONArray(new JSONArrayRequestListener() {
                             @Override
@@ -690,13 +678,13 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                                 try {
                                     JSONObject objData = (JSONObject) response.get(0);
                                     String status = objData.getString("Status");
-                                        JSONObject PostalOffices = (JSONObject) objData.getJSONArray("PostOffice").get(0) ;
-                                        String postalcode_city = PostalOffices.getString("District");
-                                        String postalcode_country = PostalOffices.getString("Country");
-                                        String postalcode_state = PostalOffices.getString("State");
-                                        binding.get().cityEditText.setText(postalcode_city);
-                                        binding.get().countryEditText.setText(postalcode_country);
-                                        binding.get().stateEditText.setText(postalcode_state);
+                                    JSONObject PostalOffices = (JSONObject) objData.getJSONArray("PostOffice").get(0) ;
+                                    String postalcode_city = PostalOffices.getString("District");
+                                    String postalcode_country = PostalOffices.getString("Country");
+                                    String postalcode_state = PostalOffices.getString("State");
+                                    binding.get().cityEditText.setText(postalcode_city);
+                                    binding.get().countryEditText.setText(postalcode_country);
+                                    binding.get().stateEditText.setText(postalcode_state);
 
 
 
@@ -712,6 +700,11 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                                 // handle error
                             }
                         });
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
 
@@ -846,6 +839,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
 
                 if (itemViewModel.itemId != null) {
 
+
                     if (!itemViewModel.itemId.equals(Constants.ADD_NEW_ITEM)) {//edit
 
                         itemViewModel.setUploadItemObj(ItemEntryFragment.this.catId, ItemEntryFragment.this.subCatId, ItemEntryFragment.this.typeId, ItemEntryFragment.this.priceTypeId, ItemEntryFragment.this.currencyId, ItemEntryFragment.this.conditionId, selected_location_id,
@@ -854,11 +848,14 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                                 binding.get().brandEditText.getText().toString(), businessMode, itemViewModel.is_sold_out, binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, itemViewModel.itemId, loginUserId);
                     } else {//add new item
-                        itemViewModel.setUploadItemObj(ItemEntryFragment.this.catId, ItemEntryFragment.this.subCatId, ItemEntryFragment.this.typeId, ItemEntryFragment.this.priceTypeId, ItemEntryFragment.this.currencyId, ItemEntryFragment.this.conditionId, ItemEntryFragment.this.locationId,
+
+                        itemViewModel.setUploadItemObj(ItemEntryFragment.this.catId, ItemEntryFragment.this.subCatId, ItemEntryFragment.this.typeId, ItemEntryFragment.this.priceTypeId, ItemEntryFragment.this.currencyId, ItemEntryFragment.this.conditionId, selected_location_id,
                                 binding.get().remarkEditText.getText().toString(), binding.get().descEditText.getText().toString(),
                                 binding.get().highlightInfoEditText.getText().toString(), binding.get().priceEditText.getText().toString(), ItemEntryFragment.this.dealOptionId,
                                 binding.get().brandEditText.getText().toString(), businessMode, "", binding.get().titleEditText.getText().toString(), binding.get().addressEditText.getText().toString(),
                                 itemViewModel.latValue, itemViewModel.lngValue, "", loginUserId);
+
+
                     }
 
                 }
@@ -1128,7 +1125,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                                 catch (Exception e){
                                     Log.i("Error" , "Error in saving seller info :-  " + e.toString()) ;
                                     Toast.makeText(getApplicationContext() , getString(R.string.error_message__item_cannot_upload_checkForm) , Toast.LENGTH_LONG).show();
-                                    psDialogMsg.show();
+
                                 }
 
 

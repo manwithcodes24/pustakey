@@ -115,6 +115,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
         FragmentChatBinding dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat, container, false, dataBindingComponent);
 
         binding = new AutoClearedValue<>(this, dataBinding);
+        AndroidNetworking.initialize(getApplicationContext());
 
         binding.get().setLoadingMore(connectivity.isConnected());
 
@@ -643,11 +644,9 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.d("orderStatus" , "got the snapshot of data" );
 
                 try {
                     String paymentStatus =   snapshot.child("payment").getValue().toString() ;
-                    Log.d("orderStatus" , "paymentStatus = " + paymentStatus);
 
 
 
@@ -1715,7 +1714,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                                     .addHeaders("Authorization", "key=" + getApplicationContext().getString(R.string.firebase_serverkey))
                                     .addJSONObjectBody(jsonObject)
                                     .setTag("notification")
-                                    .setPriority(Priority.MEDIUM)
+                                    .setPriority(Priority.IMMEDIATE)
                                     .build()
                                     .getAsJSONObject(new JSONObjectRequestListener() {
                                         @Override
@@ -1728,6 +1727,8 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                                             // handle error
                                         }
                                     });
+
+
                         }
                         catch (Exception e) {
                             Toast.makeText(getApplicationContext() , "Error occured", Toast.LENGTH_SHORT) ;
@@ -1768,7 +1769,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
                                     .addHeaders("Authorization", "key=" + getApplicationContext().getString(R.string.firebase_serverkey))
                                     .addJSONObjectBody(jsonObject)
                                     .setTag("notification")
-                                    .setPriority(Priority.MEDIUM)
+                                    .setPriority(Priority.HIGH)
                                     .build()
                                     .getAsJSONObject(new JSONObjectRequestListener() {
                                         @Override

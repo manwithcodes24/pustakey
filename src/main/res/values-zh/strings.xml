@@ -117,8 +117,6 @@
 
     <string name="message__loading">载入中…</string>
     <string name="message__please_wait">请耐心等待…</string>
-    <string name="message__want_to_quit">你真的想退出吗？</string>
-    <string name="message__ok_close">好</string>
     <string name="message__cancel_close">取消</string>
     <string name="message__seller">来自卖家</string>
     <string name="message__buyer">来自买家</string>

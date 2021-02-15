@@ -119,8 +119,6 @@
 
     <string name="message__loading">Wird geladen…</string>
     <string name="message__please_wait">Warten Sie mal…</string>
-    <string name="message__want_to_quit">Möchtest du wirklich aufhören?</string>
-    <string name="message__ok_close">OK</string>
     <string name="message__cancel_close">Stornieren</string>
     <string name="message__seller">Von Verkäufern</string>
     <string name="message__buyer">Von Käufern</string>

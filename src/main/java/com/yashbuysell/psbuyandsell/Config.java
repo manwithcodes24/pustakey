@@ -12,14 +12,14 @@ public class Config {
      * AppVersion
      * For your app, you need to change according based on your app version
      */
-    public static String APP_VERSION = "1";
+    public static String APP_VERSION = "2.9";
 
     /**
      * APP Setting
      * Set false, your app is production
      * It will turn off the logging Process
      */
-    public static boolean IS_DEVELOPMENT = true;
+    public static boolean IS_DEVELOPMENT = false;
 
     /**
      * API URL
@@ -149,7 +149,7 @@ public class Config {
     /**
      * Admob Setting
      */
-    public static final Boolean SHOW_ADMOB = true;
+    public static final Boolean SHOW_ADMOB = false;
 
 
     /**
@@ -226,7 +226,7 @@ public class Config {
     /**
      * Compress Image
      */
-    public static boolean isCompressImage = true;
+    public static boolean isCompressImage = false;
     public static float uploadImageHeight = 1024;
     public static float uploadImageWidth = 1024;
     public static float profileImageHeight = 512;

@@ -132,9 +132,8 @@ public class SubCategoryFragment extends PSFragment implements DataBoundListAdap
 
                 itemParameterHolder.sub_cat_id = subCategory.id;
                 itemParameterHolder.isPaid = Constants.PAIDITEMFIRST;
-                itemParameterHolder.location_id = selected_location_id;
-                itemParameterHolder.lat = selectedLat;
-                itemParameterHolder.lng = selectedLng;
+
+
 
                 navigationController.navigateToHomeFilteringActivity(SubCategoryFragment.this.getActivity(), itemParameterHolder, subCategory.name, selectedCityLat, selectedCityLng, Constants.MAP_MILES);
 

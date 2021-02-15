@@ -118,8 +118,6 @@
 
     <string name="message__loading">Memuatkan …</string>
     <string name="message__please_wait">Sila tunggu…</string>
-    <string name="message__want_to_quit">Adakah anda benar-benar mahu berhenti?</string>
-    <string name="message__ok_close">okey</string>
     <string name="message__cancel_close">Batalkan</string>
     <string name="message__seller">Dari Penjual</string>
     <string name="message__buyer">Dari Pembeli</string>

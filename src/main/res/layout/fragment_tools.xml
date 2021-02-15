@@ -7,13 +7,11 @@
     tools:context=".ui.tools.tools">
 
     <LinearLayout
-        android:id="@+id/notusable1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/unusable2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
@@ -24,7 +22,6 @@
             android:text="Tracking" />
 
         <Button
-            android:id="@+id/unusable3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
@@ -43,7 +40,6 @@
             android:text="Cart" />
 
         <ImageView
-            android:id="@+id/imageView42"
             android:layout_width="match_parent"
             android:layout_height="468dp"
             android:layout_gravity="bottom"
