@@ -861,6 +861,36 @@ catch (Exception e){
     }
 
     private void getMarkAsSoldOutData() {
+        this.mDatabase = FirebaseDatabase.getInstance().getReference(itemViewModel.itemId) ;
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                try {
+                    String paymentStatus =   snapshot.child("payment").getValue().toString() ;
+
+
+//                            labelUrl =  snapshot.child("labelUrl").getValue().toString() ;
+//                            binding.get().labelButton.setVisibility(View.VISIBLE);
+
+                    String labelUrl = snapshot.child("labelUrl").getValue().toString();;
+                    Log.d("orderStatus" , "labelUrl = " + labelUrl);
+                    if(labelUrl != null && labelUrl != Constants.EMPTY_STRING && labelUrl != "null"){
+                        binding.get().chatButton.setVisibility(View.INVISIBLE);
+
+                    }
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        }) ;
         LiveData<Resource<Item>> itemDetail = itemViewModel.getMarkAsSoldOutItemData();
         if (itemDetail != null) {
             itemDetail.observe(this, listResource -> {

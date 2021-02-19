@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
@@ -40,9 +41,11 @@ import com.yashbuysell.psbuyandsell.databinding.ItemChatListReceiverAdapterBindi
 import com.yashbuysell.psbuyandsell.databinding.ItemChatListSenderAdapterBinding;
 import com.yashbuysell.psbuyandsell.databinding.ItemChatListTimeBinding;
 import com.yashbuysell.psbuyandsell.databinding.ItemItemHasBeenSoldBinding;
+import com.yashbuysell.psbuyandsell.ui.chat.chat.ChatFragment;
 import com.yashbuysell.psbuyandsell.ui.common.DataBoundListAdapter;
 import com.yashbuysell.psbuyandsell.utils.Constants;
 import com.yashbuysell.psbuyandsell.utils.Objects;
+import com.yashbuysell.psbuyandsell.viewmodel.chat.ChatViewModel;
 import com.yashbuysell.psbuyandsell.viewmodel.item.ItemViewModel;
 import com.yashbuysell.psbuyandsell.viewobject.messageHolder.Message;
 
@@ -59,7 +62,9 @@ public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     private final clickCallBack callback;
     private List<Message> messageList;
     private int dataVersion = 0;
+    private ChatViewModel chatViewModel;
     private String userId;
+
     private String itemId;
     private String otherUserProfileUrl;
     private ItemViewModel itemViewModel ;
@@ -367,8 +372,11 @@ public class ChatListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
                     Intent myIntent = new Intent(getApplicationContext(), BuyerdetailsForm.class);
                     myIntent.putExtra("itemId", itemId);
+                    myIntent.putExtra("receiverId", ChatFragment.chatViewModel.receiverId);
                     myIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     getApplicationContext().startActivity(myIntent);
+
+
                 }
                 catch (Exception  e) {
                     Log.d("error" , e.toString()) ;

@@ -12,6 +12,7 @@
 
     <string name="adview_publisher_key" translatable="false">pub-0000000000000000</string>
 
+    <string name="stripe_publickey" translatable="false">pk_test_51IK60wJIqEuh5x7ylQSDL3gZecZSFddzpf4mIKNTNCLMLHcEFPT5SP45tmNVRe85crY41POAgyz2XsnzPSLrKLqk00h3hRpYUA</string>
     <string name="razor_key" translatable="false">rzp_test_WsEasIH8weUues</string>
     <string name="razor_createPayout" translatable="false">https://api.razorpay.com/v1/payouts</string>
 
@@ -426,7 +427,7 @@
 
     <string name="courierOrder_mode" translatable="false">Surface</string>
     <string name="labelNotificationTitle" translatable="false">Label Generated</string>
-    <string name="labelNotificationDis" translatable="false">Click here to download your label</string>
+    <string name="labelNotificationDis" translatable="false">Download your label from chat!</string>
     <string name="paymentDone" translatable="false">success</string>
     <string name="paymentPending" translatable="false">pending</string>
     <string name="paymentError" translatable="false">Error</string>

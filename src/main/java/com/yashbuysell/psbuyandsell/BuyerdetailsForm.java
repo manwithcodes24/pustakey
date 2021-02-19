@@ -16,6 +16,7 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,12 +26,16 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.gson.JsonParser;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
+import com.stripe.android.EphemeralKey;
+import com.stripe.android.EphemeralKeyUpdateListener;
+import com.stripe.android.PaymentConfiguration;
 import com.yashbuysell.psbuyandsell.ui.chat.chat.ChatActivity;
 import com.yashbuysell.psbuyandsell.utils.Constants;
 import com.yashbuysell.psbuyandsell.utils.PSDialogMsg;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.annotation.Size;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
@@ -55,6 +60,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
@@ -80,7 +87,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
     double convertedAmount ;
     String appKeyId ;
     String appSecretKey ;
-    private String itemId ;
+    private String itemId, receiverId ;
     private String token ;
     private String seller_name ;
     private String seller_email ;
@@ -133,11 +140,12 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         this.country = findViewById(R.id.buyerCountryEditText) ;
         this.submitBtn = findViewById(R.id.submitButton) ;
         this.itemId = getIntent().getStringExtra("itemId");
+        this.receiverId = getIntent().getStringExtra("receiverId");
         Checkout.preload(getApplicationContext());
         pickup_location = UUID.randomUUID().toString().substring(0,5)  ;
 
         AndroidNetworking.initialize(getApplicationContext());
-
+        PaymentConfiguration.init(getApplicationContext(), getString(R.string.stripe_publickey));
 
 
 
@@ -236,7 +244,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         }
 
 
-        Log.d("itemId" , "itemId at buyer form " + itemId);
+
 
         pincode.addTextChangedListener(new TextWatcher() {
             @Override
@@ -786,7 +794,58 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                                                 NotificationManager notificationManager2 =  (NotificationManager) getApplicationContext().getSystemService(Service.NOTIFICATION_SERVICE);
                                                 notificationManager2.notify(1, notification.build());
 
+                                                DatabaseReference fcmRef = FirebaseDatabase.getInstance().getReference("users") ;
+                                                fcmRef.addValueEventListener(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                                        try {
+                                                            String fcmtoken = snapshot.child(receiverId).child("fcmtoken").getValue().toString() ;
 
+                                                            final String postUrl = "https://fcm.googleapis.com/fcm/send";
+
+                                                            JSONObject jsonObject = new JSONObject() ;
+                                                            jsonObject.put("registration_id" , fcmtoken);
+                                                            jsonObject.put("to" , fcmtoken);
+                                                            jsonObject.put("collapse_key" , "type_a");
+
+                                                            JSONObject notiObj = new JSONObject();
+                                                            notiObj.put("title", "Label Generated") ;
+                                                            notiObj.put("body", getString(R.string.labelNotificationDis)) ;
+
+                                                            jsonObject.put("notification" , notiObj);
+
+
+                                                            AndroidNetworking.post(postUrl)
+                                                                    .addHeaders("Content-Type", "application/json")
+                                                                    .addHeaders("Authorization", "key=" + getApplicationContext().getString(R.string.firebase_serverkey))
+                                                                    .addJSONObjectBody(jsonObject)
+                                                                    .setTag("notification")
+                                                                    .setPriority(Priority.IMMEDIATE)
+                                                                    .build()
+                                                                    .getAsJSONObject(new JSONObjectRequestListener() {
+                                                                        @Override
+                                                                        public void onResponse(JSONObject response) {
+                                                                            finish();
+
+                                                                        }
+
+                                                                        @Override
+                                                                        public void onError(ANError error) {
+
+                                                                        }
+                                                                    });
+
+                                                        }
+                                                        catch (Exception e) {
+                                                            Toast.makeText(getApplicationContext() , "Error occured", Toast.LENGTH_SHORT) ;
+                                                        }
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError error) {
+
+                                                    }
+                                                });
 //                                                Intent goToNextHome = new Intent(getApplicationContext(), MainActivity.class);
 //                                                startActivity(goToNextHome);
 //                                                Intent broadcastIntent = new Intent("com.yashbuysell.psbuyandsell_broadcast-Label");
@@ -842,3 +901,4 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         Toast.makeText(getApplicationContext() , "Payment Error" , Toast.LENGTH_SHORT).show();
     }
 }
+

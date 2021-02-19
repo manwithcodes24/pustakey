@@ -149,7 +149,7 @@ public class Config {
     /**
      * Admob Setting
      */
-    public static final Boolean SHOW_ADMOB = false;
+    public static final Boolean SHOW_ADMOB = true;
 
 
     /**
@@ -226,7 +226,7 @@ public class Config {
     /**
      * Compress Image
      */
-    public static boolean isCompressImage = false;
+    public static boolean isCompressImage = true;
     public static float uploadImageHeight = 1024;
     public static float uploadImageWidth = 1024;
     public static float profileImageHeight = 512;

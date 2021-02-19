@@ -922,7 +922,7 @@ public class NavigationController {
         if (itemLat != null) {
             itemParameterHolder.lat = itemLat;
             itemParameterHolder.lng = itemLng;
-            itemParameterHolder.mapMiles = mapMiles;
+
         }
 
         Intent intent = new Intent(mainActivity, SearchListActivity.class);
@@ -1121,6 +1121,8 @@ public class NavigationController {
         Intent intent = new Intent(activity, MainActivity.class);
         intent.putExtra(Constants.ITEM_LOCATION_TYPE_ID, selectedLocationId);
         intent.putExtra(Constants.SELECTED_LOCATION_ID, selectedLocationId);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         intent.putExtra(Constants.ITEM_LOCATION_TYPE_NAME, selectedLocationName);
         intent.putExtra(Constants.SELECTED_LOCATION_NAME, selectedLocationName);
         intent.putExtra(Constants.LAT, lat);

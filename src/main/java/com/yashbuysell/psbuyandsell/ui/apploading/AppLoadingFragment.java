@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -76,7 +77,7 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
     Geocoder geocoder;
     List<Address> addresses;
     protected LocationManager locationManager;
-    protected boolean isGPSEnabled;
+    protected boolean isGPSEnabled, isNetworkEnabled;
 
     protected LocationListener locationListener;
     private boolean locationFetched = false;
@@ -96,11 +97,12 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
         geocoder = new Geocoder(getActivity(), Locale.getDefault());
 //        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-//        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) ;
+    //        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 //
 //        if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 //
-////            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 500, this);
+////            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 3000, 500, this);
 //
 //        }
 
@@ -142,11 +144,28 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED)
                     {
-                        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 30000, 500, this);
-                        myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        if(isNetworkEnabled) {
+                            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 500, this);
+                            myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
+                        }
+                        if(isGPSEnabled){
+                            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 500, this);
+                            myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                            while (gotMyLocation){
+                                if (myLocation == null){
+
+                                        myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                                }
+                                else {
+                                    gotMyLocation = false;
+                                }
+                            }
+                        }
                         while (gotMyLocation){
                             if (myLocation == null){
+
                                 myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                             }
@@ -155,6 +174,8 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
                             }
                         }
+
+
 
 
                         if(myLocation != null) {
@@ -230,6 +251,11 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                             android.Manifest.permission.ACCESS_FINE_LOCATION},
                     MY_PERMISSIONS_REQUEST_LOCATION);
         }
+        else {
+            getActivity().recreate();
+        }
+
+
 
         if (resultCode == 1) {
             switch (requestCode) {
@@ -254,7 +280,7 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
 
 
-//        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+//        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
             if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -265,15 +291,34 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
             }
 
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 3000, 500, this);
+            if(isNetworkEnabled) {
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 500, this);
+                myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
+            }
+            if(isGPSEnabled){
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 500, this);
+                myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                while (gotMyLocation){
+                    if (myLocation == null){
+
+                        myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+                    }
+                    else {
+                        gotMyLocation = false;
+                    }
+                }
+            }
             while (gotMyLocation){
                 if (myLocation == null){
+
                     myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
                 }
                 else {
                     gotMyLocation = false;
+
                 }
             }
 
@@ -319,12 +364,12 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
                     } else {
                     }
-
-                    try {
-                        Thread.sleep(1200);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+//
+//                    try {
+//                        Thread.sleep(1200);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
                     if (getActivity() != null) {
                         getActivity().finish();
                     }

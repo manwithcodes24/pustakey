@@ -160,7 +160,7 @@ dependencies {
     implementation 'com.google.android.ads.consent:consent-library:1.0.8'
 
     //Stripe Payment
-    implementation 'com.stripe:stripe-android:10.4.6'
+    implementation 'com.stripe:stripe-android:16.1.1'
 
     //BrainTree
     implementation 'com.braintreepayments.api:drop-in:4.6.0'

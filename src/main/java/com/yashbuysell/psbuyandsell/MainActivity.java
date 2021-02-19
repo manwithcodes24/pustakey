@@ -157,8 +157,8 @@ public class MainActivity extends PSAppCompactActivity {
         AndroidNetworking.initialize(getApplicationContext());
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
-                new IntentFilter("com.yashbuysell.psbuyandsell_FCM-message"));
+//        LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver,
+//                new IntentFilter("com.yashbuysell.psbuyandsell_FCM-message"));
 
 
 
@@ -294,25 +294,17 @@ public class MainActivity extends PSAppCompactActivity {
 
     }
 
-    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            // Get extra data included in the Intent
-            String message = intent.getStringExtra("message");
-            Intent notificationIntent = new Intent(getApplicationContext(), ChatActivity.class);
-            PendingIntent pi = PendingIntent.getActivity(context, 0, notificationIntent, 0);
-
-        }
-    };
-
-    @Override
-    protected void onDestroy() {
-        // Unregister since the activity is about to be closed.
-        super.onDestroy();
-    }
-
-
-
+//    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            // Get extra data included in the Intent
+//            String message = intent.getStringExtra("message");
+//            Intent notificationIntent = new Intent(getApplicationContext(), ChatActivity.class);
+//            PendingIntent pi = PendingIntent.getActivity(context, 0, notificationIntent, 0);
+//
+//        }
+//    };
+//
     @Override
     protected void attachBaseContext(Context newBase) {
 
@@ -366,10 +358,10 @@ public class MainActivity extends PSAppCompactActivity {
                     psDialogMsg.show();
 
                     psDialogMsg.okButton.setOnClickListener(view -> {
-                        psDialogMsg.cancel();
-                        finishActivity( 1) ;
+
+                        finishActivity(1);
                         finish();
-                        System.exit(0);
+
                     });
                     psDialogMsg.cancelButton.setOnClickListener(view -> psDialogMsg.cancel());
 

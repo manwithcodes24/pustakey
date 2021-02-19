@@ -85,7 +85,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
     private final androidx.databinding.DataBindingComponent dataBindingComponent = new FragmentDataBindingComponent(this);
 
-    private ChatViewModel chatViewModel;
+    public static ChatViewModel chatViewModel;
     private ChatHistoryViewModel chatHistoryViewModel;
     private UserViewModel userViewModel;
     private NotificationsViewModel notificationViewModel;
@@ -1759,7 +1759,7 @@ public class ChatFragment extends PSFragment implements DataBoundListAdapter.Dif
 
                             JSONObject notiObj = new JSONObject();
                             notiObj.put("title", "New Message") ;
-                            notiObj.put("title", "Seller sent you a message") ;
+                            notiObj.put("body", "Seller sent you a message") ;
 
                             jsonObject.put("notification" , notiObj);
 

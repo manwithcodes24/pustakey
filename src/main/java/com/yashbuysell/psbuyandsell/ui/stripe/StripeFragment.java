@@ -21,7 +21,7 @@ import com.yashbuysell.psbuyandsell.utils.AutoClearedValue;
 import com.yashbuysell.psbuyandsell.utils.Constants;
 import com.yashbuysell.psbuyandsell.utils.Utils;
 import com.stripe.android.Stripe;
-import com.stripe.android.TokenCallback;
+
 import com.stripe.android.model.Card;
 import com.stripe.android.model.Token;
 
@@ -96,29 +96,8 @@ public class StripeFragment extends PSFragment {
         progressDialog.show();
         if(getContext() != null) {
 
-            stripe.get().createToken(
-                    card,
-                    new TokenCallback() {
-                        public void onSuccess(Token token) {
-                            // Send token to your server
 
-                            Utils.psLog("PAYMENT_STRIPE Token Id" + token.getId());
 
-                            progressDialog.cancel();
-
-                            close(token.getId());
-                        }
-
-                        public void onError(Exception error) {
-                            // Show localized error message
-
-                            Utils.psLog("PAYMENT_STRIPE ERROR");
-
-                            progressDialog.cancel();
-
-                        }
-                    }
-            );
         }
     }
 

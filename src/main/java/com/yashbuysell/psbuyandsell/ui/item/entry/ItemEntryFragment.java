@@ -607,7 +607,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
                 binding.get().bankDetailsContainer.setVisibility(View.GONE);
 
-
+                binding.get().scrollRoot.fullScroll(View.FOCUS_UP) ;
                 binding.get().addressDetailsContainer.setVisibility(View.VISIBLE);
 
 

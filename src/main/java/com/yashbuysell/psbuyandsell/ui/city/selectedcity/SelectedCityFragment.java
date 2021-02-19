@@ -48,6 +48,7 @@ import com.yashbuysell.psbuyandsell.viewobject.holder.ItemParameterHolder;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -342,11 +343,81 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
     }
 
     private void replaceRecentItemList(List<Item> itemList) {
+//        ArrayList<Double> distanceList
+//                = new ArrayList<Double>();
+
+//        for (int x = 0 ; x < itemList.size() ; x++){
+//
+//            double dis = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(itemList.get(x).lat) , Double.parseDouble(itemList.get(x).lng));
+//            distanceList.add(dis);
+//
+//        }
+
+        Collections.sort(itemList, new Comparator<Item>() {
+            @Override
+            public int compare(Item item, Item t1) {
+                return Double.compare(getDistance(Double.parseDouble(item.lat),Double.parseDouble( item.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng)),
+                        getDistance(Double.parseDouble(t1.lat),Double.parseDouble( t1.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng))
+                );
+            }
+        });
+
+//        for(int i = 0  ; i < itemList.size() ; i++) {
+//            for(int x = 0 ; x < distanceList.size() ; x++){
+//
+//                double dis2 = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(itemList.get(i).lat) , Double.parseDouble(itemList.get(i).lng));
+//                if(dis2 == distanceList.get(x)){
+//
+//                    Collections.swap(itemList, i, x);
+//
+//
+//                }
+//
+//            }
+//        }
+
+
         this.recentItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
 
     private void replacePopularItemList(List<Item> itemList) {
+//        ArrayList<Double> distanceList
+//                = new ArrayList<Double>();
+//
+//        for (int x = 0 ; x < itemList.size() ; x++){
+//
+//            double dis = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(itemList.get(x).lat) , Double.parseDouble(itemList.get(x).lng));
+//            distanceList.add(dis);
+//
+//        }
+
+//        Collections.sort(distanceList);
+
+        Collections.sort(itemList, new Comparator<Item>() {
+            @Override
+            public int compare(Item item, Item t1) {
+                return Double.compare(getDistance(Double.parseDouble(item.lat),Double.parseDouble( item.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng)),
+                        getDistance(Double.parseDouble(t1.lat),Double.parseDouble( t1.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng))
+                );
+            }
+        });
+
+//        for(int i = 0  ; i < itemList.size() ; i++) {
+//            for(int x = 0 ; x < distanceList.size() ; x++){
+//
+//                double dis2 = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(itemList.get(i).lat) , Double.parseDouble(itemList.get(i).lng));
+//                if(dis2 == distanceList.get(x)){
+//
+//                    Collections.swap(itemList, i, x);
+//
+//
+//                }
+//
+//            }
+//        }
+
+
         this.popularItemListAdapter.get().replace(itemList);
         binding.get().executePendingBindings();
     }
@@ -563,36 +634,6 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
                         if (listResource.data != null) {
                             if (listResource.data.size() > 0) {
-                                ArrayList<Double> distanceList
-                                        = new ArrayList<Double>();
-
-                                for (int x = 0 ; x < listResource.data.size() ; x++){
-
-                                    double dis = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(x).lat) , Double.parseDouble(listResource.data.get(x).lng));
-                                    distanceList.add(dis);
-
-
-
-
-                                }
-
-                                Collections.sort(distanceList);
-
-                                for(int i = 0  ; i < listResource.data.size() ; i++) {
-                                    for(int x = 0 ; x < distanceList.size() ; x++){
-
-                                        double dis2 = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(i).lat) , Double.parseDouble(listResource.data.get(i).lng));
-                                        if(dis2 == distanceList.get(x)){
-                                            double temp = dis2 ;
-
-                                            Collections.swap(listResource.data, i, x);
-
-
-                                        }
-
-                                    }
-                                }
-
 
                                 SelectedCityFragment.this.replaceRecentItemList(listResource.data);
 
