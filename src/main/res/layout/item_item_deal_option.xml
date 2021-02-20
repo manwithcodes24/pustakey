@@ -8,7 +8,7 @@
 
         <variable
             name="itemDealOption"
-            type="com.yashbuysell.psbuyandsell.viewobject.ItemDealOption" />
+            type="com.pustakey.pustakey.viewobject.ItemDealOption" />
 
     </data>
 

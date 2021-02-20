@@ -8,7 +8,7 @@
 
         <variable
             name="itemLocation"
-            type="com.yashbuysell.psbuyandsell.viewobject.ItemLocation" />
+            type="com.pustakey.pustakey.viewobject.ItemLocation" />
 
     </data>
 

@@ -8,7 +8,7 @@
 
         <variable
             name="chatHistory"
-            type="com.yashbuysell.psbuyandsell.viewobject.ChatHistory" />
+            type="com.pustakey.pustakey.viewobject.ChatHistory" />
 
     </data>
 

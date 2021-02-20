@@ -8,7 +8,7 @@
 
         <variable
             name="blog"
-            type="com.yashbuysell.psbuyandsell.viewobject.Blog" />
+            type="com.pustakey.pustakey.viewobject.Blog" />
 
     </data>
 

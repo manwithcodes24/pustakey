@@ -8,7 +8,7 @@
 
         <variable
             name="itemType"
-            type="com.yashbuysell.psbuyandsell.viewobject.ItemType" />
+            type="com.pustakey.pustakey.viewobject.ItemType" />
 
     </data>
 

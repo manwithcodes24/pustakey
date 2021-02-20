@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.yashbuysell.psbuyandsell"
+    package="com.pustakey.pustakey"
     xmlns:dist="http://schemas.android.com/apk/distribution">
 
     <dist:module dist:instant="true" />
     <application
-        android:name=".PsApp"
+        android:name="com.pustakey.pustakey.PsApp"
         android:allowBackup="true"
         android:fullBackupContent="false"
         android:hardwareAccelerated="true"
@@ -18,27 +18,26 @@
         android:theme="@style/Base.PSTheme"
         android:usesCleartextTraffic="true"
         tools:replace="android:label">
-        <activity android:name=".ui.maintools.maintools"></activity>
-        <activity android:name=".ui.courier.courierTracking" />
+        <activity android:name="com.pustakey.pustakey.ui.courier.courierTracking" />
         <activity
-            android:name=".BuyerdetailsForm"
+            android:name="com.pustakey.pustakey.BuyerdetailsForm"
             android:label="@string/title_activity_buyerdetails_form"
             android:theme="@style/Base.PSTheme.NoActionBar" />
-        <activity android:name=".ui.user.phonelogin.PhoneLoginActivity" />
-        <activity android:name=".ui.safetytip.SafetyTipsActivity" />
-        <activity android:name=".ui.user.verifyphone.VerifyMobileActivity" />
-        <activity android:name=".ui.item.itemfromfollower.ItemFromFollowerListActivity" />
-        <activity android:name=".ui.location.LocationActivity" />
-        <activity android:name=".ui.customcamera.setting.CameraSettingActivity" />
-        <activity android:name=".ui.customcamera.CameraActivity" />
-        <activity android:name=".ui.item.itemtype.SearchViewActivity" />
+        <activity android:name="com.pustakey.pustakey.ui.user.phonelogin.PhoneLoginActivity" />
+        <activity android:name="com.pustakey.pustakey.ui.safetytip.SafetyTipsActivity" />
+        <activity android:name="com.pustakey.pustakey.ui.user.verifyphone.VerifyMobileActivity" />
+        <activity android:name="com.pustakey.pustakey.ui.item.itemfromfollower.ItemFromFollowerListActivity" />
+        <activity android:name="com.pustakey.pustakey.ui.location.LocationActivity" />
+        <activity android:name="com.pustakey.pustakey.ui.customcamera.setting.CameraSettingActivity" />
+        <activity android:name="com.pustakey.pustakey.ui.customcamera.CameraActivity" />
+        <activity android:name="com.pustakey.pustakey.ui.item.itemtype.SearchViewActivity" />
         <activity
-            android:name=".ui.item.entry.ItemEntryActivity"
+            android:name="com.pustakey.pustakey.ui.item.entry.ItemEntryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.apploading.AppLoadingActivity"
+            android:name="com.pustakey.pustakey.ui.apploading.AppLoadingActivity"
             android:label="@string/app__app_name"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
@@ -55,7 +54,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.pustakey.pustakey.MainActivity"
             android:label="@string/app__app_name"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
@@ -63,22 +62,22 @@
             android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.rating.RatingListActivity"
+            android:name="com.pustakey.pustakey.ui.item.rating.RatingListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.city.selectedcity.SelectedCityActivity"
+            android:name="com.pustakey.pustakey.ui.city.selectedcity.SelectedCityActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.subcategory.SubCategoryActivity"
+            android:name="com.pustakey.pustakey.ui.subcategory.SubCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.map.MapActivity"
+            android:name="com.pustakey.pustakey.ui.item.map.MapActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" /> <!-- <provider -->
@@ -92,78 +91,78 @@
         <!-- </meta-data> -->
         <!-- </provider> -->
         <activity
-            android:name=".ui.item.detail.ItemActivity"
+            android:name="com.pustakey.pustakey.ui.item.detail.ItemActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.category.list.CategoryListActivity"
+            android:name="com.pustakey.pustakey.ui.category.list.CategoryListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.user.ProfileEditActivity"
+            android:name="com.pustakey.pustakey.ui.user.ProfileEditActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.user.UserRegisterActivity"
+            android:name="com.pustakey.pustakey.ui.user.UserRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.user.UserFBRegisterActivity"
+            android:name="com.pustakey.pustakey.ui.user.UserFBRegisterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.user.UserLoginActivity"
+            android:name="com.pustakey.pustakey.ui.user.UserLoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.user.UserForgotPasswordActivity"
+            android:name="com.pustakey.pustakey.ui.user.UserForgotPasswordActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.user.PasswordChangeActivity"
+            android:name="com.pustakey.pustakey.ui.user.PasswordChangeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.search.specialfilterbyattributes.FilteringActivity"
+            android:name="com.pustakey.pustakey.ui.item.search.specialfilterbyattributes.FilteringActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.notification.detail.NotificationActivity"
+            android:name="com.pustakey.pustakey.ui.notification.detail.NotificationActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.offlinepayment.OfflinePaymentActivity"
+            android:name="com.pustakey.pustakey.ui.offlinepayment.OfflinePaymentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.setting.SettingActivity"
+            android:name="com.pustakey.pustakey.ui.setting.SettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.notification.setting.NotificationSettingActivity"
+            android:name="com.pustakey.pustakey.ui.notification.setting.NotificationSettingActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.setting.appinfo.AppInfoActivity"
+            android:name="com.pustakey.pustakey.ui.setting.appinfo.AppInfoActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.favourite.FavouriteListActivity"
+            android:name="com.pustakey.pustakey.ui.item.favourite.FavouriteListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
@@ -172,108 +171,108 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
         <activity
-            android:name=".ui.notification.list.NotificationListActivity"
+            android:name="com.pustakey.pustakey.ui.notification.list.NotificationListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.search.searchlist.SearchListActivity"
+            android:name="com.pustakey.pustakey.ui.item.search.searchlist.SearchListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.gallery.GalleryActivity"
+            android:name="com.pustakey.pustakey.ui.gallery.GalleryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.readmore.ReadMoreActivity"
+            android:name="com.pustakey.pustakey.ui.item.readmore.ReadMoreActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.itemlocationfilter.ItemLocationFilterActivity"
+            android:name="com.pustakey.pustakey.ui.item.itemlocationfilter.ItemLocationFilterActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="ItemLocationFilterActivity" />
         <activity
-            android:name=".ui.gallery.detail.GalleryDetailActivity"
+            android:name="com.pustakey.pustakey.ui.gallery.detail.GalleryDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.dashboard.DashboardSearchByCategoryActivity"
+            android:name="com.pustakey.pustakey.ui.dashboard.DashboardSearchByCategoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.history.UserHistoryListActivity"
+            android:name="com.pustakey.pustakey.ui.item.history.UserHistoryListActivity"
             android:label="@string/title__activity_user_history_list"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.loginUserItem.LoginUserItemListActivity"
+            android:name="com.pustakey.pustakey.ui.item.loginUserItem.LoginUserItemListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.user.userlist.UserListActivity"
+            android:name="com.pustakey.pustakey.ui.user.userlist.UserListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.user.verifyemail.VerifyEmailActivity"
+            android:name="com.pustakey.pustakey.ui.user.verifyemail.VerifyEmailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.user.userlist.detail.UserDetailActivity"
+            android:name="com.pustakey.pustakey.ui.user.userlist.detail.UserDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.blog.list.BlogListActivity"
+            android:name="com.pustakey.pustakey.ui.blog.list.BlogListActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.blog.detail.BlogDetailActivity"
+            android:name="com.pustakey.pustakey.ui.blog.detail.BlogDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.forceupdate.ForceUpdateActivity"
+            android:name="com.pustakey.pustakey.ui.forceupdate.ForceUpdateActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.map.mapFilter.MapFilteringActivity"
+            android:name="com.pustakey.pustakey.ui.item.map.mapFilter.MapFilteringActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.chat.chat.ChatActivity"
+            android:name="com.pustakey.pustakey.ui.chat.chat.ChatActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.chat.chatimage.ChatImageFullScreenActivity"
+            android:name="com.pustakey.pustakey.ui.chat.chatimage.ChatImageFullScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.privacypolicy.PrivacyPolicyActivity"
+            android:name="com.pustakey.pustakey.ui.privacypolicy.PrivacyPolicyActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.item.promote.ItemPromoteActivity"
+            android:name="com.pustakey.pustakey.ui.item.promote.ItemPromoteActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".ui.stripe.StripeActivity"
+            android:name="com.pustakey.pustakey.ui.stripe.StripeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Base.PSTheme"
             tools:ignore="LockedOrientationActivity" />
@@ -297,7 +296,7 @@
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
         <meta-data
-            android:name="com.yashbuysell.psbuyandsell.utils.CustomCachingGlideModule"
+            android:name="com.pustakey.pustakey.utils.CustomCachingGlideModule"
             android:value="AppGlideModule" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
@@ -311,7 +310,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.yashbuysell.psbuyandsell.fileprovider"
+            android:authorities="com.pustakey.pustakey.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -320,7 +319,7 @@
         </provider>
 
         <service
-            android:name=".utils.FirebaseMessagingService"
+            android:name="com.pustakey.pustakey.utils.FirebaseMessagingService"
             android:foregroundServiceType="location"
             android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
 

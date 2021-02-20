@@ -7,7 +7,7 @@
     <data>
         <variable
             name="message"
-            type="com.yashbuysell.psbuyandsell.viewobject.messageHolder.Message" />
+            type="com.pustakey.pustakey.viewobject.messageHolder.Message" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

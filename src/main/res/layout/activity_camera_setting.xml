@@ -7,7 +7,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.yashbuysell.psbuyandsell.ui.notification.setting.NotificationSettingActivity">
+        tools:context="com.pustakey.pustakey.ui.notification.setting.NotificationSettingActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"

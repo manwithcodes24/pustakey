@@ -9,7 +9,7 @@
 
         <variable
             name="user"
-            type="com.yashbuysell.psbuyandsell.viewobject.User" />
+            type="com.pustakey.pustakey.viewobject.User" />
     </data>
 
     <androidx.core.widget.NestedScrollView

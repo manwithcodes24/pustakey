@@ -8,7 +8,7 @@
 
         <variable
             name="itemCondition"
-            type="com.yashbuysell.psbuyandsell.viewobject.ItemCondition" />
+            type="com.pustakey.pustakey.viewobject.ItemCondition" />
 
     </data>
 

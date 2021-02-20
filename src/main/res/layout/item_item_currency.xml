@@ -8,7 +8,7 @@
 
         <variable
             name="itemCurrency"
-            type="com.yashbuysell.psbuyandsell.viewobject.ItemCurrency" />
+            type="com.pustakey.pustakey.viewobject.ItemCurrency" />
 
     </data>
 

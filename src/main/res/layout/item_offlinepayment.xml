@@ -9,7 +9,7 @@
 
         <variable
             name="offlinePayment"
-            type="com.yashbuysell.psbuyandsell.viewobject.OfflinePayment" />
+            type="com.pustakey.pustakey.viewobject.OfflinePayment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

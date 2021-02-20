@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.yashbuysell.psbuyandsell.viewobject.Item" />
+            type="com.pustakey.pustakey.viewobject.Item" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

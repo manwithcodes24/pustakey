@@ -8,7 +8,7 @@
 
         <variable
             name="subCategory"
-            type="com.yashbuysell.psbuyandsell.viewobject.ItemSubCategory" />
+            type="com.pustakey.pustakey.viewobject.ItemSubCategory" />
 
     </data>
 

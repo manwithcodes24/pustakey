@@ -4,7 +4,7 @@
 
     <data>
         <variable
-            name="itemSpecs" type="com.yashbuysell.psbuyandsell.viewobject.ItemSpecs" />
+            name="itemSpecs" type="com.pustakey.pustakey.viewobject.ItemSpecs" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

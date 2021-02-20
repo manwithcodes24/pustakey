@@ -1,42 +1,34 @@
 {
   "project_info": {
-    "project_number": "873246730518",
-    "firebase_url": "https://buysell-a3133-default-rtdb.firebaseio.com",
-    "project_id": "buysell-a3133",
-    "storage_bucket": "buysell-a3133.appspot.com"
+    "project_number": "681119382455",
+    "firebase_url": "https://pustakey-4c7ce.firebaseio.com",
+    "project_id": "pustakey-4c7ce",
+    "storage_bucket": "pustakey-4c7ce.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:873246730518:android:1b3acf0d9cf05f837f8837",
+        "mobilesdk_app_id": "1:681119382455:android:5127886acf288490d64632",
         "android_client_info": {
-          "package_name": "com.yashbuysell.psbuyandsell"
+          "package_name": "com.pustakey.pustakey"
         }
       },
       "oauth_client": [
         {
-          "client_id": "873246730518-n6dsg8idlugtdbn2q7b3cvpb1v79u86r.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.yashbuysell.psbuyandsell",
-            "certificate_hash": "bace6a0685c9bae814aa698eea17c0f6c1f97655"
-          }
-        },
-        {
-          "client_id": "873246730518-r00vf0jg38h0frd4ivmqud5uc7qtn2o5.apps.googleusercontent.com",
+          "client_id": "681119382455-pcseidbmvp7vff1ff87anhe5k8jlm295.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDbRxte4E7QLKQ8-QrZYjwnLQTTb2_hg-E"
+          "current_key": "AIzaSyBBGptJr0aVN_EwKOwkF31LLB62KcI__v0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "873246730518-r00vf0jg38h0frd4ivmqud5uc7qtn2o5.apps.googleusercontent.com",
+              "client_id": "681119382455-pcseidbmvp7vff1ff87anhe5k8jlm295.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

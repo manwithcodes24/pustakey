@@ -427,7 +427,7 @@
 
     <!-- END -->
     <!-- Firebase Keys -->
-    <string name="firebase_serverkey" translatable="false">AAAAy1GPqRY:APA91bFW5nfOsiJXSpzSuZqhScjM9uzRwXiNkqC5MPF3-obkQvaFN7z0te4fwXRc37QgFAGx5m1azWgK2KYUbgfNsKn1CIvGauB2KWC7_GuRM5-AGuPbk7BhqXWVU5_ovexi7let9y-E</string>
+    <string name="firebase_serverkey" translatable="false">AAAAnpXg-7c:APA91bEyZ3KuitKVJlx7A0FGOwnT78Tc4tl4Tdg0PG-RNXlq-vSRAbJtnwkATPFWGgHEgtGeDN1eubzzvmquPWOnlIKiSsQNWtMSsRXIHTxtsTfl96AI7p9riyIxfdSXiS5H7AQ0JEoB</string>
 
     <!--Item Condition-->
     <string name="item_condition__type">( %1$s )</string>

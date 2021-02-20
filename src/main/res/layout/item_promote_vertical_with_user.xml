@@ -9,7 +9,7 @@
 
         <variable
             name="itemPaidHistory"
-            type="com.yashbuysell.psbuyandsell.viewobject.ItemPaidHistory" />
+            type="com.pustakey.pustakey.viewobject.ItemPaidHistory" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

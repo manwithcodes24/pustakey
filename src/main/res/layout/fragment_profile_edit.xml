@@ -6,7 +6,7 @@
 
         <variable
             name="user"
-            type="com.yashbuysell.psbuyandsell.viewobject.User" />
+            type="com.pustakey.pustakey.viewobject.User" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:background="@color/md_grey_100"
             android:paddingBottom="@dimen/space_16"
-            tools:context="com.yashbuysell.psbuyandsell.ui.user.ProfileFragment">
+            tools:context="com.pustakey.pustakey.ui.user.ProfileFragment">
 
             <ImageView
                 android:id="@+id/userCoverImageView"

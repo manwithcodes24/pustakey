@@ -6,7 +6,7 @@
 
         <variable
             name="followerUser"
-            type="com.yashbuysell.psbuyandsell.viewobject.User" />
+            type="com.pustakey.pustakey.viewobject.User" />
     </data>
 
 
