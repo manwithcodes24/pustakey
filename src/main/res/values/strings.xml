@@ -6,14 +6,14 @@
 
     <string name="facebook_app_id" translatable="false">0000000000000000</string>
 
-    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-7168378223909401/7621007940</string>
+    <string name="admob_banner_ads_key" translatable="false">ca-app-pub-3819911729832564/7216449735</string>
 
     <string name="google_map_api_key" translatable="false">AIzaSyABCJoE65AD_ujN2Eaw9l6xnOlCiRJMHkw</string>
 
-    <string name="adview_publisher_key" translatable="false">pub-0000000000000000</string>
+    <string name="adview_publisher_key" translatable="false">pub-3819911729832564</string>
 
     <string name="stripe_publickey" translatable="false">pk_test_51IK60wJIqEuh5x7ylQSDL3gZecZSFddzpf4mIKNTNCLMLHcEFPT5SP45tmNVRe85crY41POAgyz2XsnzPSLrKLqk00h3hRpYUA</string>
-    <string name="razor_key" translatable="false">rzp_test_WsEasIH8weUues</string>
+    <string name="razor_key" translatable="false">rzp_test_tLfCFpvCJK3Uuj</string>
     <string name="razor_createPayout" translatable="false">https://api.razorpay.com/v1/payouts</string>
 
     <!--GDPR-->
@@ -368,10 +368,16 @@
     <string name="item_entry_detail__longitude">Longitude</string>
     <string name="item_entry_detail__location">Location</string>
     <string name="item_entry_detail__address">Pin Code</string>
+    <string name="item_entry_detail__upiidNameTitle" translatable="false">Registered Upi Name</string>
+    <string name="item_entry_detail__upiName" translatable="false">Name that you registered with Upi</string>
+    <string name="item_entry_detail__upiDetailsTitle" translatable="false">Upi id (any upi)</string>
+    <string name="item_entry_detail__upi" translatable="false">Paytm / Google etc</string>
     <string name="item_entry_detail__nameinBank" translatable="false">Account Holder Name</string>
-    <string name="item_entry_detail__bankDescri" translatable="false">Fill the bank details properly, because we transfer money directly into the bank account after your book will be sold.</string>
+    <string name="item_entry_detail__bankDetailsHeader" translatable="false">Bank Transfer</string>
+    <string name="item_entry_detail__upiDetailsHeader" translatable="false">Upi Transfer</string>
+    <string name="item_entry_detail__bankDescri" translatable="false">Fill the bank details or upi id properly, because we transfer money directly into the bank account after your book will be sold.</string>
     <string name="item_entry_detail__accnum" translatable="false">Account no.</string>
-    <string name="item_entry_detail__ifsc" translatable="false">IFSC</string>
+    <string name="item_entry_detail__ifsc" translatable="false">IFSC code</string>
     <string name="item_entry_detail__city" translatable="false">City</string>
     <string name="item_entry_detail__state" translatable="false">State</string>
     <string name="item_entry_detail__country" translatable="false">Country</string>
@@ -392,6 +398,7 @@
     <string name="item_entry_need_breadth" translatable="false">Enter item breadth</string>
     <string name="item_entry_need_height" translatable="false">Enter item height</string>
     <string name="item_entry_need_ifsc" translatable="false">Enter IFSC</string>
+    <string name="item_entry_need_payment" translatable="false">Enter Payment Details</string>
     <string name="item_entry_need_nameinBank" translatable="false">Enter account holder name</string>
     <string name="item_entry_need_accnum" translatable="false">Enter bank acccount number</string>
     <string name="item_entry_need_weight" translatable="false">Enter item Weight</string>
@@ -403,6 +410,7 @@
     <string name="item_entry_need_sellerAddress" translatable="false">Enter your address </string>
     <string name="item_entry_need_sellerPincode" translatable="false">Enter your Pin Code</string>
     <string name="item_entry_need_details" translatable="false">Enter all the details properly</string>
+    <string name="item_entry_need_upiName" translatable="false">Enter Registered Upi Name</string>
 
     <string name="item_entry_need_description">Write description for your item</string>
     <string name="item_entry_need_price">Write your price</string>

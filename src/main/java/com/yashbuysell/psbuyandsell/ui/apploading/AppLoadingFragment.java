@@ -15,6 +15,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -55,6 +56,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.UUID;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 
 public class AppLoadingFragment extends PSFragment implements LocationListener {
 
@@ -82,6 +85,9 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
     protected LocationListener locationListener;
     private boolean locationFetched = false;
     private boolean gotMyLocation = true;
+    private boolean isReturned = false;
+    private boolean isBatterySaver ;
+
     private String city;
     private String postalcode;
     private String lat;
@@ -96,8 +102,7 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         geocoder = new Geocoder(getActivity(), Locale.getDefault());
 //        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
-        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) ;
+
     //        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 //
 //        if (ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity().getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -244,16 +249,16 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-            requestPermissions(
-                    new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                            android.Manifest.permission.ACCESS_FINE_LOCATION},
-                    MY_PERMISSIONS_REQUEST_LOCATION);
-        }
-        else {
-            getActivity().recreate();
-        }
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                   initData();
+                }
+            }, 1000);
+
+
 
 
 
@@ -272,183 +277,210 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
     @Override
     protected void initData() {
-        if(!isGPSEnabled) {
-            buildAlertMessageNoGps() ;
+        isBatterySaver = false ;
+        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) ;
 
+        if(!isBatterySaver) {
+            try {
+
+            if(getLocationMode(getApplicationContext()) == 2){
+                isBatterySaver = true ;
+            }
+
+            } catch (Exception e) {
+
+
+            }
         }
-        else {
+
+
+
+
+
+              if(!isGPSEnabled && !isBatterySaver) {
+                  buildAlertMessageNoGps() ;
+
+              }
+              else {
 
 
 
 //        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
-            if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                  if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
-                requestPermissions(
-                        new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,
-                                android.Manifest.permission.ACCESS_FINE_LOCATION},
-                        MY_PERMISSIONS_REQUEST_LOCATION);
-            }
+                      requestPermissions(
+                              new String[]{android.Manifest.permission.ACCESS_COARSE_LOCATION,
+                                      android.Manifest.permission.ACCESS_FINE_LOCATION},
+                              MY_PERMISSIONS_REQUEST_LOCATION);
+                  }
 
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            if(isNetworkEnabled) {
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 500, this);
-                myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+                  if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
-            }
-            if(isGPSEnabled){
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 500, this);
-                myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                while (gotMyLocation){
-                    if (myLocation == null){
+                      if(isNetworkEnabled || isBatterySaver) {
+                          locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 500, this);
+                          myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-                        myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                      }
+                      if(isGPSEnabled){
+                          locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 500, this);
+                          myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                          while (gotMyLocation){
+                              if (myLocation == null){
 
-                    }
-                    else {
-                        gotMyLocation = false;
-                    }
-                }
-            }
-            while (gotMyLocation){
-                if (myLocation == null){
+                                  myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
-                    myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                              }
+                              else {
+                                  gotMyLocation = false;
+                              }
+                          }
+                      }
 
-                }
-                else {
-                    gotMyLocation = false;
+                      while (gotMyLocation){
+                          if (myLocation == null){
 
-                }
-            }
+                              myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
-            if (myLocation != null) {
-                try {
-                    this.lat = String.valueOf(myLocation.getLatitude());
-                    this.lan = String.valueOf(myLocation.getLongitude());
+                          }
+                          else {
+                              gotMyLocation = false;
+
+                          }
+                      }
+
+
+                      if (myLocation != null) {
+                          try {
+                              this.lat = String.valueOf(myLocation.getLatitude());
+                              this.lan = String.valueOf(myLocation.getLongitude());
 
 
 //                addresses = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1); // Here 1 represent max location result to returned, by documents it recommended 1 to 5
-                    this.city = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getLocality();
-                    this.postalcode = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getPostalCode();
-                    selected_location_id = "itm_loca" + postalcode ;
-                    selectedLat = lat ;
+                              this.city = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getLocality();
+                              this.postalcode = geocoder.getFromLocation(myLocation.getLatitude(), myLocation.getLongitude(), 1).get(0).getPostalCode();
+                              selected_location_id = "itm_loca" + postalcode ;
+                              selectedLat = lat ;
 
-                    selectedLng = lan ;
-                    selected_location_name = city ;
-                    if(city != "" && city != null){
+                              selectedLng = lan ;
+                              selected_location_name = city ;
+                              if(city != "" && city != null){
 
-                        navigationController.navigateToMainActivity(getActivity(), selected_location_id, city, lat, lan);
+                                  navigationController.navigateToMainActivity(getActivity(), selected_location_id, city, lat, lan);
 
-                    }
-                } catch (Exception e) {
-                    Log.d("locationError", "Error in fetching location" + e.toString());
-                }
-                locationFetched = true;
+                              }
+                          } catch (Exception e) {
+                              Log.d("locationError", "Error in fetching location" + e.toString());
+                          }
+                          locationFetched = true;
 
-            }
+                      }
 
-                if (connectivity.isConnected()) {
-                    if (startDate.equals(Constants.ZERO)) {
+                      if (connectivity.isConnected()) {
+                          if (startDate.equals(Constants.ZERO)) {
 
-                        startDate = getDateTime();
-                        Utils.setDatesToShared(startDate, endDate, pref);
-                    }
+                              startDate = getDateTime();
+                              Utils.setDatesToShared(startDate, endDate, pref);
+                          }
 
-                    endDate = getDateTime();
-                    appLoadingViewModel.setDeleteHistoryObj(startDate, endDate, loginUserId);
+                          endDate = getDateTime();
+                          appLoadingViewModel.setDeleteHistoryObj(startDate, endDate, loginUserId);
 
-                } else {
-                    if (!selected_location_id.isEmpty()) {
-                        navigationController.navigateToMainActivity(getActivity(), selected_location_id, selected_location_name, selectedLat, selectedLng);
+                      } else {
+                          if (!selected_location_id.isEmpty()) {
+                              navigationController.navigateToMainActivity(getActivity(), selected_location_id, selected_location_name, selectedLat, selectedLng);
 
-                    } else {
-                    }
+                          } else {
+                          }
 //
 //                    try {
 //                        Thread.sleep(1200);
 //                    } catch (InterruptedException e) {
 //                        e.printStackTrace();
 //                    }
-                    if (getActivity() != null) {
-                        getActivity().finish();
-                    }
-                }
+                          if (getActivity() != null) {
+                              getActivity().finish();
+                          }
+                      }
 
-                appLoadingViewModel.getDeleteHistoryData().observe(this, result -> {
+                      appLoadingViewModel.getDeleteHistoryData().observe(this, result -> {
 
-                    if (result != null) {
-                        switch (result.status) {
+                          if (result != null) {
+                              switch (result.status) {
 
-                            case SUCCESS:
+                                  case SUCCESS:
 
-                                if (result.data != null) {
+                                      if (result.data != null) {
 
-                                    switch (result.data.userInfo.userStatus) {
-                                        case Constants.USER_STATUS__DELECTED:
-                                            AppLoadingFragment.this.logout();
-                                            showErrorDialog(result.data, getString(R.string.error_message__user_deleted));
-                                            break;
-                                        case Constants.USER_STATUS__BANNED:
-                                            AppLoadingFragment.this.logout();
-                                            showErrorDialog(result.data, getString(R.string.error_message__user_banned));
-                                            break;
-                                        case Constants.USER_STATUS__UNPUBLISHED:
-                                            AppLoadingFragment.this.logout();
-                                            showErrorDialog(result.data, getString(R.string.error_message__user_unpublished));
-                                            break;
-                                        default:
-                                            //default
-                                            appLoadingViewModel.psAppInfo = result.data;
-                                            checkVersionNumber(result.data);
-                                            startDate = endDate;
-                                            break;
-                                    }
+                                          switch (result.data.userInfo.userStatus) {
+                                              case Constants.USER_STATUS__DELECTED:
+                                                  AppLoadingFragment.this.logout();
+                                                  showErrorDialog(result.data, getString(R.string.error_message__user_deleted));
+                                                  break;
+                                              case Constants.USER_STATUS__BANNED:
+                                                  AppLoadingFragment.this.logout();
+                                                  showErrorDialog(result.data, getString(R.string.error_message__user_banned));
+                                                  break;
+                                              case Constants.USER_STATUS__UNPUBLISHED:
+                                                  AppLoadingFragment.this.logout();
+                                                  showErrorDialog(result.data, getString(R.string.error_message__user_unpublished));
+                                                  break;
+                                              default:
+                                                  //default
+                                                  appLoadingViewModel.psAppInfo = result.data;
+                                                  checkVersionNumber(result.data);
+                                                  startDate = endDate;
+                                                  break;
+                                          }
 
-                                }
-                                break;
+                                      }
+                                      break;
 
-                            case ERROR:
+                                  case ERROR:
 
-                                break;
-                        }
-                    }
+                                      break;
+                              }
+                          }
 
-                });
+                      });
 
 
-                clearAllDataViewModel.getDeleteAllDataData().observe(this, result -> {
+                      clearAllDataViewModel.getDeleteAllDataData().observe(this, result -> {
 
-                    if (result != null) {
-                        switch (result.status) {
+                          if (result != null) {
+                              switch (result.status) {
 
-                            case ERROR:
+                                  case ERROR:
 
-                                break;
+                                      break;
 
-                            case SUCCESS:
+                                  case SUCCESS:
 
-                                checkForceUpdate(appLoadingViewModel.psAppInfo);
-                                break;
-                        }
-                    }
-                });
+                                      checkForceUpdate(appLoadingViewModel.psAppInfo);
+                                      break;
+                              }
+                          }
+                      });
 
-                userViewModel.getLoginUser().observe(this, new Observer<List<UserLogin>>() {
-                    @Override
-                    public void onChanged(List<UserLogin> data) {
-                        if (data != null) {
-                            if (data.size() > 0) {
-                                userViewModel.user = data.get(0).user;
-                            }
-                        }
-                    }
-                });
-            }
-        }
+                      userViewModel.getLoginUser().observe(this, new Observer<List<UserLogin>>() {
+                          @Override
+                          public void onChanged(List<UserLogin> data) {
+                              if (data != null) {
+                                  if (data.size() > 0) {
+                                      userViewModel.user = data.get(0).user;
+                                  }
+                              }
+                          }
+                      });
+                  }
+              }
+      }
+
+    private int getLocationMode(Context context) throws Settings.SettingNotFoundException {
+        return Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
+
     }
-
-
     public void showErrorDialog(PSAppInfo psAppInfo, String message){
         psDialogMsg.showErrorDialog(message, getString(R.string.app__ok));
         psDialogMsg.show();

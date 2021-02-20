@@ -98,11 +98,6 @@ import java.io.IOException;
 
 import javax.inject.Inject;
 
-//import com.panaceasoft.psbuyandsell.ui.followinguser.FollowingUserActivity;
-//import com.panaceasoft.psbuyandsell.ui.followinguser.detail.FollowingUserDetailActivity;
-
-//import com.panaceasoft.psbuyandsell.ui.city.selectedCity.SelectedCityFragment;
-
 
 public class NavigationController {
 

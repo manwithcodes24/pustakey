@@ -106,7 +106,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
     private String seller_phone = Constants.EMPTY_STRING ;
     private String seller_email = Constants.EMPTY_STRING ;
     private String seller_name = Constants.EMPTY_STRING ;
-    private String nameinBank, ifsc, accnum = Constants.EMPTY_STRING ;
+    private String nameinBank, ifsc, accnum,upiId, upiName = Constants.EMPTY_STRING ;
 
 //    ------------
     private Boolean isExpanded = false;
@@ -633,6 +633,7 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                 binding.get().bookDetailsContainer.setVisibility(View.GONE);
                 binding.get().addressDetailsContainer.setVisibility(View.GONE);
 
+                binding.get().scrollRoot.fullScroll(View.FOCUS_UP) ;
 
                 binding.get().bankDetailsContainer.setVisibility(View.VISIBLE);
 
@@ -726,6 +727,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             this.product_title =  binding.get().titleEditText.getText().toString();
             this.nameinBank = binding.get().nameinBankEditText.getText().toString() ;
             this.ifsc = binding.get().ifscEditText.getText().toString() ;
+            this.upiId = binding.get().upiDetailsEditText.getText().toString() ;
+            this.upiName = binding.get().upiNameEditText.getText().toString() ;
             this.accnum = binding.get().accountnumEditText.getText().toString() ;
             boolean isnoDigit = true ;
             boolean isPhoneLonger = true ;
@@ -820,14 +823,25 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
             } else if (binding.get().priceTextView.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_currency_symbol), ItemEntryFragment.this.getString(R.string.app__ok));
                 psDialogMsg.show();
-            }else if (binding.get().ifscEditText.getText().toString().isEmpty()) {
+            }
+
+            else if (binding.get().upiDetailsEditText.getText().toString().isEmpty() && binding.get().accountnumEditText.getText().toString().isEmpty()
+            && binding.get().nameinBankEditText.getText().toString().isEmpty() && binding.get().ifscEditText.getText().toString().isEmpty()
+            ) {
+                psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_payment), ItemEntryFragment.this.getString(R.string.app__ok));
+                psDialogMsg.show();
+            } else if (binding.get().ifscEditText.getText().toString().isEmpty() && binding.get().upiDetailsEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_ifsc), ItemEntryFragment.this.getString(R.string.app__ok));
                 psDialogMsg.show();
-            } else if (binding.get().accountnumEditText.getText().toString().isEmpty()) {
+            }
+            else if (binding.get().accountnumEditText.getText().toString().isEmpty() && binding.get().upiDetailsEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_accnum), ItemEntryFragment.this.getString(R.string.app__ok));
                 psDialogMsg.show();
-            }else if (binding.get().nameinBankEditText.getText().toString().isEmpty()) {
+            }else if (binding.get().nameinBankEditText.getText().toString().isEmpty() && binding.get().upiDetailsEditText.getText().toString().isEmpty()) {
                 psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_nameinBank), ItemEntryFragment.this.getString(R.string.app__ok));
+                psDialogMsg.show();
+            } else if (binding.get().upiNameEditText.getText().toString().isEmpty() && !binding.get().upiDetailsEditText.getText().toString().isEmpty()) {
+                psDialogMsg.showWarningDialog(ItemEntryFragment.this.getString(R.string.item_entry_need_upiName), ItemEntryFragment.this.getString(R.string.app__ok));
                 psDialogMsg.show();
             } else {
 
@@ -1116,6 +1130,8 @@ public class ItemEntryFragment extends PSFragment implements DataBoundListAdapte
                                     sellerInfoDB.child("state").setValue(seller_state) ;
                                     sellerInfoDB.child("nameinbank").setValue(nameinBank) ;
                                     sellerInfoDB.child("ifsc").setValue(ifsc) ;
+                                    sellerInfoDB.child("upiId").setValue(upiId) ;
+                                    sellerInfoDB.child("upiName").setValue(upiName) ;
                                     sellerInfoDB.child("accnum").setValue(accnum) ;
 
 

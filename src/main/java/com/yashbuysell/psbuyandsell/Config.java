@@ -12,7 +12,7 @@ public class Config {
      * AppVersion
      * For your app, you need to change according based on your app version
      */
-    public static String APP_VERSION = "2.9";
+    public static String APP_VERSION = "1";
 
     /**
      * APP Setting
@@ -72,7 +72,7 @@ public class Config {
 
     public static int RATING_COUNT = 30;
 
-    public static int ITEM_COUNT = 30;
+    public static int ITEM_COUNT = 1000000;
 
     public static int LIST_CATEGORY_COUNT = 30;
     public static int LIST_CATEGORY_HOMECOUNT = 9;
@@ -113,6 +113,7 @@ public class Config {
     public static int PAID_ITEM_COUNT = 6;
 
     public static final String LIMIT_FROM_DB_COUNT = "10";
+    public static final String LIMIT_FROM_DB_COUNT_RECENT = "10";
 
     /**
      * Price Format

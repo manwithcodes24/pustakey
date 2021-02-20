@@ -31,7 +31,7 @@
                 android:id="@+id/bankDetailsBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Bank Details"
+                android:text="Payment Details"
                 android:textAlignment="textStart"
                 android:layout_marginBottom="10dp"
                 android:drawableStart="@drawable/ic_about_us"
@@ -2107,6 +2107,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         >
 
+
                         <TextView
 
                             android:id="@+id/bankdetailsDescri"
@@ -2124,8 +2125,164 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintBottom_toTopOf="@+id/nameinBankTextView"
+                            app:layout_constraintBottom_toTopOf="@+id/upiHeader"
                             app:layout_constraintTop_toTopOf="parent" />
+                        <TextView
+
+                            android:id="@+id/upiHeader"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="10dp"
+
+                            android:paddingTop="@dimen/space_4"
+                            android:paddingBottom="@dimen/space_4"
+                            android:text="Upi Transfer"
+                            android:textColor="@color/text__primary"
+                            android:textSize="20dp"
+                            android:textAlignment="center"
+                            app:font='@{"normal"}'
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/upiNameTextView"
+                            app:layout_constraintTop_toBottomOf="@+id/bankdetailsDescri" />
+
+                        <TextView
+
+                            android:id="@+id/upiNameTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="10dp"
+
+                            android:paddingTop="@dimen/space_4"
+                            android:paddingBottom="@dimen/space_4"
+                            android:text="@string/item_entry_detail__upiidNameTitle"
+                            android:textColor="@color/text__primary"
+                            android:textSize="@dimen/font_title_size"
+                            app:font='@{"normal"}'
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/upiNameEditText"
+                            app:layout_constraintTop_toBottomOf="@+id/upiHeader" />
+
+                        <EditText
+                            android:id="@+id/upiNameEditText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="@string/item_entry_detail__upiName"
+                            android:background="@color/text__white"
+                            android:paddingTop="17dp"
+                            android:paddingBottom="17dp"
+
+                            android:inputType="textPersonName"
+
+
+
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/text__primary"
+                            android:textSize="14sp"
+                            app:font='@{"normal"}'
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/upiNameTextView"
+                            app:layout_constraintBottom_toTopOf="@+id/upiDetailsTextView" />
+
+                        <TextView
+
+                            android:id="@+id/upiDetailsTextView"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="10dp"
+
+                            android:paddingTop="@dimen/space_4"
+                            android:paddingBottom="@dimen/space_4"
+                            android:text="@string/item_entry_detail__upiDetailsTitle"
+                            android:textColor="@color/text__primary"
+                            android:textSize="@dimen/font_title_size"
+                            app:font='@{"normal"}'
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/upiDetailsEditText"
+                            app:layout_constraintTop_toBottomOf="@+id/upiNameEditText" />
+
+                        <EditText
+                            android:id="@+id/upiDetailsEditText"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:hint="@string/item_entry_detail__upi"
+                            android:background="@color/text__white"
+                            android:paddingTop="17dp"
+                            android:paddingBottom="17dp"
+
+                            android:inputType="textPersonName"
+
+
+
+                            android:textAlignment="viewStart"
+                            android:textColor="@color/text__primary"
+                            android:textSize="14sp"
+                            app:font='@{"normal"}'
+
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/optionalDivider" />
+                        <TextView
+
+                            android:id="@+id/optionalDivider"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="10dp"
+
+                            android:paddingTop="@dimen/space_4"
+                            android:paddingBottom="@dimen/space_4"
+                            android:text="Or"
+                            android:textAlignment="center"
+                            android:textColor="@color/text__primary"
+                            android:textSize="20dp"
+                            app:font='@{"normal"}'
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/upiDetailsEditText"
+
+                            />
+
+                        <TextView
+
+                            android:id="@+id/bankDetailsHeader"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginTop="10dp"
+
+                            android:paddingTop="@dimen/space_4"
+                            android:paddingBottom="@dimen/space_4"
+                            android:text="@string/item_entry_detail__bankDetailsHeader"
+                            android:textColor="@color/text__primary"
+                            android:textSize="20dp"
+                            app:font='@{"normal"}'
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/optionalDivider"
+
+                            />
+
+
+
+
                         <TextView
 
                             android:id="@+id/nameinBankTextView"
@@ -2143,7 +2300,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/bankdetailsDescri" />
+                            app:layout_constraintTop_toBottomOf="@+id/bankDetailsHeader" />
                         <EditText
                             android:id="@+id/nameinBankEditText"
                             android:layout_width="0dp"

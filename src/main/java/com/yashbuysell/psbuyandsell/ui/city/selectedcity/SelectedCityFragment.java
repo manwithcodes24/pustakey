@@ -255,7 +255,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
             // update live data
             itemCategoryViewModel.setCategoryListObj(String.valueOf(Config.LIST_CATEGORY_HOMECOUNT), String.valueOf(itemCategoryViewModel.offset));
-            recentItemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), Config.LIMIT_FROM_DB_COUNT, Constants.ZERO, new ItemParameterHolder().getRecentItem());
+            recentItemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), Constants.ZERO, new ItemParameterHolder());
 
             popularItemViewModel.setPopularItemListByKeyObj(Utils.checkUserId(loginUserId), Config.LIMIT_FROM_DB_COUNT, Constants.ZERO, popularItemViewModel.popularItemParameterHolder);
             blogViewModel.setNewsFeedObj(String.valueOf(Config.LIST_NEW_FEED_COUNT_PAGER), String.valueOf(blogViewModel.offset));
@@ -266,7 +266,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
     private void callSearchList() {
 
         searchItemParameterHolder.keyword = binding.get().searchBoxEditText.getText().toString();
-        ItemParameterHolder tempHolder = new ItemParameterHolder().getRecentItem() ;
+        ItemParameterHolder tempHolder = new ItemParameterHolder() ;
         tempHolder.keyword = binding.get().searchBoxEditText.getText().toString() ;
         navigationController.navigateToHomeFilteringActivity(getActivity(), tempHolder, searchItemParameterHolder.keyword, selectedCityLat, selectedCityLng, Constants.MAP_MILES);
 
@@ -343,41 +343,9 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
     }
 
     private void replaceRecentItemList(List<Item> itemList) {
-//        ArrayList<Double> distanceList
-//                = new ArrayList<Double>();
+        List<Item> tempList = itemList.subList(0,10) ;
 
-//        for (int x = 0 ; x < itemList.size() ; x++){
-//
-//            double dis = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(itemList.get(x).lat) , Double.parseDouble(itemList.get(x).lng));
-//            distanceList.add(dis);
-//
-//        }
-
-        Collections.sort(itemList, new Comparator<Item>() {
-            @Override
-            public int compare(Item item, Item t1) {
-                return Double.compare(getDistance(Double.parseDouble(item.lat),Double.parseDouble( item.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng)),
-                        getDistance(Double.parseDouble(t1.lat),Double.parseDouble( t1.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng))
-                );
-            }
-        });
-
-//        for(int i = 0  ; i < itemList.size() ; i++) {
-//            for(int x = 0 ; x < distanceList.size() ; x++){
-//
-//                double dis2 = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(itemList.get(i).lat) , Double.parseDouble(itemList.get(i).lng));
-//                if(dis2 == distanceList.get(x)){
-//
-//                    Collections.swap(itemList, i, x);
-//
-//
-//                }
-//
-//            }
-//        }
-
-
-        this.recentItemListAdapter.get().replace(itemList);
+        this.recentItemListAdapter.get().replace(tempList);
         binding.get().executePendingBindings();
     }
 
@@ -623,7 +591,7 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
         //Recent Item
 
-        recentItemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), Config.LIMIT_FROM_DB_COUNT, Constants.ZERO, new ItemParameterHolder().getRecentItem());
+        recentItemViewModel.setItemListByKeyObj(Utils.checkUserId(loginUserId), String.valueOf(Config.ITEM_COUNT), Constants.ZERO, new ItemParameterHolder());
 
         recentItemViewModel.getItemListByKeyData().observe(this, listResource -> {
 
@@ -634,6 +602,14 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
 
                         if (listResource.data != null) {
                             if (listResource.data.size() > 0) {
+                                Collections.sort(listResource.data, new Comparator<Item>() {
+                                    @Override
+                                    public int compare(Item item, Item t1) {
+                                        return Double.compare(getDistance(Double.parseDouble(item.lat),Double.parseDouble( item.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng)),
+                                                getDistance(Double.parseDouble(t1.lat),Double.parseDouble( t1.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng))
+                                        );
+                                    }
+                                });
 
                                 SelectedCityFragment.this.replaceRecentItemList(listResource.data);
 
@@ -647,40 +623,17 @@ public class SelectedCityFragment extends PSFragment implements DataBoundListAda
                         if (listResource.data != null) {
 
                             if (listResource.data.size() > 0) {
-                                ArrayList<Double> distanceList
-                                        = new ArrayList<Double>();
+                                Collections.sort(listResource.data, new Comparator<Item>() {
+                                    @Override
+                                    public int compare(Item item, Item t1) {
+                                        return Double.compare(getDistance(Double.parseDouble(item.lat),Double.parseDouble( item.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng)),
+                                                getDistance(Double.parseDouble(t1.lat),Double.parseDouble( t1.lng) , Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng))
+                                        );
+                                    }
+                                });
 
-//                                for (int x = 0 ; x < listResource.data.size() ; x++){
-//
-//                                    double dis = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(x).lat) , Double.parseDouble(listResource.data.get(x).lng));
-//                                    distanceList.add(dis);
-//
-//
-//
-//
-//                                }
-//                                try {
-//                                    Collections.sort(distanceList);
-//
-//                                    for(int i = 0  ; i < listResource.data.size() ; i++) {
-//                                        for(int x = 0 ; x < distanceList.size() ; x++){
-//
-//                                            double dis2 = getDistance(Double.parseDouble(selectedLat) , Double.parseDouble(selectedLng) ,Double.parseDouble(listResource.data.get(i).lat) , Double.parseDouble(listResource.data.get(i).lng));
-//                                            if(dis2 == distanceList.get(x)){
-//                                                double temp = dis2 ;
-//
-//                                                Collections.swap(listResource.data, i, x);
-//
-//
-//                                            }
-//
-//                                        }
-//                                    }
-//                                }
-//                                catch (Exception e) {
-//
-//                                }
 
+//
 
                                 SelectedCityFragment.this.replaceRecentItemList(listResource.data);
                             }

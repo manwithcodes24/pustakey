@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import com.stripe.*;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -29,6 +30,11 @@ import com.razorpay.PaymentResultListener;
 import com.stripe.android.EphemeralKey;
 import com.stripe.android.EphemeralKeyUpdateListener;
 import com.stripe.android.PaymentConfiguration;
+import com.stripe.android.Stripe;
+import com.stripe.android.model.Card;
+import com.stripe.android.model.ConfirmPaymentIntentParams;
+import com.stripe.android.model.PaymentIntent;
+import com.stripe.android.view.CardInputWidget;
 import com.yashbuysell.psbuyandsell.ui.chat.chat.ChatActivity;
 import com.yashbuysell.psbuyandsell.utils.Constants;
 import com.yashbuysell.psbuyandsell.utils.PSDialogMsg;
@@ -40,11 +46,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -55,6 +67,8 @@ import org.json.JSONObject;
 import org.json.JSONStringer;
 
 import java.lang.reflect.Constructor;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -116,9 +130,17 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
     private String leastPriceCompanyId ;
         private JSONObject priceAndIdObject;
     final String CHANNEL_ID = "1" ;
-
+    private OkHttpClient httpClient = new OkHttpClient();
+    private String paymentIntentClientSecret;
+    private Stripe stripe;
     //    warning box
+    Card card ;
+    CardInputWidget cardInputWidget;
+    View promptsView ;
     private PSDialogMsg psDialogMsg;
+    private static final String RETURN_URL = "...";
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,20 +158,17 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         this.city = findViewById(R.id.buyercityEditText) ;
         this.state = findViewById(R.id.buyerStateEditText) ;
         this.email = findViewById(R.id.buyerEmailEditText) ;
+        LayoutInflater li = this.getLayoutInflater();
         priceAndIdObject = new JSONObject();
         this.country = findViewById(R.id.buyerCountryEditText) ;
         this.submitBtn = findViewById(R.id.submitButton) ;
         this.itemId = getIntent().getStringExtra("itemId");
         this.receiverId = getIntent().getStringExtra("receiverId");
+
         Checkout.preload(getApplicationContext());
         pickup_location = UUID.randomUUID().toString().substring(0,5)  ;
 
         AndroidNetworking.initialize(getApplicationContext());
-        PaymentConfiguration.init(getApplicationContext(), getString(R.string.stripe_publickey));
-
-
-
-
 
 
 
@@ -528,6 +547,20 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 
 
     }
+    private void confirmPayment(
+            @NonNull String clientSecret,
+            @NonNull String paymentMethodId
+    ) {
+
+        stripe.confirmPayment(this,
+                ConfirmPaymentIntentParams.createWithPaymentMethodId(
+                        paymentMethodId,
+                        clientSecret,
+                        RETURN_URL
+                )
+        );
+    }
+
     public void startPayment() throws JSONException {
         convertedAmount = Math.round((Double.parseDouble(finalAmount) * 100.0)  * 100.0) / 100.0;
         leastPriceCompanyId = priceAndIdObject.getString(leastCourierPrice).toString();
@@ -644,36 +677,36 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 
 
                 if(finalAmount != null){
-                    if(seller_nameinBank != Constants.EMPTY_STRING && seller_ifsc != Constants.EMPTY_STRING && seller_accnum != Constants.EMPTY_STRING){
-
-
-                    String payoutString = "{\n    \"account_number\": \"2323230008656323\",\n    \"amount\": "+convertedAmount+",\n    \"currency\": \"INR\",\n    \"mode\": \"IMPS\",\n    \"purpose\": \"payout\",\n    \"fund_account\": {\n        \"account_type\": \"bank_account\",\n        \"bank_account\": {\n            \"name\": \"" + seller_nameinBank + "\",\n            \"ifsc\": \""+seller_ifsc+"\",\n            \"account_number\": \""+seller_accnum+"\"\n        },\n        \"contact\": {\n            \"name\": \""+ seller_name+"\",\n            \"email\": \""+ seller_email +"\",\n            \"contact\": \""+seller_phone+"\",\n            \"type\": \"vendor\",\n            \"reference_id\": \""+itemId+"\",\n            \"notes\": {\n                \"notes_key_1\": \"payout to vendor\",\n                \"notes_key_2\": \"payout to vendor\"\n            }\n        }\n    },\n    \"queue_if_low_balance\": true,\n    \"reference_id\": \""+itemId+"\",\n    \"narration\": \"payout to vendor\",\n    \"notes\": {\n        \"notes_key_1\": \"payout to vendor\",\n        \"notes_key_2\": \"Engage\"\n    }\n}" ;
-                    //
-                    JSONObject payoutobj = new JSONObject(payoutString) ;
-
-                    String createPayout  = getString(R.string.razor_createPayout) ;
-
-                    AndroidNetworking.post(createPayout)
-                            .addHeaders("Content-Type" , "application/json")
-                            .addJSONObjectBody(payoutobj)
-                            .setTag("createPayout")
-                            .setPriority(Priority.IMMEDIATE)
-                            .build()
-                            .getAsJSONObject(new JSONObjectRequestListener() {
-
-
-                                @Override
-                                public void onResponse(JSONObject response) {
-
-                                }
-
-                                @Override
-                                public void onError(ANError anError) {
-
-                                }
-                            });
-
-                    }
+//                    if(seller_nameinBank != Constants.EMPTY_STRING && seller_ifsc != Constants.EMPTY_STRING && seller_accnum != Constants.EMPTY_STRING){
+//
+//
+//                    String payoutString = "{\n    \"account_number\": \"2323230008656323\",\n    \"amount\": "+convertedAmount+",\n    \"currency\": \"INR\",\n    \"mode\": \"IMPS\",\n    \"purpose\": \"payout\",\n    \"fund_account\": {\n        \"account_type\": \"bank_account\",\n        \"bank_account\": {\n            \"name\": \"" + seller_nameinBank + "\",\n            \"ifsc\": \""+seller_ifsc+"\",\n            \"account_number\": \""+seller_accnum+"\"\n        },\n        \"contact\": {\n            \"name\": \""+ seller_name+"\",\n            \"email\": \""+ seller_email +"\",\n            \"contact\": \""+seller_phone+"\",\n            \"type\": \"vendor\",\n            \"reference_id\": \""+itemId+"\",\n            \"notes\": {\n                \"notes_key_1\": \"payout to vendor\",\n                \"notes_key_2\": \"payout to vendor\"\n            }\n        }\n    },\n    \"queue_if_low_balance\": true,\n    \"reference_id\": \""+itemId+"\",\n    \"narration\": \"payout to vendor\",\n    \"notes\": {\n        \"notes_key_1\": \"payout to vendor\",\n        \"notes_key_2\": \"Engage\"\n    }\n}" ;
+//                    //
+//                    JSONObject payoutobj = new JSONObject(payoutString) ;
+//
+//                    String createPayout  = getString(R.string.razor_createPayout) ;
+//
+//                    AndroidNetworking.post(createPayout)
+//                            .addHeaders("Content-Type" , "application/json")
+//                            .addJSONObjectBody(payoutobj)
+//                            .setTag("createPayout")
+//                            .setPriority(Priority.IMMEDIATE)
+//                            .build()
+//                            .getAsJSONObject(new JSONObjectRequestListener() {
+//
+//
+//                                @Override
+//                                public void onResponse(JSONObject response) {
+//
+//                                }
+//
+//                                @Override
+//                                public void onError(ANError anError) {
+//
+//                                }
+//                            });
+//
+//                    }
                     String createOrderURL  = getString(R.string.courierOrder_createOrder) ;
 
                     JSONObject jsonObject = new JSONObject();
@@ -825,7 +858,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                                                                     .getAsJSONObject(new JSONObjectRequestListener() {
                                                                         @Override
                                                                         public void onResponse(JSONObject response) {
-                                                                            finish();
+
 
                                                                         }
 
@@ -834,6 +867,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 
                                                                         }
                                                                     });
+                                                            finish();
 
                                                         }
                                                         catch (Exception e) {
@@ -846,6 +880,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 
                                                     }
                                                 });
+
 //                                                Intent goToNextHome = new Intent(getApplicationContext(), MainActivity.class);
 //                                                startActivity(goToNextHome);
 //                                                Intent broadcastIntent = new Intent("com.yashbuysell.psbuyandsell_broadcast-Label");
@@ -856,13 +891,6 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
 //                                                PendingIntent broadcastPendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, broadcastIntent, 0);
 //                                                Intent toChat  = new Intent(getApplicationContext() , ChatActivity.class) ;
 //                                                getApplicationContext().startService(toChat) ;
-
-
-
-
-
-
-
 
                                             }
                                         } catch (Exception e) {
@@ -900,5 +928,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         Log.e("PaymentError" , s);
         Toast.makeText(getApplicationContext() , "Payment Error" , Toast.LENGTH_SHORT).show();
     }
+
+
 }
 

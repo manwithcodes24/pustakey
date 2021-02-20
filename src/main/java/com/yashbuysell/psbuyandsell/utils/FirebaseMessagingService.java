@@ -174,10 +174,10 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                     NotificationManager.IMPORTANCE_DEFAULT);
 
             AudioAttributes audioAttrib = new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_MEDIA)
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
                     .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
                     .build();
-            channel.setSound(Settings.System.DEFAULT_RINGTONE_URI, audioAttrib);
+            channel.setSound(Settings.System.DEFAULT_NOTIFICATION_URI, audioAttrib);
             channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
 
             if(manager != null) {
