@@ -326,6 +326,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
                 buyerInfoDB.child("alternatephone").setValue(alternatephone.getText().toString());
                 buyerInfoDB.child("pincode").setValue(pincode.getText().toString());
                 buyerInfoDB.child("city").setValue(city.getText().toString());
+                buyerInfoDB.child("email").setValue(email.getText().toString());
                 buyerInfoDB.child("country").setValue(country.getText().toString());
                 buyerInfoDB.child("payment").setValue(getString(R.string.paymentPending));
                 buyerInfoDB.child("order").setValue(getString(R.string.paymentPending));
@@ -577,7 +578,7 @@ public class BuyerdetailsForm extends AppCompatActivity  implements PaymentResul
         try {
             JSONObject options = new JSONObject();
 
-            options.put("name", seller_name);
+            options.put("name", "Pustakey");
             options.put("description", "payment for " + product_title);
             options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
             Log.d("orderId" , " RazorPayId = " + itemId) ;

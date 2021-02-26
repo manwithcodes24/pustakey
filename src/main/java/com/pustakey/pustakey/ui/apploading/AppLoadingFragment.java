@@ -148,12 +148,12 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
                         }
                         if(isGPSEnabled){
-                            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 500, this);
-                            myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 500, this);
+                            myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                             while (gotMyLocation){
                                 if (myLocation == null){
 
-                                        myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                                        myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
                                 }
                                 else {
@@ -164,7 +164,7 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
                         while (gotMyLocation){
                             if (myLocation == null){
 
-                                myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                                myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
                             }
                             else {
@@ -271,7 +271,7 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
     @Override
     protected void initData() {
         isBatterySaver = false ;
-        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        isGPSEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         isNetworkEnabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER) ;
 
         if(!isBatterySaver) {
@@ -317,12 +317,12 @@ public class AppLoadingFragment extends PSFragment implements LocationListener {
 
                       }
                       if(isGPSEnabled){
-                          locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 500, this);
-                          myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                          locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 500, this);
+                          myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                           while (gotMyLocation){
                               if (myLocation == null){
 
-                                  myLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                                  myLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
 
                               }
                               else {

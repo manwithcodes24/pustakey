@@ -12,9 +12,7 @@
 
     <string name="adview_publisher_key" translatable="false">pub-3819911729832564</string>
 
-    <string name="stripe_publickey" translatable="false">pk_test_51IK60wJIqEuh5x7ylQSDL3gZecZSFddzpf4mIKNTNCLMLHcEFPT5SP45tmNVRe85crY41POAgyz2XsnzPSLrKLqk00h3hRpYUA</string>
-    <string name="razor_key" translatable="false">rzp_test_tLfCFpvCJK3Uuj</string>
-    <string name="razor_createPayout" translatable="false">https://api.razorpay.com/v1/payouts</string>
+    <string name="razor_key" translatable="false">rzp_live_vJ041oYSEocbFJ</string>
 
     <!--GDPR-->
 
@@ -374,7 +372,6 @@
     <string name="item_entry_detail__upi" translatable="false">Paytm / Google etc</string>
     <string name="item_entry_detail__nameinBank" translatable="false">Account Holder Name</string>
     <string name="item_entry_detail__bankDetailsHeader" translatable="false">Bank Transfer</string>
-    <string name="item_entry_detail__upiDetailsHeader" translatable="false">Upi Transfer</string>
     <string name="item_entry_detail__bankDescri" translatable="false">Fill the bank details or upi id properly, because we transfer money directly into the bank account after your book will be sold.</string>
     <string name="item_entry_detail__accnum" translatable="false">Account no.</string>
     <string name="item_entry_detail__ifsc" translatable="false">IFSC code</string>

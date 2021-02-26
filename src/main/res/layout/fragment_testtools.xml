@@ -6,45 +6,5 @@
     android:layout_height="match_parent"
     tools:context=".ui.tools.tools">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/trackBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="150dp"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/colorWhite"
-
-            android:background="@drawable/toolsbuttonbg"
-            android:text="Tracking" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:textColor="@color/colorWhite"
-
-            android:background="@drawable/toolsbuttonbg"
-            android:text="Instruction" />
-
-        <Button
-            android:id="@+id/cartBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:textColor="@color/colorWhite"
-            android:background="@drawable/toolsbuttonbg"
-            android:text="Cart" />
-
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-
-            tools:src="@drawable/ladki" />
-    </LinearLayout>
 </FrameLayout>

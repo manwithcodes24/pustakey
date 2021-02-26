@@ -8,6 +8,7 @@
     <application
         android:name="com.pustakey.pustakey.PsApp"
         android:allowBackup="true"
+
         android:fullBackupContent="false"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
